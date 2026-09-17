@@ -1,11 +1,8 @@
-import Navbar from "./common/Navbar";
+import React from "react";
+import Homepage from "./pages/Homepage";
 
 function App() {
-  return (
-    <div className="min-h-screen bg-[#2B2B2B]">
-      <Navbar />
-    </div>
-  );
+  return <Homepage />;
 }
 
 export default App;
