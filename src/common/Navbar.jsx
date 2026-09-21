@@ -3,9 +3,18 @@ import { User, Menu, X } from "lucide-react";
 import logo from "../assets/logo/logo.png";
 
 const NAV_LINKS = [
-  "Marketplace",
-  "Rankings",
-  "Connect a wallet",
+  {
+    label: "Marketplace",
+    path: "/marketplace",
+  },
+  {
+    label: "Rankings",
+    path: "/rankings",
+  },
+  {
+    label: "Connect a wallet",
+    path: "/wallet",
+  },
 ];
 
 const Navbar = () => {
@@ -39,7 +48,7 @@ const Navbar = () => {
 
           {/* ================= DESKTOP NAV ================= */}
           <div className="hidden items-center gap-8 md:flex lg:gap-10">
-            {NAV_LINKS.map((link) => (
+            {/* {NAV_LINKS.map((link) => (
               <a
                 key={link}
                 href="#"
@@ -47,7 +56,19 @@ const Navbar = () => {
               >
                 {link}
               </a>
+            ))} */}
+
+            {NAV_LINKS.map((link) => (
+              <a
+                key={link.path}
+                href={link.path}
+                onClick={closeMenu}
+                className="text-sm font-semibold text-white transition-colors duration-200 hover:text-[#A259FF]"
+              >
+                {link.label}
+              </a>
             ))}
+
           </div>
 
           {/* ================= SIGN UP BUTTON ================= */}
@@ -94,15 +115,14 @@ const Navbar = () => {
         <div
           className="flex flex-col gap-5 px-4 pb-6 pt-5 border-t border-white/10 sm:px-6"
         >
-          {/* Mobile Navigation Links */}
           {NAV_LINKS.map((link) => (
             <a
-              key={link}
-              href="#"
+              key={link.path}
+              href={link.path}
               onClick={closeMenu}
               className="text-sm font-semibold text-white transition-colors duration-200 hover:text-[#A259FF]"
             >
-              {link}
+              {link.label}
             </a>
           ))}
 
