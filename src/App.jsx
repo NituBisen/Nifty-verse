@@ -1,19 +1,34 @@
 import React from "react";
-import { Routes, Route, Navigate } from "react-router-dom";
-import NFT from "./nftpage/NFT";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 import Homepage from "./pages/Homepage";
-import Market from "./marketplace/market";
+import Createaccount from "./pages/Createaccount";
+import Connectwallet from "./pages/Connectwallet";
+import Artistpage from "./pages/Artistpage";
 
-
-function App() {
+const App = () => {
   return (
-    <Routes>
-      <Route path="/" element={<Homepage />} />
-      <Route path="/marketplace" element={<Market />} />
-      <Route path="/nft/:id" element={<NFT />} />
-      <Route path="*" element={<Navigate to="/" replace />} />
-    </Routes>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Homepage />} />
+
+        <Route
+          path="/create-account"
+          element={<Createaccount />}
+        />
+
+        <Route
+          path="/connect-wallet"
+          element={<Connectwallet />}
+        />
+
+        <Route
+          path="/artist-page"
+          element={<Artistpage />}
+        />
+      </Routes>
+    </BrowserRouter>
   );
-}
+};
 
 export default App;

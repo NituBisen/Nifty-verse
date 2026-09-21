@@ -1,11 +1,15 @@
 import React from "react";
-import { Rocket } from "lucide-react";
+import { Rocket, Eye, Mail } from "lucide-react";
+
+/* =========================================================
+   HERO IMAGE
+========================================================= */
 
 import nftArtwork from "../assets/images/nft-artwork.png";
 
-/* ==================================================
-   TRENDING COLLECTION IMAGE IMPORTS
-================================================== */
+/* =========================================================
+   TRENDING COLLECTION IMAGES
+========================================================= */
 
 // DSGN Animals
 import animalMain from "../assets/images/dsgn-animals-main.png";
@@ -25,9 +29,73 @@ import robotSmall1 from "../assets/images/disco-machines-small-1.png";
 import robotSmall2 from "../assets/images/disco-machines-small-2.png";
 import robotAvatar from "../assets/images/bekind2robots-avatar.png";
 
-/* ==================================================
+/* =========================================================
+   TOP CREATORS IMAGES
+========================================================= */
+
+import keepitrealAvatar from "../assets/topcreaters/keepitreal.png";
+import digilabAvatar from "../assets/topcreaters/digilab.png";
+import gravityoneAvatar from "../assets/topcreaters/gravityone.png";
+import juanieAvatar from "../assets/topcreaters/juanie.png";
+import bluewhaleAvatar from "../assets/topcreaters/bluewhale.png";
+import mrfoxAvatar from "../assets/topcreaters/mrfox.png";
+import shroomieAvatar from "../assets/topcreaters/shroomie.png";
+import roboticaAvatar from "../assets/topcreaters/robotica.png";
+import rustyrobotAvatar from "../assets/topcreaters/rustyrobot.png";
+import animakidAvatar from "../assets/topcreaters/animakid.png";
+import dotguAvatar from "../assets/topcreaters/dotgu.png";
+import ghiblierAvatar from "../assets/topcreaters/ghiblier.png";
+
+/* =========================================================
+   BROWSE CATEGORIES IMAGES
+========================================================= */
+
+import artImage from "../assets/browse/art.png";
+import collectiblesImage from "../assets/browse/collectibles.png";
+import musicImage from "../assets/browse/music.png";
+import photographyImage from "../assets/browse/photography.png";
+import videoImage from "../assets/browse/video.png";
+import utilityImage from "../assets/browse/utility.png";
+import sportImage from "../assets/browse/sport.png";
+import virtualWorldsImage from "../assets/browse/virtual-worlds.png";
+
+/* =========================================================
+   DISCOVER MORE NFT IMAGES
+========================================================= */
+
+import distantGalaxyImage from "../assets/images/distant-galaxy.png";
+import distantGalaxyAvatar from "../assets/images/moondancer.png";
+
+import lifeOnEdenaImage from "../assets/images/life-on-edena.png";
+import lifeOnEdenaAvatar from "../assets/images/nebulakid.png";
+
+import astroFictionImage from "../assets/images/astrofiction.png";
+import astroFictionAvatar from "../assets/images/spaceone.png";
+
+/* =========================================================
+   MAGIC MUSHROOMS AUCTION IMAGES
+========================================================= */
+
+import magicMushroomsImage from "../assets/logo/magic-mushrooms-hero.png";
+import shroomieAuctionAvatar from "../assets/logo/shroomie.png";
+
+/* =========================================================
+   HOW IT WORKS IMAGES
+========================================================= */
+
+import walletIllustration from "../assets/logo/setup-wallet.png";
+import collectionIllustration from "../assets/logo/create-collection.png";
+import earningIllustration from "../assets/logo/start-earning.png";
+
+/* =========================================================
+   WEEKLY DIGEST IMAGE
+========================================================= */
+
+import astronautImage from "../assets/logo/astronaut-newspaper.png";
+
+/* =========================================================
    HERO STATS
-================================================== */
+========================================================= */
 
 const STATS = [
   {
@@ -44,9 +112,9 @@ const STATS = [
   },
 ];
 
-/* ==================================================
+/* =========================================================
    TRENDING COLLECTION DATA
-================================================== */
+========================================================= */
 
 const collections = [
   {
@@ -72,9 +140,190 @@ const collections = [
   },
 ];
 
-/* ==================================================
-   COLLECTION CARD
-================================================== */
+/* =========================================================
+   TOP CREATORS DATA
+========================================================= */
+
+const creators = [
+  {
+    rank: 1,
+    name: "Keepitreal",
+    avatar: keepitrealAvatar,
+  },
+  {
+    rank: 2,
+    name: "DigiLab",
+    avatar: digilabAvatar,
+  },
+  {
+    rank: 3,
+    name: "GravityOne",
+    avatar: gravityoneAvatar,
+  },
+  {
+    rank: 4,
+    name: "Juanie",
+    avatar: juanieAvatar,
+  },
+  {
+    rank: 5,
+    name: "BlueWhale",
+    avatar: bluewhaleAvatar,
+  },
+  {
+    rank: 6,
+    name: "Mr Fox",
+    avatar: mrfoxAvatar,
+  },
+  {
+    rank: 7,
+    name: "Shroomie",
+    avatar: shroomieAvatar,
+  },
+  {
+    rank: 8,
+    name: "Robotica",
+    avatar: roboticaAvatar,
+  },
+  {
+    rank: 9,
+    name: "RustyRobot",
+    avatar: rustyrobotAvatar,
+  },
+  {
+    rank: 10,
+    name: "Animakid",
+    avatar: animakidAvatar,
+  },
+  {
+    rank: 11,
+    name: "Dotgu",
+    avatar: dotguAvatar,
+  },
+  {
+    rank: 12,
+    name: "Ghiblier",
+    avatar: ghiblierAvatar,
+  },
+];
+
+/* =========================================================
+   BROWSE CATEGORIES DATA
+========================================================= */
+
+const categories = [
+  {
+    name: "Art",
+    image: artImage,
+  },
+  {
+    name: "Collectibles",
+    image: collectiblesImage,
+  },
+  {
+    name: "Music",
+    image: musicImage,
+  },
+  {
+    name: "Photography",
+    image: photographyImage,
+  },
+  {
+    name: "Video",
+    image: videoImage,
+  },
+  {
+    name: "Utility",
+    image: utilityImage,
+  },
+  {
+    name: "Sport",
+    image: sportImage,
+  },
+  {
+    name: "Virtual Worlds",
+    image: virtualWorldsImage,
+  },
+];
+
+/* =========================================================
+   DISCOVER MORE NFT DATA
+========================================================= */
+
+const nfts = [
+  {
+    title: "Distant Galaxy",
+    creator: "MoonDancer",
+    price: "1.63 ETH",
+    highestBid: "0.33 wETH",
+    image: distantGalaxyImage,
+    avatar: distantGalaxyAvatar,
+  },
+  {
+    title: "Life On Edena",
+    creator: "NebulaKid",
+    price: "1.63 ETH",
+    highestBid: "0.33 wETH",
+    image: lifeOnEdenaImage,
+    avatar: lifeOnEdenaAvatar,
+  },
+  {
+    title: "AstroFiction",
+    creator: "Spaceone",
+    price: "1.63 ETH",
+    highestBid: "0.33 wETH",
+    image: astroFictionImage,
+    avatar: astroFictionAvatar,
+  },
+];
+
+/* =========================================================
+   AUCTION TIME
+========================================================= */
+
+const auctionTime = [
+  {
+    value: "59",
+    label: "Hours",
+  },
+  {
+    value: "59",
+    label: "Minutes",
+  },
+  {
+    value: "59",
+    label: "Seconds",
+  },
+];
+
+/* =========================================================
+   HOW IT WORKS DATA
+========================================================= */
+
+const steps = [
+  {
+    image: walletIllustration,
+    title: "Setup Your Wallet",
+    description:
+      "Set up your wallet of choice. Connect it to the Animarket by clicking the wallet icon in the top right corner.",
+  },
+  {
+    image: collectionIllustration,
+    title: "Create Collection",
+    description:
+      "Upload your work and setup your collection. Add a description, social links and floor price.",
+  },
+  {
+    image: earningIllustration,
+    title: "Start Earning",
+    description:
+      "Choose between auctions and fixed-price listings. Start earning by selling your NFTs or trading others.",
+  },
+];
+
+/* =========================================================
+   TRENDING COLLECTION CARD
+========================================================= */
 
 const CollectionCard = ({
   title,
@@ -86,7 +335,7 @@ const CollectionCard = ({
   return (
     <div className="w-full">
 
-      {/* ================= MAIN IMAGE ================= */}
+      {/* Main Image */}
       <div className="overflow-hidden w-full rounded-2xl aspect-square">
         <img
           src={mainImage}
@@ -95,10 +344,9 @@ const CollectionCard = ({
         />
       </div>
 
-      {/* ================= SMALL IMAGES ================= */}
-      <div className="grid grid-cols-3 gap-3 mt-3 sm:gap-4 mt-4">
+      {/* Small Images */}
+      <div className="grid grid-cols-3 gap-3 mt-4 sm:gap-4">
 
-        {/* Small Image 1 */}
         <div className="overflow-hidden rounded-xl aspect-square">
           <img
             src={images[0]}
@@ -107,7 +355,6 @@ const CollectionCard = ({
           />
         </div>
 
-        {/* Small Image 2 */}
         <div className="overflow-hidden rounded-xl aspect-square">
           <img
             src={images[1]}
@@ -116,8 +363,7 @@ const CollectionCard = ({
           />
         </div>
 
-        {/* Count Box */}
-        <div className="flex items-center justify-center bg-[#A259FF] rounded-xl aspect-square">
+        <div className="flex items-center justify-center bg-[#7e28ee] rounded-xl aspect-square">
           <span className="text-sm font-bold text-white sm:text-base md:text-lg">
             1025+
           </span>
@@ -125,85 +371,568 @@ const CollectionCard = ({
 
       </div>
 
-      {/* ================= TITLE ================= */}
-      <h3 className="mt-4 text-xl font-bold text-white sm:mt-5 text-2xl">
+      {/* Collection Title */}
+      <h3 className="mt-4 text-2xl font-bold text-white sm:mt-5">
         {title}
       </h3>
 
-      {/* ================= CREATOR ================= */}
+      {/* Creator */}
       <div className="flex items-center gap-2 mt-2">
-
         <img
           src={avatar}
           alt={creator}
-          className="object-cover h-7 w-7 rounded-full shrink-0 sm:h-8 w-8"
+          className="object-cover w-8 h-8 rounded-full shrink-0"
         />
 
         <span className="text-sm text-gray-300 sm:text-base">
           {creator}
         </span>
-
       </div>
+
     </div>
   );
 };
 
-/* ==================================================
-   HERO COMPONENT
-================================================== */
+/* =========================================================
+   TOP CREATOR CARD
+========================================================= */
+
+const CreatorCard = ({
+  rank,
+  name,
+  avatar,
+}) => {
+  return (
+    <div className="relative flex flex-col items-center px-4 pt-6 pb-6 bg-[#3B3B3B] rounded-2xl sm:px-5 md:px-6">
+
+      {/* Ranking Badge */}
+      <div className="absolute left-4 top-5 flex items-center justify-center w-9 h-9 bg-[#000000] rounded-full sm:left-5 md:left-6">
+        <span className="text-xs font-medium text-[#AFAFAF] sm:text-sm">
+          {rank}
+        </span>
+      </div>
+
+      {/* Avatar */}
+      <div className="overflow-hidden w-[100px] h-[100px] h-[120px] h-[140px] h-[150px] rounded-full sm:w-[120px] md:w-[140px] lg:w-[150px]">
+        <img
+          src={avatar}
+          alt={name}
+          className="object-cover h-full w-full"
+        />
+      </div>
+
+      {/* Name */}
+      <h3 className="mt-4 text-xl font-bold text-center text-white sm:mt-5 md:text-2xl">
+        {name}
+      </h3>
+
+      {/* Total Sales */}
+      <p className="mt-2 text-xs text-center sm:text-sm md:text-base">
+        <span className="text-[#AFAFAF]">
+          Total Sales:{" "}
+        </span>
+
+        <span className="text-white">
+          34.53 ETH
+        </span>
+      </p>
+
+    </div>
+  );
+};
+
+/* =========================================================
+   CATEGORY CARD
+========================================================= */
+
+const CategoryCard = ({
+  name,
+  image,
+}) => {
+  return (
+    <div className="overflow-hidden rounded-2xl group">
+
+      {/* Image */}
+      <div className="overflow-hidden relative w-full aspect-square">
+        <img
+          src={image}
+          alt={name}
+          className="object-cover h-full w-full transition-transform duration-300 group-hover:scale-[1.02]"
+        />
+      </div>
+
+      {/* Title */}
+      <div className="flex items-center px-4 py-5 min-h-[80px] bg-[#3B3B3B] sm:px-6">
+        <h3 className="text-base font-bold text-white sm:text-lg md:text-xl lg:text-2xl">
+          {name}
+        </h3>
+      </div>
+
+    </div>
+  );
+};
+
+/* =========================================================
+   DISCOVER MORE NFT CARD
+========================================================= */
+
+const NFTCard = ({
+  title,
+  creator,
+  price,
+  highestBid,
+  image,
+  avatar,
+}) => {
+  return (
+    <div className="overflow-hidden bg-[#3B3B3B] rounded-2xl transition-transform duration-300 hover:-translate-y-1">
+
+      {/* Artwork - NO CROP */}
+      <img
+        src={image}
+        alt={title}
+        className="object-contain block w-full h-auto"
+      />
+
+      {/* Information */}
+      <div className="px-5 pt-5 pb-6 sm:px-6">
+
+        <h3 className="text-xl font-bold text-white sm:text-2xl">
+          {title}
+        </h3>
+
+        {/* Creator */}
+        <div className="flex items-center gap-2 mt-3">
+
+          <img
+            src={avatar}
+            alt={creator}
+            className="object-cover w-7 h-7 h-8 rounded-full shrink-0 sm:w-8"
+          />
+
+          <span className="text-sm text-gray-300 sm:text-base">
+            {creator}
+          </span>
+
+        </div>
+
+        {/* Price / Bid */}
+        <div className="flex items-center justify-between gap-4 mt-6">
+
+          <div className="min-w-0">
+
+            <p className="text-xs text-gray-400 sm:text-sm">
+              Price
+            </p>
+
+            <p className="mt-1 text-sm font-medium text-white sm:text-base">
+              {price}
+            </p>
+
+          </div>
+
+          <div className="min-w-0 text-right">
+
+            <p className="text-xs text-gray-400 sm:text-sm">
+              Highest Bid
+            </p>
+
+            <p className="mt-1 text-sm font-medium text-white sm:text-base">
+              {highestBid}
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  );
+};
+
+/* =========================================================
+   MAGIC MUSHROOMS AUCTION
+========================================================= */
+
+/* =========================================================
+   MAGIC MUSHROOMS AUCTION
+========================================================= */
+
+const MagicMushroomsAuction = () => {
+  return (
+    <section className="overflow-hidden w-full bg-black">
+
+      <div className="relative w-full">
+
+        {/* =================================================
+            MAGIC MUSHROOM IMAGE
+        ================================================= */}
+
+        <img
+          src={magicMushroomsImage}
+          alt="Magic Mushrooms"
+          className="object-cover object-center block w-full h-[500px] sm:h-[560px] md:h-[620px] lg:h-[700px] xl:h-[760px]"
+        />
+
+        {/* =================================================
+            PURPLE GRADIENT
+        ================================================= */}
+
+        <div
+          className="z-[1] absolute inset-0 pointer-events-none"
+          style={{
+            background:
+              "linear-gradient(180deg, rgba(162, 89, 255, 0) 0%, #A259FF 100%)",
+          }}
+        />
+
+        {/* =================================================
+            CONTENT
+        ================================================= */}
+
+        <div className="z-10 absolute inset-0">
+
+          <div
+            className="relative mx-auto px-5 h-full max-w-7xl sm:px-8 lg:px-10"
+          >
+
+            {/* =================================================
+                LEFT CONTENT
+            ================================================= */}
+
+            <div
+              className="absolute left-5 bottom-8 bottom-10 bottom-12 bottom-14 bottom-16 flex flex-col items-start sm:left-8 md:left-10 lg:left-10 xl:left-0"
+            >
+
+              {/* Creator Pill */}
+
+              <div
+                className="flex items-center gap-2 px-3 py-2 bg-[#000000] rounded-full backdrop-blur-sm sm:px-4"
+              >
+
+                <img
+                  src={shroomieAuctionAvatar}
+                  alt="Shroomie"
+                  className="object-cover w-7 h-7 h-8 rounded-full shrink-0 sm:w-8"
+                />
+
+                <span
+                  className="text-sm font-medium text-white sm:text-base"
+                >
+                  Shroomie
+                </span>
+
+              </div>
+
+              {/* =================================================
+                  TITLE
+              ================================================= */}
+
+              <h1
+                className="mt-5 text-4xl leading-[1.05] font-bold text-white whitespace-nowrap sm:text-5xl md:text-6xl lg:text-[64px]"
+              >
+                Magic Mushrooms
+              </h1>
+
+              {/* =================================================
+                  SEE NFT BUTTON
+              ================================================= */}
+
+              <button
+                type="button"
+                className="inline-flex items-center justify-center gap-2 mt-6 w-[180px] h-[60px] text-[#1A1A1A] text-base font-bold bg-white rounded-[20px] transition-all duration-300 hover:bg-gray-100 hover:scale-[1.02]"
+              >
+
+                <Eye
+                  className="w-5 h-5 text-[#A259FF]"
+                />
+
+                See NFT
+
+              </button>
+
+            </div>
+
+            {/* =================================================
+                AUCTION CARD
+            ================================================= */}
+
+            <div
+              className="absolute right-5 bottom-8 bottom-10 bottom-12 bottom-14 bottom-16 sm:right-8 md:right-10 lg:right-10 xl:right-0"
+            >
+
+              <div
+                className="px-6 py-6 w-[300px] bg-[#3B3B3B]/85 rounded-[20px] shadow-xl backdrop-blur-md sm:w-[320px] md:w-[340px] lg:w-[350px]"
+              >
+
+                {/* Auction Heading */}
+
+                <p
+                  className="text-xs text-white font-normal sm:text-sm"
+                >
+                  Auction ends in:
+                </p>
+
+                {/* =================================================
+                    COUNTDOWN
+                ================================================= */}
+
+                <div
+                  className="flex items-start justify-between mt-3"
+                >
+
+                  {auctionTime.map((item, index) => (
+                    <React.Fragment key={item.label}>
+
+                      {/* Number + Label */}
+
+                      <div className="flex flex-col items-start">
+
+                        <span
+                          className="text-3xl leading-none font-bold text-white tabular-nums sm:text-4xl md:text-[44px]"
+                        >
+                          {item.value}
+                        </span>
+
+                        <span
+                          className="mt-2 text-[11px] text-white sm:text-xs"
+                        >
+                          {item.label}
+                        </span>
+
+                      </div>
+
+                      {/* Colon */}
+
+                      {index < auctionTime.length - 1 && (
+                        <span
+                          className="px-1 text-3xl leading-none font-bold text-white text-4xl sm:px-2 md:text-[44px]"
+                        >
+                          :
+                        </span>
+                      )}
+
+                    </React.Fragment>
+                  ))}
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+  );
+};
+
+/* =========================================================
+   HOW IT WORKS CARD
+========================================================= */
+
+const HowItWorksCard = ({ image, title, description }) => {
+  return (
+    <div
+      className="flex flex-col items-center px-5 py-7 py-8 h-full text-center bg-[#3B3B3B] rounded-[20px] sm:px-8 md:py-9"
+    >
+      <img
+        src={image}
+        alt={title}
+        className="object-contain w-36 h-auto shrink-0 sm:w-40 md:w-44 lg:w-48"
+      />
+
+      <h3
+        className="mt-6 text-xl font-bold text-white text-2xl sm:mt-7"
+      >
+        {title}
+      </h3>
+
+      <p
+        className="mt-3 max-w-xs text-sm leading-relaxed text-gray-300 sm:text-base"
+      >
+        {description}
+      </p>
+    </div>
+  );
+};
+
+/* =========================================================
+   HOW IT WORKS SECTION
+========================================================= */
+
+const HowItWorks = () => {
+  return (
+    <section className="overflow-hidden w-full bg-[#000000]">
+      <div
+        className="mx-auto px-4 py-14 max-w-7xl sm:px-6 md:py-20 lg:px-10"
+      >
+        {/* Header */}
+        <div className="text-left">
+          <h2
+            className="text-3xl font-bold text-white sm:text-4xl md:text-[40px]"
+          >
+            How It Works
+          </h2>
+
+          <p
+            className="mt-3 text-lg font-normal text-gray-300 sm:text-xl md:text-[26px]"
+          >
+            Find Out How To Get Started
+          </p>
+        </div>
+
+        {/* Cards */}
+        <div
+          className="grid grid-cols-1 items-stretch gap-6 gap-8 mt-10 mt-14 sm:gap-7 md:grid-cols-2 lg:grid-cols-3"
+        >
+          {steps.map((step) => (
+            <HowItWorksCard
+              key={step.title}
+              {...step}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+/* =========================================================
+   WEEKLY DIGEST
+========================================================= */
+
+const WeeklyDigest = () => {
+  return (
+    <section className="overflow-hidden w-full bg-[#000000]">
+      <div
+        className="mx-auto px-4 py-14 max-w-[1310px] sm:px-6 md:py-20 lg:px-10"
+      >
+        <div
+          className="px-5 py-8 py-10 py-12 bg-[#3B3B3B] rounded-[24px] sm:px-8 md:px-10 lg:px-12"
+        >
+          <div
+            className="flex flex-col items-center gap-8 gap-12 lg:flex-row"
+          >
+            {/* =================================================
+                LEFT IMAGE
+            ================================================= */}
+
+            <div
+              className="w-full shrink-0 lg:w-[48%] xl:w-[530px]"
+            >
+              <img
+                src={astronautImage}
+                alt="Astronaut reading a newspaper"
+                className="object-cover block w-full h-[260px] rounded-[20px] sm:h-[320px] md:h-[360px] lg:h-[390px]"
+              />
+            </div>
+
+            {/* =================================================
+                RIGHT CONTENT
+            ================================================= */}
+
+            <div
+              className="flex flex-col items-center justify-center w-full text-center text-left lg:items-start"
+            >
+              <h2
+                className="text-3xl leading-[1.1] font-bold text-white sm:text-4xl md:text-5xl lg:text-[46px]"
+              >
+                Join Our Weekly
+                <br className="hidden sm:block" />
+                <span className="sm:hidden"> </span>
+                Digest
+              </h2>
+
+              <p
+                className="mt-5 max-w-md text-base leading-relaxed text-gray-300 leading-[1.5] sm:text-lg md:text-xl lg:text-[24px]"
+              >
+                Get Exclusive Promotions &amp; Updates
+                <br className="hidden sm:block" />
+                <span className="sm:hidden"> </span>
+                Straight To Your Inbox.
+              </p>
+
+              {/* =================================================
+                  SUBSCRIPTION FORM
+              ================================================= */}
+
+              <form className="flex w-full max-w-[560px] h-[76px]">
+  {/* Email Input */}
+  <input
+    type="email"
+    placeholder="Enter your email here"
+    className="flex-1 px-6 placeholder-[#2B2B2B] min-w-0 h-full text-[#2B2B2B] text-base bg-white rounded-l-[20px] rounded-r-[20px] outline-none"
+  />
+
+  {/* Subscribe Button */}
+  <button
+    type="submit"
+    className="z-10 flex items-center justify-center gap-2 w-[190px] h-full text-white text-base font-bold bg-[#A259FF] rounded-[20px] transition-colors -ml-[40px] shrink-0 hover:bg-[#9147E6]"
+  >
+    <Mail className="w-5 h-5" />
+    Subscribe
+  </button>
+</form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+/* =========================================================
+   HERO
+========================================================= */
 
 const Hero = () => {
   return (
     <>
-      {/* ==================================================
+      {/* ===================================================
           HERO SECTION
-      ================================================== */}
+      =================================================== */}
 
-      <section className="overflow-hidden w-full bg-[#2B2B2B]">
+      <section className="overflow-hidden w-full bg-[#000000]">
 
-        <div className="mx-auto px-4 py-16 max-w-7xl sm:px-6 md:py-20 lg:px-10 py-28">
+        <div className="px-4 py-16 mx-auto py-28 max-w-7xl sm:px-6 md:py-20 lg:px-10">
 
-          <div className="flex flex-col items-center justify-between gap-12 lg:flex-row gap-10">
+          <div className="flex flex-col items-center justify-between gap-10 lg:flex-row">
 
-            {/* ==================================================
-                LEFT CONTENT
-            ================================================== */}
+            {/* LEFT CONTENT */}
+            <div className="flex flex-col items-center w-full w-1/2 text-center text-left lg:items-start">
 
-            <div className="flex flex-col items-center w-full text-center lg:items-start w-1/2 text-left">
+             <h1 className="max-w-xl text-4xl font-bold leading-tight text-white sm:text-5xl md:text-6xl">
+  Discover
+  <br />
+  Digital Art &amp;
+  <br />
+  <span className="text-transparent bg-[linear-gradient(90deg,#F7C6E7_0%,#FFFFFF_0%,#A259FF_70%)] bg-clip-text">
+    Collect NFTs
+  </span>
+</h1>
 
-              {/* Heading */}
-              <h1 className="max-w-xl text-4xl font-bold leading-tight text-white sm:text-5xl md:text-6xl">
-
-                Discover
-                <br />
-
-                Digital Art &amp;
-                <br />
-
-                Collect NFTs
-
-              </h1>
-
-              {/* Description */}
               <p className="mt-6 max-w-md text-base leading-relaxed text-gray-300 md:text-lg">
-
-                NFT Marketplace UI Created With Anima For Figma.
-                Collect, Buy And Sell Art From More Than 20k NFT Artists.
-
+                NFT Marketplace UI Created With Anima For
+                Figma. Collect, Buy And Sell Art From More
+                Than 20k NFT Artists.
               </p>
 
-              {/* Get Started Button */}
+              {/* Get Started */}
               <button
                 type="button"
-                className="inline-flex items-center gap-2 mt-8 px-7 py-3.5 text-base font-semibold text-white bg-[#A259FF] rounded-full transition-opacity duration-200 hover:opacity-90"
+                className="inline-flex items-center gap-2 px-7 py-3.5 mt-8 text-base font-semibold text-white bg-[#6922c6] rounded-full transition-opacity hover:opacity-90"
               >
-                <Rocket className="h-5 w-5" />
-
+                <Rocket className="w-5 h-5" />
                 Get Started
               </button>
 
-              {/* ================= STATS ================= */}
-
+              {/* Stats */}
               <div className="grid grid-cols-3 gap-5 mt-12 w-full max-w-md sm:gap-10">
 
                 {STATS.map((stat) => (
@@ -211,13 +940,15 @@ const Hero = () => {
                     key={stat.label}
                     className="text-center lg:text-left"
                   >
-                    <p className="text-xl font-bold text-white sm:text-2xl">
-                      {stat.value}
-                    </p>
 
-                    <p className="mt-1 text-sm text-gray-300 sm:text-base">
-                      {stat.label}
-                    </p>
+                    <p
+  className="text-xl font-bold text-transparent bg-[linear-gradient(90deg,#00D9FF_10%,#087CFF_20%,#8B2CFF_70%,#F000FF_100%)] bg-clip-text sm:text-2xl"
+>
+  {stat.value}
+</p>
+                   <p className="mt-1 text-sm text-[#d5bc57] sm:text-base">
+  {stat.label}
+</p>
                   </div>
                 ))}
 
@@ -225,15 +956,11 @@ const Hero = () => {
 
             </div>
 
-            {/* ==================================================
-                RIGHT NFT CARD
-            ================================================== */}
-
-            <div className="flex justify-center w-full hero-card-scene lg:justify-end w-1/2">
+            {/* RIGHT NFT CARD */}
+            <div className="flex justify-center w-full w-1/2 hero-card-scene lg:justify-end">
 
               <div className="overflow-hidden w-[280px] bg-[#3A3A3A] rounded-2xl shadow-2xl hero-float sm:w-[340px] md:w-[380px]">
 
-                {/* NFT Image */}
                 <div className="overflow-hidden w-full rounded-t-2xl aspect-square">
 
                   <img
@@ -244,14 +971,12 @@ const Hero = () => {
 
                 </div>
 
-                {/* NFT Information */}
                 <div className="flex items-center gap-3 px-5 py-4">
 
-                  {/* Avatar */}
                   <img
                     src={nftArtwork}
                     alt="animakid avatar"
-                    className="object-cover h-9 w-9 rounded-full shrink-0"
+                    className="object-cover w-9 h-9 rounded-full shrink-0"
                   />
 
                   <div>
@@ -281,31 +1006,23 @@ const Hero = () => {
 
       </section>
 
-      {/* ==================================================
-          TRENDING COLLECTION SECTION
-      ================================================== */}
+      {/* ===================================================
+          TRENDING COLLECTION
+      =================================================== */}
 
-      <section className="w-full bg-[#2B2B2B]">
+      <section className="w-full bg-[#000000]">
 
-        <div className="mx-auto px-4 py-14 max-w-7xl sm:px-6 md:py-20 lg:px-10">
+        <div className="px-4 py-14 mx-auto max-w-7xl sm:px-6 md:py-20 lg:px-10">
 
-          {/* ================= HEADER ================= */}
+          <h2 className="text-3xl font-bold text-white sm:text-4xl md:text-[40px]">
+            Trending Collection
+          </h2>
 
-          <div className="text-left">
+          <p className="mt-3 text-base text-gray-300 sm:text-lg md:text-2xl">
+            Checkout Our Weekly Updated Trending Collection.
+          </p>
 
-            <h2 className="text-3xl font-bold text-white sm:text-4xl md:text-[40px]">
-              Trending Collection
-            </h2>
-
-            <p className="mt-3 text-base font-normal text-gray-300 sm:text-lg md:text-2xl">
-              Checkout Our Weekly Updated Trending Collection.
-            </p>
-
-          </div>
-
-          {/* ================= COLLECTION GRID ================= */}
-
-          <div className="grid grid-cols-1 gap-x-8 gap-y-14 mt-10 md:grid-cols-2 mt-14 lg:grid-cols-3 gap-x-10">
+          <div className="grid grid-cols-1 gap-10 mt-14 md:grid-cols-2 lg:grid-cols-3">
 
             {collections.map((collection) => (
               <CollectionCard
@@ -320,9 +1037,157 @@ const Hero = () => {
 
       </section>
 
-      {/* ==================================================
+      {/* ===================================================
+          TOP CREATORS
+      =================================================== */}
+
+      <section className="w-full bg-[#000000]">
+
+        <div className="px-4 py-14 mx-auto max-w-7xl sm:px-6 md:py-20 lg:px-10">
+
+          <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
+
+            <div className="min-w-0">
+
+              <h2 className="text-3xl font-bold text-white sm:text-4xl md:text-[40px]">
+                Top Creators
+              </h2>
+
+              <p className="mt-3 text-base font-normal text-gray-300 sm:text-lg md:text-2xl">
+                Checkout Top Rated Creators On The NFT Marketplace
+              </p>
+
+            </div>
+
+            <button
+              type="button"
+              className="inline-flex items-center justify-center self-start gap-2 px-6 w-[247px] h-[60px] text-base font-semibold text-white bg-transparent rounded-[20px] border-2 border-[#A259FF] transition-colors duration-200 shrink-0 hover:bg-[#A259FF]/10 md:self-center"
+            >
+
+              <Rocket className="w-5 h-5 text-[#A259FF]" />
+
+              View Rankings
+
+            </button>
+
+          </div>
+
+          <div className="grid grid-cols-1 gap-7 mt-10 sm:grid-cols-2 md:mt-14 lg:grid-cols-4">
+
+            {creators.map((creator) => (
+              <CreatorCard
+                key={creator.rank}
+                {...creator}
+              />
+            ))}
+
+          </div>
+
+        </div>
+
+      </section>
+
+      {/* ===================================================
+          BROWSE CATEGORIES
+      =================================================== */}
+
+      <section className="w-full bg-[#000000]">
+
+        <div className="px-4 py-14 mx-auto max-w-7xl sm:px-6 md:py-20 lg:px-10">
+
+          <h2 className="text-3xl font-bold text-left text-white sm:text-4xl md:text-[40px]">
+            Browse Categories
+          </h2>
+
+          <div className="grid grid-cols-2 gap-4 mt-10 sm:gap-6 md:grid-cols-3 lg:grid-cols-4">
+
+            {categories.map((category) => (
+              <CategoryCard
+                key={category.name}
+                {...category}
+              />
+            ))}
+
+          </div>
+
+        </div>
+
+      </section>
+
+      {/* ===================================================
+          DISCOVER MORE NFTS
+      =================================================== */}
+
+      <section className="w-full bg-[#000000]">
+
+        <div className="px-4 py-14 mx-auto max-w-7xl sm:px-6 md:py-20 lg:px-10">
+
+          {/* Header */}
+          <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
+
+            <div>
+
+              <h2 className="text-3xl font-bold text-white sm:text-4xl md:text-[40px]">
+                Discover More NFTs
+              </h2>
+
+              <p className="mt-3 text-base font-normal text-gray-300 sm:text-lg md:text-2xl">
+                Explore New Trending NFTs
+              </p>
+
+            </div>
+
+            {/* See All */}
+            <button
+              type="button"
+              className="inline-flex items-center justify-center gap-2 px-6 w-full h-[60px] h-[70px] text-base font-semibold text-white bg-transparent rounded-full border-2 border-[#A259FF] transition-colors duration-200 hover:bg-[#A259FF]/10 shrink-0 md:w-[180px]"
+            >
+
+              <Eye className="w-5 h-5 text-[#A259FF]" />
+
+              See All
+
+            </button>
+
+          </div>
+
+          {/* NFT Grid */}
+          <div className="grid grid-cols-1 gap-6 gap-8 mt-10 mt-14 md:grid-cols-2 lg:grid-cols-3">
+
+            {nfts.map((nft) => (
+              <NFTCard
+                key={nft.title}
+                {...nft}
+              />
+            ))}
+
+          </div>
+
+        </div>
+
+      </section>
+
+      {/* ===================================================
+          MAGIC MUSHROOMS AUCTION
+      =================================================== */}
+
+      <MagicMushroomsAuction />
+
+      {/* ===================================================
+          HOW IT WORKS
+      =================================================== */}
+
+      <HowItWorks />
+
+      {/* ===================================================
+          WEEKLY DIGEST
+      =================================================== */}
+
+      <WeeklyDigest />
+
+      {/* ===================================================
           HERO CARD ANIMATION
-      ================================================== */}
+      =================================================== */}
 
       <style>{`
 
