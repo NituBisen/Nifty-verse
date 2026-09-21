@@ -38,7 +38,7 @@ const Connect = () => {
     <section className="w-full bg-[#000000]">
 
       <div
-        className="mx-auto px-4 py-10 py-14 py-20 max-w-[1200px] sm:px-6 lg:px-8"
+        className="mx-auto px-4 py-10 py-14 py-20 max-w-[1250px] sm:px-6 lg:px-8"
       >
 
         {/* ==========================================
@@ -46,7 +46,7 @@ const Connect = () => {
         ========================================== */}
 
         <div
-          className="overflow-hidden flex flex-col w-full rounded-[20px] lg:flex-row"
+          className="overflow-hidden flex flex-col rounded-[20px] lg:flex-row"
         >
 
           {/* ==========================================
@@ -79,11 +79,11 @@ const Connect = () => {
                   HEADING
               ===================================== */}
 
-              <h1
-                className="text-3xl font-bold leading-tight text-white sm:text-4xl md:text-5xl"
-              >
-                Connect Wallet
-              </h1>
+             <h1
+  className="text-3xl font-bold leading-tight text-transparent bg-[linear-gradient(90deg,#F7C6E7_0%,#A259FF_10%,#4DA6FF_80%)] bg-clip-text sm:text-4xl md:text-5xl"
+>
+  Connect Wallet
+</h1>
 
               {/* =====================================
                   DESCRIPTION

@@ -24,11 +24,13 @@ const CreateAccount = () => {
           </div>
 
           {/* Right form */}
-          <div className="flex items-center px-1 py-10 py-0 w-full w-1/2 bg-[#2B2B2B] sm:px-4 lg:px-12">
+          <div className="flex items-center px-1 py-10 py-0 w-full w-1/2 bg-[#211f1f] sm:px-4 lg:px-12">
             <div className="mx-auto w-full max-w-md lg:mx-0">
-              <h2 className="text-white font-bold text-3xl sm:text-4xl">
-                Create Account
-              </h2>
+              <h2
+  className="font-bold text-3xl text-transparent bg-[linear-gradient(90deg,#F7C6E7_0%,#A259FF_5%,#4DA6FF_80%)] bg-clip-text sm:text-4xl"
+>
+  Create Account
+</h2>
 
               <p className="mt-4 text-gray-300 text-base leading-relaxed sm:text-lg">
                 Welcome! Enter Your Details And Start Creating, Collecting

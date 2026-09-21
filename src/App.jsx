@@ -5,11 +5,13 @@ import Homepage from "./pages/Homepage";
 import Createaccount from "./pages/Createaccount";
 import Connectwallet from "./pages/Connectwallet";
 import Artistpage from "./pages/Artistpage";
+import Rankingpage from "./pages/Rankingpage";
 
 const App = () => {
   return (
     <BrowserRouter>
       <Routes>
+
         <Route path="/" element={<Homepage />} />
 
         <Route
@@ -23,9 +25,15 @@ const App = () => {
         />
 
         <Route
-          path="/artist-page"
+          path="/artist"
           element={<Artistpage />}
         />
+
+        <Route
+          path="/ranking-page"
+          element={<Rankingpage />}
+        />
+
       </Routes>
     </BrowserRouter>
   );
