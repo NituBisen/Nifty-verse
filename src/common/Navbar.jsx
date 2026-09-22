@@ -11,11 +11,11 @@ const NAV_LINKS = [
   },
   {
     label: "Rankings",
-    path: "/rankings",
+    path: "/ranking-page",
   },
   {
     label: "Connect a wallet",
-    path: "/wallet",
+    path: "/connect-wallet",
   },
 ];
 
@@ -37,6 +37,15 @@ const Navbar = () => {
   };
 
   // =========================================================
+  // NAVIGATION
+  // =========================================================
+
+  const handleNavClick = (path) => {
+    closeMenu();
+    navigate(path);
+  };
+
+  // =========================================================
   // SIGN UP
   // =========================================================
 
@@ -45,35 +54,14 @@ const Navbar = () => {
     navigate("/create-account");
   };
 
-  // =========================================================
-  // NAVIGATION
-  // =========================================================
-
-  const handleNavClick = (link) => {
-    closeMenu();
-
-    if (link === "Marketplace") {
-      navigate("/");
-    }
-
-    if (link === "Rankings") {
-  navigate("/ranking-page");
-}
-
-    if (link === "Connect a wallet") {
-      navigate("/connect-wallet");
-    }
-  };
-
   return (
     <nav className="z-50 overflow-visible relative w-full bg-black">
       {/* =====================================================
           MAIN NAVBAR
       ===================================================== */}
 
-      <div className="mx-auto px-4 w-full max-w-7xl sm:px-6 md:px-7 lg:px-10">
+      <div className="mx-auto px-4 w-full max-w-[1400px] sm:px-6 md:px-7 lg:px-10">
         <div className="flex items-center justify-between gap-4 h-[72px] sm:h-[76px] md:h-[82px] lg:h-20">
-          
           {/* =================================================
               LOGO
           ================================================= */}
@@ -93,47 +81,36 @@ const Navbar = () => {
 
           {/* =================================================
               TABLET + DESKTOP NAVIGATION
-
               Visible from 768px
           ================================================= */}
 
-          <div
-            className="hidden flex-1 items-center justify-end gap-4 gap-5 min-w-0 md:flex lg:gap-8 xl:gap-10"
-          >
-            {/* ===============================================
-                NAV LINKS
-            =============================================== */}
+          <div className="hidden flex-1 items-center justify-end gap-5 min-w-0 md:flex lg:gap-8 xl:gap-10">
+            {/* NAV LINKS */}
 
-            <div
-              className="flex items-center gap-4 min-w-0 md:gap-5 lg:gap-8 xl:gap-10"
-            >
+            <div className="flex items-center gap-5 min-w-0 lg:gap-8 xl:gap-10">
               {NAV_LINKS.map((link) => (
                 <button
-                  key={link}
+                  key={link.path}
                   type="button"
-                  onClick={() => handleNavClick(link)}
-                  className="relative whitespace-nowrap text-[12px] font-semibold text-white transition-all duration-300 cursor-pointer shrink-0 hover:-translate-y-0.5 hover:text-[#A259FF] active:scale-95 md:text-[13px] lg:text-base"
+                  onClick={() => handleNavClick(link.path)}
+                  className="relative whitespace-nowrap text-[12px] font-semibold text-white transition-all duration-300 cursor-pointer group shrink-0 hover:-translate-y-0.5 hover:text-[#A259FF] active:scale-95 md:text-[13px] lg:text-base"
                 >
-                  {link}
+                  {link.label}
 
                   {/* Hover underline */}
-                  <span
-                    className="absolute left-0 h-[2px] w-0 bg-[#A259FF] rounded-full transition-all duration-300 -bottom-1 group-hover:w-full"
-                  />
+                  <span className="absolute left-0 h-[2px] w-0 bg-[#A259FF] rounded-full transition-all duration-300 -bottom-1 group-hover:w-full" />
                 </button>
               ))}
             </div>
 
-            {/* ===============================================
-                DESKTOP / TABLET SIGN UP
-            =============================================== */}
+            {/* DESKTOP / TABLET SIGN UP */}
 
             <button
               type="button"
               onClick={handleSignUp}
-              className="inline-flex items-center justify-center gap-1.5 px-4 py-3 px-7 py-4 text-[13px] font-semibold text-white text-base bg-[linear-gradient(90deg,#F7C6E7_0%,#A259FF_20%,#4DA6FF_100%)] rounded-[16px] rounded-[20px] shadow-[0_0_20px_rgba(162,89,255,0.12)] transition-all duration-300 cursor-pointer shrink-0 hover:-translate-y-1 hover:shadow-[0_8px_25px_rgba(162,89,255,0.25)] active:scale-95 md:gap-1.5 lg:gap-2"
+              className="inline-flex items-center justify-center gap-2 px-7 py-4 text-base font-semibold text-white bg-[linear-gradient(90deg,#F7C6E7_0%,#A259FF_20%,#4DA6FF_100%)] rounded-[20px] shadow-[0_0_20px_rgba(162,89,255,0.12)] transition-all duration-300 cursor-pointer shrink-0 hover:-translate-y-1 hover:shadow-[0_8px_25px_rgba(162,89,255,0.25)] active:scale-95"
             >
-              <User className="h-4 w-4 w-5 md:h-4 lg:h-5" />
+              <User className="h-5 w-5" />
 
               <span>Sign Up</span>
             </button>
@@ -141,7 +118,6 @@ const Navbar = () => {
 
           {/* =================================================
               MOBILE MENU BUTTON
-
               Visible below 768px
           ================================================= */}
 
@@ -170,131 +146,51 @@ const Navbar = () => {
       ===================================================== */}
 
       <div
-        className={`
-          absolute
-          left-0
-          right-0
-          top-full
-          overflow-hidden
-          border-t
-          border-white/10
-          bg-black/95
-          shadow-2xl
-          backdrop-blur-xl
-          transition-all
-          duration-300
-          ease-in-out
-          md:hidden
-          ${
-            isMenuOpen
-              ? "pointer-events-auto max-h-[420px] opacity-100"
-              : "pointer-events-none max-h-0 opacity-0"
-          }
-        `}
+        className={`absolute left-0 right-0 top-full overflow-hidden border-t border-white/10 bg-black/95 shadow-2xl backdrop-blur-xl transition-all duration-300 ease-in-out md:hidden ${
+          isMenuOpen
+            ? "pointer-events-auto max-h-[420px] opacity-100"
+            : "pointer-events-none max-h-0 opacity-0"
+        }`}
       >
         <div
-          className={`
-            mx-auto
-            flex
-            w-full
-            max-w-7xl
-            flex-col
-            gap-2
-            px-4
-            pb-6
-            pt-4
-            transition-all
-            duration-300
-            sm:px-6
-            ${
-              isMenuOpen
-                ? "translate-y-0"
-                : "-translate-y-3"
-            }
-          `}
+          className={`mx-auto flex w-full max-w-[1400px] flex-col gap-2 px-4 pb-6 pt-4 transition-all duration-300 sm:px-6 ${
+            isMenuOpen ? "translate-y-0" : "-translate-y-3"
+          }`}
         >
-          {/* =================================================
-              MOBILE NAV LINKS
-          ================================================= */}
+          {/* MOBILE NAV LINKS */}
 
           {NAV_LINKS.map((link, index) => (
             <button
-              key={link}
+              key={link.path}
               type="button"
-              onClick={() => handleNavClick(link)}
-              className={`
-                flex
-                w-full
-                cursor-pointer
-                items-center
-                justify-between
-                rounded-xl
-                px-4
-                py-3.5
-                text-left
-                text-sm
-                font-semibold
-                text-white
-                transition-all
-                duration-300
-                hover:bg-white/5
-                hover:pl-5
-                hover:text-[#A259FF]
-                active:scale-[0.98]
-                ${
-                  isMenuOpen
-                    ? "translate-x-0 opacity-100"
-                    : "translate-x-3 opacity-0"
-                }
-              `}
+              onClick={() => handleNavClick(link.path)}
+              className={`flex w-full cursor-pointer items-center justify-between rounded-xl px-4 py-3.5 text-left text-sm font-semibold text-white transition-all duration-300 hover:bg-white/5 hover:pl-5 hover:text-[#A259FF] active:scale-[0.98] ${
+                isMenuOpen
+                  ? "translate-x-0 opacity-100"
+                  : "translate-x-3 opacity-0"
+              }`}
               style={{
                 transitionDelay: isMenuOpen
                   ? `${index * 50}ms`
                   : "0ms",
               }}
             >
-              <span>{link}</span>
+              <span>{link.label}</span>
 
-              <span className="text-[#A259FF]">
-                →
-              </span>
+              <span className="text-[#A259FF]">→</span>
             </button>
           ))}
 
-          {/* =================================================
-              MOBILE SIGN UP
-          ================================================= */}
+          {/* MOBILE SIGN UP */}
 
           <button
             type="button"
             onClick={handleSignUp}
-            className={`
-              mt-2
-              inline-flex
-              w-full
-              cursor-pointer
-              items-center
-              justify-center
-              gap-2
-              rounded-[20px]
-              bg-[linear-gradient(90deg,#00E5FF_0%,#008CFF_30%,#5B2CFF_55%,#9B2CFF_75%,#FF00D4_100%)]
-              px-5
-              py-3.5
-              text-sm
-              font-semibold
-              text-white
-              shadow-[0_0_25px_rgba(162,89,255,0.15)]
-              transition-all
-              duration-300
-              hover:-translate-y-1
-              hover:shadow-[0_10px_30px_rgba(162,89,255,0.25)]
-              active:scale-[0.98]
-              ${
-                isMenuOpen
-                  ? "translate-y-0 opacity-100"
-                  : "translate-y-3 opacity-0"
-              }
-            `}
+            className={`mt-2 inline-flex w-full cursor-pointer items-center justify-center gap-2 rounded-[20px] bg-[linear-gradient(90deg,#00E5FF_0%,#008CFF_30%,#5B2CFF_55%,#9B2CFF_75%,#FF00D4_100%)] px-5 py-3.5 text-sm font-semibold text-white shadow-[0_0_25px_rgba(162,89,255,0.15)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(162,89,255,0.25)] active:scale-[0.98] ${
+              isMenuOpen
+                ? "translate-y-0 opacity-100"
+                : "translate-y-3 opacity-0"
+            }`}
           >
             <User className="h-5 w-5" />
 

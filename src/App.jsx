@@ -1,74 +1,52 @@
-// import React from "react";
-// import { Routes, Route } from "react-router-dom";
-
-// import Homepage from "./pages/Homepage";
-// import Createaccount from "./pages/Createaccount";
-// import Connectwallet from "./pages/Connectwallet";
-// import Artistpage from "./pages/Artistpage";
-// import Market from "./marketplace/market";
-
-// const App = () => {
-//   return (
-//     <Routes>
-//       <Route path="/" element={<Homepage />} />
-
-//       <Route path="/marketplace" element={<Market />} />
-
-      // <Route
-      //   path="/create-account"
-      //   element={<Createaccount />}
-      // />
-
-      // <Route
-      //   path="/connect-wallet"
-      //   element={<Connectwallet />}
-      // />
-
-      // <Route
-      //   path="/artist-page"
-      //   element={<Artistpage />}
-      // />
-//     </Routes>
-//   );
-// };
-
-// export default App;
-
-
-
-
-
 import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 
 import Homepage from "./pages/Homepage";
-import NFT from "./nftpage/NFT";
 import Createaccount from "./pages/Createaccount";
 import Connectwallet from "./pages/Connectwallet";
-import Artist from "./artistpage/Artist";
+import Ranking from "./pages/Rankingpage"
+
 import Market from "./marketplace/market";
+import NFT from "./nftpage/NFT";
+import Artist from "./artistpage/Artist";
 import Collection from "./collectionpage/Collection";
 
-function App() {
+const App = () => {
   return (
     <Routes>
+      {/* Home Page */}
       <Route path="/" element={<Homepage />} />
 
+      {/* Marketplace */}
       <Route path="/marketplace" element={<Market />} />
 
+      {/* NFT Details */}
       <Route path="/nft/:id" element={<NFT />} />
 
-      <Route path="/create-account" element={<Createaccount />}/>
+      {/* Create Account */}
+      <Route path="/create-account" element={<Createaccount />} />
 
-      <Route path="/connect-wallet" element={<Connectwallet />}/>
+      {/* Connect Wallet */}
+      <Route path="/connect-wallet" element={<Connectwallet />} />
 
-       <Route path="/artist" element={<Artist />} />
+      {/* Ranking */}
+      <Route path="/Ranking-page" element={<Ranking />} />
        
-       <Route path="/collections" element={<Collection />} />
+       
 
+      {/* Artist Page */}
+      <Route path="/artist" element={<Artist />} />
+
+      {/* Collection Page */}
+      <Route path="/collections" element={<Collection />} />
+
+      {/* Old route support */}
+      <Route path="/artist-page" element={<Artist />} />
+
+      {/* Any invalid URL → Home */}
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );
-}
+};
 
 export default App;

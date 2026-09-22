@@ -12,7 +12,7 @@ import astronautImage from "../assets/logo/create-account-astronaut.png";
 const CreateAccount = () => {
   return (
     <section className="w-full bg-[#000000]">
-      <div className="mx-auto px-4 py-14 max-w-7xl sm:px-6 md:py-20 lg:px-10">
+      <div className="mx-auto px-4 py-14 max-w-[1400px] sm:px-6 md:py-20 lg:px-10">
         <div className="overflow-hidden flex flex-col items-stretch rounded-2xl lg:flex-row">
           {/* Left image */}
           <div className="w-full shrink-0 lg:w-1/2">
@@ -24,7 +24,7 @@ const CreateAccount = () => {
           </div>
 
           {/* Right form */}
-          <div className="flex items-center px-1 py-10 py-0 w-full w-1/2 bg-[#211f1f] sm:px-4 lg:px-12">
+          <div className="flex items-center px-1 py-10 py-0 w-full w-1/2 bg-[#1e1c1c] sm:px-4 lg:px-12">
             <div className="mx-auto w-full max-w-md lg:mx-0">
               <h2
   className="font-bold text-3xl text-transparent bg-[linear-gradient(90deg,#F7C6E7_0%,#A259FF_5%,#4DA6FF_80%)] bg-clip-text sm:text-4xl"

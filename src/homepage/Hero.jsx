@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { Rocket, Eye, Mail } from "lucide-react";
 
 /* =========================================================
@@ -331,6 +332,7 @@ const steps = [
 const Reveal = ({ children, className = "", delay = 0 }) => {
   const ref = React.useRef(null);
   const [visible, setVisible] = React.useState(false);
+  
 
   React.useEffect(() => {
     const element = ref.current;
@@ -640,7 +642,7 @@ const MagicMushroomsAuction = () => {
         <div className="z-10 absolute inset-0">
 
           <div
-            className="relative mx-auto px-5 h-full max-w-7xl sm:px-8 lg:px-10"
+            className="relative mx-auto px-5 h-full max-w-[1400px] sm:px-8 lg:px-10"
           >
 
             {/* =================================================
@@ -818,15 +820,15 @@ const HowItWorks = () => {
     <Reveal>
     <section className="overflow-hidden w-full bg-[#000000]">
       <div
-        className="mx-auto px-4 py-14 max-w-7xl sm:px-6 md:py-20 lg:px-10"
+        className="mx-auto px-4 py-14 max-w-[1400px] sm:px-6 md:py-20 lg:px-10"
       >
         {/* Header */}
         <div className="text-left">
-          <h2
-            className="text-3xl font-bold text-white sm:text-4xl md:text-[40px]"
-          >
-            How It Works
-          </h2>
+         <h2
+  className="text-3xl font-bold text-transparent bg-[linear-gradient(90deg,#F7C6E7_0%,#A259FF_10%,#4DA6FF_50%)] bg-clip-text sm:text-4xl md:text-[40px]"
+>
+  How It Works
+</h2>
 
           <p
             className="mt-3 text-lg font-normal text-gray-300 sm:text-xl md:text-[26px]"
@@ -860,7 +862,7 @@ const WeeklyDigest = () => {
   return (
     <section className="overflow-hidden w-full bg-[#000000]">
       <div
-        className="mx-auto px-4 py-14 max-w-[1310px] sm:px-6 md:py-20 lg:px-10"
+        className="mx-auto px-4 py-14 max-w-[1400px] sm:px-6 md:py-20 lg:px-10"
       >
         {/* =================================================
             MAIN CARD
@@ -894,14 +896,13 @@ const WeeklyDigest = () => {
                 HEADING
             ================================================= */}
 
-            <h2
-              className="text-3xl font-bold leading-[1.1] text-white leading-[1.15] /* ========================= TABLET */ LAPTOP - ORIGINAL sm:text-4xl md:text-[30px] lg:text-[46px]"
-            >
-              Join Our Weekly
-              <br />
-              Digest
-            </h2>
-
+           <h2
+  className="text-3xl font-bold leading-[1.4] text-transparent bg-[linear-gradient(90deg,#F7C6E7_10%,#A259FF_30%,#4DA6FF_100%)] bg-clip-text sm:text-4xl md:text-[30px] lg:text-[46px]"
+>
+  Join Our Weekly
+  <br />
+  Digest
+</h2>
             {/* =================================================
                 DESCRIPTION
             ================================================= */}
@@ -950,6 +951,7 @@ const WeeklyDigest = () => {
 ========================================================= */
 
 const Hero = () => {
+   const navigate = useNavigate();
   return (
     <>
       {/* ===================================================
@@ -959,7 +961,7 @@ const Hero = () => {
       <Reveal>
       <section className="overflow-hidden w-full bg-[#000000]">
 
-        <div className="px-4 py-16 mx-auto py-28 max-w-7xl sm:px-6 md:py-20 lg:px-10">
+        <div className="px-4 py-16 mx-auto py-28 max-w-[1300px] sm:px-6 md:py-20 lg:px-10">
 
           <div className="flex flex-col items-center justify-between gap-10 lg:flex-row">
 
@@ -971,7 +973,7 @@ const Hero = () => {
   <br />
   Digital Art &amp;
   <br />
-  <span className="text-transparent bg-[linear-gradient(90deg,#F7C6E7_0%,#FFFFFF_0%,#A259FF_70%)] bg-clip-text">
+  <span className="text-transparent bg-[linear-gradient(90deg,#F7C6E7_0%,#FFFFFF_5%,#A259FF_50%)] bg-clip-text">
     Collect NFTs
   </span>
 </h1>
@@ -984,12 +986,13 @@ const Hero = () => {
 
               {/* Get Started */}
               <button
-                type="button"
-                className="inline-flex items-center gap-2 px-7 py-3.5 mt-8 text-base font-semibold text-white bg-[#6922c6] rounded-full transition-all duration-300 cursor-pointer hover:opacity-90 hover:-translate-y-1"
-              >
-                <Rocket className="w-5 h-5" />
-                Get Started
-              </button>
+  type="button"
+  onClick={() => navigate("/create-account")}
+  className="inline-flex items-center gap-2 px-7 py-3.5 mt-8 text-base font-semibold text-white bg-[#6922c6] rounded-full transition-all duration-300 cursor-pointer hover:opacity-90 hover:-translate-y-1"
+>
+  <Rocket className="w-5 h-5" />
+  Get Started
+</button>
 
               {/* Stats */}
               <div className="grid grid-cols-3 gap-5 mt-12 w-full max-w-md sm:gap-10">
@@ -1073,7 +1076,7 @@ const Hero = () => {
       <Reveal>
       <section className="w-full bg-[#000000]">
 
-        <div className="px-4 py-14 mx-auto max-w-7xl sm:px-6 md:py-20 lg:px-10">
+        <div className="px-4 py-14 mx-auto max-w-[1400px] sm:px-6 md:py-20 lg:px-10">
 
           <h2 className="text-3xl font-bold text-white sm:text-4xl md:text-[40px]">
             Trending Collection
@@ -1106,32 +1109,32 @@ const Hero = () => {
       <Reveal>
       <section className="w-full bg-[#000000]">
 
-        <div className="px-4 py-14 mx-auto max-w-7xl sm:px-6 md:py-20 lg:px-10">
+        <div className="px-4 py-14 mx-auto max-w-[1400px] sm:px-6 md:py-20 lg:px-10">
 
           <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
 
             <div className="min-w-0">
 
-              <h2 className="text-3xl font-bold text-white sm:text-4xl md:text-[40px]">
-                Top Creators
-              </h2>
-
+             <h2
+  className="text-3xl font-bold text-transparent bg-[linear-gradient(90deg,#F7C6E7_0%,#A259FF_10%,#4DA6FF_80%)] bg-clip-text sm:text-4xl md:text-[40px]"
+>
+  Top Creators
+</h2>
               <p className="mt-3 text-base font-normal text-gray-300 sm:text-lg md:text-2xl">
                 Checkout Top Rated Creators On The NFT Marketplace
               </p>
 
             </div>
 
-            <button
-              type="button"
-              className="inline-flex items-center justify-center self-start gap-2 px-6 w-[247px] h-[60px] text-base font-semibold text-white bg-transparent rounded-[20px] border-2 border-[#A259FF] transition-all duration-300 cursor-pointer shrink-0 hover:bg-[#A259FF]/10 hover:-translate-y-1 md:self-center"
-            >
+           <button
+      type="button"
+      onClick={() => navigate("/ranking-page")}
+      className="inline-flex items-center justify-center self-start gap-2 px-6 w-[247px] h-[60px] text-base font-semibold text-white bg-transparent rounded-[20px] border-2 border-[#A259FF] transition-all duration-300 cursor-pointer shrink-0 hover:bg-[#A259FF]/10 hover:-translate-y-1 md:self-center"
+    >
+      <Rocket className="w-5 h-5 text-[#A259FF]" />
 
-              <Rocket className="w-5 h-5 text-[#A259FF]" />
-
-              View Rankings
-
-            </button>
+      View Rankings
+    </button>
 
           </div>
 
@@ -1158,7 +1161,7 @@ const Hero = () => {
       <Reveal>
       <section className="w-full bg-[#000000]">
 
-        <div className="px-4 py-14 mx-auto max-w-7xl sm:px-6 md:py-20 lg:px-10">
+        <div className="px-4 py-14 mx-auto max-w-[1400px] sm:px-6 md:py-20 lg:px-10">
 
           <h2 className="text-3xl font-bold text-left text-white sm:text-4xl md:text-[40px]">
             Browse Categories
@@ -1187,16 +1190,18 @@ const Hero = () => {
       <Reveal>
       <section className="w-full bg-[#000000]">
 
-        <div className="px-4 py-14 mx-auto max-w-7xl sm:px-6 md:py-20 lg:px-10">
+        <div className="px-4 py-14 mx-auto max-w-[1400px] sm:px-6 md:py-20 lg:px-10">
 
           {/* Header */}
           <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
 
             <div>
 
-              <h2 className="text-3xl font-bold text-white sm:text-4xl md:text-[40px]">
-                Discover More NFTs
-              </h2>
+              <h2
+  className="text-3xl font-bold text-transparent bg-[linear-gradient(90deg,#F7C6E7_10%,#A259FF_30%,#4DA6FF_100%)] bg-clip-text sm:text-4xl md:text-[40px]"
+>
+  Discover More NFTs
+</h2>
 
               <p className="mt-3 text-base font-normal text-gray-300 sm:text-lg md:text-2xl">
                 Explore New Trending NFTs
@@ -1207,7 +1212,7 @@ const Hero = () => {
             {/* See All */}
             <button
               type="button"
-              className="inline-flex items-center justify-center gap-2 px-6 w-full h-[60px] h-[70px] text-base font-semibold text-white bg-transparent rounded-full border-2 border-[#A259FF] transition-all duration-300 cursor-pointer hover:bg-[#A259FF]/10 hover:-translate-y-1 shrink-0 md:w-[180px]"
+              className="inline-flex items-center justify-center gap-2 px-6 w-full h-[50px] h-[60px] text-base font-semibold text-white bg-transparent rounded-[24px] border-2 border-[#A259FF] transition-all duration-300 cursor-pointer hover:bg-[#A259FF]/10 hover:-translate-y-1 shrink-0 md:w-[180px]"
             >
 
               <Eye className="w-5 h-5 text-[#A259FF]" />

@@ -32,7 +32,7 @@ const Footer = () => {
   return (
     <footer className="overflow-hidden w-full bg-[#000000] footer-main">
       <div
-        className="mx-auto px-5 py-12 max-w-[1250px] footer-container sm:px-6 md:py-16 lg:px-10"
+        className="mx-auto px-5 py-12 max-w-[1300px] footer-container sm:px-6 md:py-16 lg:px-10"
       >
         {/* =====================================================
             FOOTER MAIN GRID
@@ -166,7 +166,7 @@ const Footer = () => {
           ===================================================== */}
 
           <div
-            className="flex flex-col items-center text-center footer-digest lg:items-start"
+            className="flex flex-col items-center text-center footer-digest"
           >
             <h3 className="text-xl font-bold text-white sm:text-2xl">
               Join Our Weekly Digest
@@ -176,7 +176,7 @@ const Footer = () => {
               className="mt-5 max-w-md text-base leading-relaxed text-gray-300 footer-digest-description sm:text-lg"
             >
               Get exclusive promotions &amp; updates
-              <br className="hidden sm:block" />
+              <br />
               straight to your inbox.
             </p>
 
@@ -222,309 +222,272 @@ const Footer = () => {
 
       {/* =======================================================
           RESPONSIVE CSS
-
-          BREAKPOINT 1:
-          601px - 900px = TABLET
-
-          BREAKPOINT 2:
-          600px and below = MOBILE
       ======================================================= */}
 
-     <style>{`
+      <style>{`
 
-  /* =====================================================
-     TABLET
-     601px - 1024px
-     
-     Everything centered
-  ===================================================== */
+        /* =====================================================
+           TABLET
+           601px - 1024px
+        ===================================================== */
 
-  @media (min-width: 601px) and (max-width: 1024px) {
+        @media (min-width: 601px) and (max-width: 1024px) {
 
-    .footer-container {
-      width: 100%;
-      max-width: 900px;
-      margin-left: auto;
-      margin-right: auto;
-    }
+          .footer-container {
+            width: 100%;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+          }
 
-    /* =================================================
-       MAIN GRID
-    ================================================= */
+          /* MAIN GRID */
 
-    .footer-grid {
-      grid-template-columns: 1fr 1fr;
-      gap: 45px 35px;
-    }
+          .footer-grid {
+            grid-template-columns: 1fr 1fr;
+            gap: 45px 35px;
+          }
 
-    /* =================================================
-       BRAND
-    ================================================= */
+          /* BRAND */
 
-    .footer-brand {
-      width: 100%;
-      align-items: center !important;
-      text-align: center !important;
-    }
+          .footer-brand {
+            width: 100%;
+            align-items: center !important;
+            text-align: center !important;
+          }
 
-    .footer-description {
-      margin-left: auto;
-      margin-right: auto;
-      text-align: center;
-    }
+          .footer-description {
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+          }
 
-    .footer-community {
-      text-align: center;
-    }
+          .footer-community {
+            text-align: center;
+          }
 
-    .footer-social {
-      justify-content: center;
-      margin-left: auto;
-      margin-right: auto;
-    }
+          .footer-social {
+            justify-content: center;
+            margin-left: auto;
+            margin-right: auto;
+          }
 
-    /* =================================================
-       EXPLORE
-    ================================================= */
+          /* EXPLORE */
 
-    .footer-explore {
-      width: 100%;
-      align-items: center !important;
-      text-align: center !important;
-    }
+          .footer-explore {
+            width: 100%;
+            align-items: center !important;
+            text-align: center !important;
+          }
 
-    .footer-links {
-      align-items: center !important;
-      text-align: center;
-    }
+          .footer-links {
+            align-items: center !important;
+            text-align: center;
+          }
 
-    /* =================================================
-       WEEKLY DIGEST
-    ================================================= */
+          /* WEEKLY DIGEST */
 
-    .footer-digest {
-      width: 100%;
-      align-items: center !important;
-      text-align: center !important;
+          .footer-digest {
+            width: 100%;
+            align-items: center !important;
+            text-align: center !important;
+            grid-column: 1 / -1;
+          }
 
-      grid-column: 1 / -1;
-    }
+          .footer-digest-description {
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+          }
 
-    .footer-digest-description {
-      margin-left: auto;
-      margin-right: auto;
-      text-align: center;
-    }
+          /* FORM */
 
-    /* =================================================
-       FORM
-    ================================================= */
+          .footer-form {
+            width: 100%;
+            max-width: 525px;
+            margin-left: auto;
+            margin-right: auto;
+          }
 
-    .footer-form {
-      width: 100%;
-      max-width: 525px;
-      margin-left: auto;
-      margin-right: auto;
-    }
+          .footer-input {
+            min-width: 0;
+          }
 
-    .footer-input {
-      min-width: 0;
-    }
+          /* COPYRIGHT */
 
-    /* =================================================
-       COPYRIGHT
-    ================================================= */
-
-    .footer-copyright {
-      text-align: center !important;
-    }
-  }
+          .footer-copyright {
+            text-align: center !important;
+          }
+        }
 
 
-  /* =====================================================
-     MOBILE
-     600px AND BELOW
-  ===================================================== */
+        /* =====================================================
+           MOBILE
+           600px AND BELOW
+        ===================================================== */
 
-  @media (max-width: 600px) {
+        @media (max-width: 600px) {
 
-    .footer-container {
-      width: 100%;
-      max-width: 100%;
-      padding-left: 16px;
-      padding-right: 16px;
-      padding-top: 42px;
-      padding-bottom: 32px;
-    }
+          .footer-container {
+            width: 100%;
+            max-width: 100%;
+            padding-left: 16px;
+            padding-right: 16px;
+            padding-top: 42px;
+            padding-bottom: 32px;
+          }
 
-    /* =================================================
-       MAIN GRID
-    ================================================= */
+          /* MAIN GRID */
 
-    .footer-grid {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 40px;
-    }
+          .footer-grid {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+          }
 
-    /* =================================================
-       BRAND
-    ================================================= */
+          /* BRAND */
 
-    .footer-brand {
-      width: 100%;
-      align-items: center !important;
-      text-align: center !important;
-    }
+          .footer-brand {
+            width: 100%;
+            align-items: center !important;
+            text-align: center !important;
+          }
 
-    .footer-brand img {
-      max-width: 165px;
-      height: auto;
-    }
+          .footer-brand img {
+            max-width: 165px;
+            height: auto;
+          }
 
-    .footer-description {
-      width: 100%;
-      max-width: 290px;
-      margin-top: 16px;
-      margin-left: auto;
-      margin-right: auto;
-      font-size: 14px;
-      line-height: 1.7;
-      text-align: center;
-    }
+          .footer-description {
+            width: 100%;
+            max-width: 290px;
+            margin-top: 16px;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 14px;
+            line-height: 1.7;
+            text-align: center;
+          }
 
-    .footer-community {
-      margin-top: 17px;
-      font-size: 14px;
-      text-align: center;
-    }
+          .footer-community {
+            margin-top: 17px;
+            font-size: 14px;
+            text-align: center;
+          }
 
-    /* =================================================
-       SOCIAL ICONS
-    ================================================= */
+          /* SOCIAL ICONS */
 
-    .footer-social {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      margin-top: 16px;
-      margin-left: auto;
-      margin-right: auto;
-    }
+          .footer-social {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 16px;
+            margin-left: auto;
+            margin-right: auto;
+          }
 
-    /* =================================================
-       EXPLORE
-    ================================================= */
+          /* EXPLORE */
 
-    .footer-explore {
-      width: 100%;
-      align-items: center !important;
-      text-align: center !important;
-    }
+          .footer-explore {
+            width: 100%;
+            align-items: center !important;
+            text-align: center !important;
+          }
 
-    .footer-explore h3 {
-      text-align: center;
-    }
+          .footer-explore h3 {
+            text-align: center;
+          }
 
-    .footer-links {
-      align-items: center !important;
-      justify-content: center;
-      margin-top: 17px;
-      text-align: center;
-    }
+          .footer-links {
+            align-items: center !important;
+            justify-content: center;
+            margin-top: 17px;
+            text-align: center;
+          }
 
-    /* =================================================
-       WEEKLY DIGEST
-    ================================================= */
+          /* WEEKLY DIGEST */
 
-    .footer-digest {
-      width: 100%;
-      align-items: center !important;
-      text-align: center !important;
-    }
+          .footer-digest {
+            width: 100%;
+            align-items: center !important;
+            text-align: center !important;
+          }
 
-    .footer-digest h3 {
-      max-width: 100%;
-      font-size: 21px;
-      line-height: 1.3;
-      text-align: center;
-    }
+          .footer-digest h3 {
+            max-width: 100%;
+            font-size: 21px;
+            line-height: 1.3;
+            text-align: center;
+          }
 
-    .footer-digest-description {
-      max-width: 300px;
-      margin-left: auto;
-      margin-right: auto;
-      font-size: 14px;
-      line-height: 1.6;
-      text-align: center;
-    }
+          .footer-digest-description {
+            max-width: 300px;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 14px;
+            line-height: 1.6;
+            text-align: center;
+          }
 
-    /* =================================================
-       FORM
-    ================================================= */
+          /* FORM */
 
-    .footer-form {
-      position: relative;
-      width: 100%;
-      max-width: 380px;
-      height: auto;
+          .footer-form {
+            position: relative;
+            width: 100%;
+            max-width: 380px;
+            height: auto;
 
-      margin-left: auto;
-      margin-right: auto;
+            margin-left: auto;
+            margin-right: auto;
 
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+          }
 
-    .footer-input {
-      width: 100%;
-      height: 58px;
+          .footer-input {
+            width: 100%;
+            height: 58px;
 
-      padding-left: 20px;
-      padding-right: 20px;
+            padding-left: 20px;
+            padding-right: 20px;
 
-      font-size: 16px;
-      border-radius: 18px;
-    }
+            font-size: 16px;
+            border-radius: 18px;
+          }
 
-    .footer-button {
-      position: relative;
+          .footer-button {
+            position: relative;
 
-      top: auto;
-      right: auto;
+            top: auto;
+            right: auto;
 
-      width: 100%;
-      height: 58px;
+            width: 100%;
+            height: 58px;
 
-      border-radius: 18px;
+            border-radius: 18px;
 
-      font-size: 16px;
-    }
+            font-size: 16px;
+          }
 
-    /* =================================================
-       DIVIDER
-    ================================================= */
+          /* DIVIDER */
 
-    .footer-divider {
-      margin-top: 40px;
-    }
+          .footer-divider {
+            margin-top: 40px;
+          }
 
-    /* =================================================
-       COPYRIGHT
-    ================================================= */
+          /* COPYRIGHT */
 
-    .footer-copyright {
-      margin-top: 20px;
-      text-align: center !important;
-      font-size: 12px;
-      line-height: 1.6;
-    }
-  }
+          .footer-copyright {
+            margin-top: 20px;
+            text-align: center !important;
+            font-size: 12px;
+            line-height: 1.6;
+          }
+        }
 
-`}</style>
+      `}</style>
     </footer>
   );
 };
