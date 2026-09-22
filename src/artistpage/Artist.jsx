@@ -371,13 +371,13 @@ const Artist = () => {
                   className="min-w-0 text-center sm:text-left"
                 >
                   <p
-                    className="text-lg font-bold leading-tight text-white sm:text-2xl lg:text-[28px]"
-                  >
-                    {stat.value}
-                  </p>
+  className="text-[30px] font-bold text-transparent bg-[linear-gradient(90deg,#00D9FF_10%,#087CFF_20%,#8B2CFF_70%,#F000FF_100%)] bg-clip-text sm:text-[35px]"
+>
+  {stat.value}
+</p>
 
                   <p
-                    className="mt-1 whitespace-nowrap text-xs text-gray-300 sm:text-base lg:text-xl"
+                    className="mt-1 whitespace-nowrap text-xs text-[#d5bc57] sm:text-base lg:text-xl"
                   >
                     {stat.label}
                   </p>

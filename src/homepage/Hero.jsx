@@ -321,6 +321,51 @@ const steps = [
   },
 ];
 
+
+/* =========================================================
+   REVEAL ANIMATION
+   Keeps the existing layout intact and only animates
+   elements when they enter the viewport.
+========================================================= */
+
+const Reveal = ({ children, className = "", delay = 0 }) => {
+  const ref = React.useRef(null);
+  const [visible, setVisible] = React.useState(false);
+
+  React.useEffect(() => {
+    const element = ref.current;
+
+    if (!element) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+          observer.unobserve(element);
+        }
+      },
+      {
+        threshold: 0.12,
+        rootMargin: "0px 0px -40px 0px",
+      }
+    );
+
+    observer.observe(element);
+
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div
+      ref={ref}
+      className={`reveal ${visible ? "reveal-show" : ""} ${className}`}
+      style={{ "--reveal-delay": `${delay}ms` }}
+    >
+      {children}
+    </div>
+  );
+};
+
 /* =========================================================
    TRENDING COLLECTION CARD
 ========================================================= */
@@ -333,14 +378,14 @@ const CollectionCard = ({
   avatar,
 }) => {
   return (
-    <div className="w-full">
+    <div className="w-full cursor-pointer">
 
       {/* Main Image */}
       <div className="overflow-hidden w-full rounded-2xl aspect-square">
         <img
           src={mainImage}
           alt={title}
-          className="object-cover h-full w-full transition-transform duration-500 hover:scale-105"
+          className="object-cover h-full w-full transition-transform duration-700 cursor-pointer hover:scale-110"
         />
       </div>
 
@@ -351,7 +396,7 @@ const CollectionCard = ({
           <img
             src={images[0]}
             alt={`${title} preview 1`}
-            className="object-cover h-full w-full"
+            className="object-cover h-full w-full transition-transform duration-500 group-hover:scale-105"
           />
         </div>
 
@@ -359,7 +404,7 @@ const CollectionCard = ({
           <img
             src={images[1]}
             alt={`${title} preview 2`}
-            className="object-cover h-full w-full"
+            className="object-cover h-full w-full transition-transform duration-500 group-hover:scale-105"
           />
         </div>
 
@@ -403,7 +448,7 @@ const CreatorCard = ({
   avatar,
 }) => {
   return (
-    <div className="relative flex flex-col items-center px-4 pt-6 pb-6 bg-[#3B3B3B] rounded-2xl sm:px-5 md:px-6">
+    <div className="relative flex flex-col items-center px-4 pt-6 pb-6 bg-[#212020] rounded-2xl transition-all duration-300 cursor-pointer hover:-translate-y-2 hover:shadow-xl sm:px-5 md:px-6">
 
       {/* Ranking Badge */}
       <div className="absolute left-4 top-5 flex items-center justify-center w-9 h-9 bg-[#000000] rounded-full sm:left-5 md:left-6">
@@ -417,7 +462,7 @@ const CreatorCard = ({
         <img
           src={avatar}
           alt={name}
-          className="object-cover h-full w-full"
+          className="object-cover h-full w-full transition-transform duration-500 group-hover:scale-105"
         />
       </div>
 
@@ -450,7 +495,7 @@ const CategoryCard = ({
   image,
 }) => {
   return (
-    <div className="overflow-hidden rounded-2xl group">
+    <div className="overflow-hidden rounded-2xl cursor-pointer group">
 
       {/* Image */}
       <div className="overflow-hidden relative w-full aspect-square">
@@ -462,7 +507,7 @@ const CategoryCard = ({
       </div>
 
       {/* Title */}
-      <div className="flex items-center px-4 py-5 min-h-[80px] bg-[#3B3B3B] sm:px-6">
+      <div className="flex items-center px-4 py-5 min-h-[80px] bg-[#1e1b1b] sm:px-6">
         <h3 className="text-base font-bold text-white sm:text-lg md:text-xl lg:text-2xl">
           {name}
         </h3>
@@ -485,7 +530,7 @@ const NFTCard = ({
   avatar,
 }) => {
   return (
-    <div className="overflow-hidden bg-[#3B3B3B] rounded-2xl transition-transform duration-300 hover:-translate-y-1">
+    <div className="overflow-hidden bg-[#242222] rounded-2xl transition-all duration-300 cursor-pointer hover:-translate-y-2 hover:shadow-xl group">
 
       {/* Artwork - NO CROP */}
       <img
@@ -561,6 +606,7 @@ const NFTCard = ({
 
 const MagicMushroomsAuction = () => {
   return (
+    <Reveal>
     <section className="overflow-hidden w-full bg-black">
 
       <div className="relative w-full">
@@ -663,7 +709,7 @@ const MagicMushroomsAuction = () => {
             >
 
               <div
-                className="px-6 py-6 w-[300px] bg-[#3B3B3B]/85 rounded-[20px] shadow-xl backdrop-blur-md sm:w-[320px] md:w-[340px] lg:w-[350px]"
+                className="px-6 py-6 w-[300px] bg-[#323131] rounded-[20px] shadow-xl backdrop-blur-md sm:w-[320px] md:w-[340px] lg:w-[350px]"
               >
 
                 {/* Auction Heading */}
@@ -729,6 +775,7 @@ const MagicMushroomsAuction = () => {
       </div>
 
     </section>
+    </Reveal>
   );
 };
 
@@ -739,7 +786,7 @@ const MagicMushroomsAuction = () => {
 const HowItWorksCard = ({ image, title, description }) => {
   return (
     <div
-      className="flex flex-col items-center px-5 py-7 py-8 h-full text-center bg-[#3B3B3B] rounded-[20px] sm:px-8 md:py-9"
+      className="flex flex-col items-center px-5 py-7 py-8 h-full text-center bg-[#272525] rounded-[20px] transition-all duration-300 cursor-pointer hover:-translate-y-2 hover:shadow-xl sm:px-8 md:py-9"
     >
       <img
         src={image}
@@ -768,6 +815,7 @@ const HowItWorksCard = ({ image, title, description }) => {
 
 const HowItWorks = () => {
   return (
+    <Reveal>
     <section className="overflow-hidden w-full bg-[#000000]">
       <div
         className="mx-auto px-4 py-14 max-w-7xl sm:px-6 md:py-20 lg:px-10"
@@ -800,6 +848,7 @@ const HowItWorks = () => {
         </div>
       </div>
     </section>
+    </Reveal>
   );
 };
 
@@ -813,73 +862,82 @@ const WeeklyDigest = () => {
       <div
         className="mx-auto px-4 py-14 max-w-[1310px] sm:px-6 md:py-20 lg:px-10"
       >
+        {/* =================================================
+            MAIN CARD
+        ================================================= */}
+
         <div
-          className="px-5 py-8 py-10 py-12 bg-[#3B3B3B] rounded-[24px] sm:px-8 md:px-10 lg:px-12"
+          className="flex-row items-center gap-8 gap-12 px-5 py-8 py-10 px-8 px-12 py-12 bg-[#302e2e] rounded-[24px] /* ========================= TABLET */ LAPTOP - KEEP ORIGINAL sm:px-8 md:flex lg:flex-row"
         >
+          {/* =================================================
+              LEFT IMAGE
+          ================================================= */}
+
           <div
-            className="flex flex-col items-center gap-8 gap-12 lg:flex-row"
+            className="w-full shrink-0 /* ========================= TABLET */ LAPTOP - ORIGINAL md:w-[46%] lg:w-[48%] xl:w-[530px]"
+          >
+            <img
+              src={astronautImage}
+              alt="Astronaut reading a newspaper"
+              className="object-cover block h-[260px] w-full rounded-[20px] /* ========================= TABLET */ LAPTOP - ORIGINAL sm:h-[320px] md:h-[300px] lg:h-[390px]"
+            />
+          </div>
+
+          {/* =================================================
+              RIGHT CONTENT
+          ================================================= */}
+
+          <div
+            className="flex flex-col items-center justify-center mt-8 mt-0 w-full w-[54%] text-center text-left /* ========================= TABLET */ LAPTOP - ORIGINAL md:items-start lg:items-start"
           >
             {/* =================================================
-                LEFT IMAGE
+                HEADING
             ================================================= */}
 
-            <div
-              className="w-full shrink-0 lg:w-[48%] xl:w-[530px]"
+            <h2
+              className="text-3xl font-bold leading-[1.1] text-white leading-[1.15] /* ========================= TABLET */ LAPTOP - ORIGINAL sm:text-4xl md:text-[30px] lg:text-[46px]"
             >
-              <img
-                src={astronautImage}
-                alt="Astronaut reading a newspaper"
-                className="object-cover block w-full h-[260px] rounded-[20px] sm:h-[320px] md:h-[360px] lg:h-[390px]"
-              />
-            </div>
+              Join Our Weekly
+              <br />
+              Digest
+            </h2>
 
             {/* =================================================
-                RIGHT CONTENT
+                DESCRIPTION
             ================================================= */}
 
-            <div
-              className="flex flex-col items-center justify-center w-full text-center text-left lg:items-start"
+            <p
+              className="mt-5 max-w-md text-base leading-relaxed text-gray-300 leading-[1.5] /* ========================= TABLET */ LAPTOP - ORIGINAL sm:text-lg md:text-[17px] lg:text-[24px]"
             >
-              <h2
-                className="text-3xl leading-[1.1] font-bold text-white sm:text-4xl md:text-5xl lg:text-[46px]"
-              >
-                Join Our Weekly
-                <br className="hidden sm:block" />
-                <span className="sm:hidden"> </span>
-                Digest
-              </h2>
+              Get Exclusive Promotions &amp; Updates
+              <br className="hidden sm:block" />
+              <span className="sm:hidden"> </span>
+              Straight To Your Inbox.
+            </p>
 
-              <p
-                className="mt-5 max-w-md text-base leading-relaxed text-gray-300 leading-[1.5] sm:text-lg md:text-xl lg:text-[24px]"
-              >
-                Get Exclusive Promotions &amp; Updates
-                <br className="hidden sm:block" />
-                <span className="sm:hidden"> </span>
-                Straight To Your Inbox.
-              </p>
+            {/* =================================================
+                SUBSCRIPTION FORM
+            ================================================= */}
 
-              {/* =================================================
-                  SUBSCRIPTION FORM
-              ================================================= */}
-
-              <form className="flex w-full max-w-[560px] h-[76px]">
-  {/* Email Input */}
+           <form
+  className="flex flex-row gap-0 mt-7 w-full max-w-[560px] h-[76px]"
+>
+  {/* EMAIL INPUT */}
   <input
     type="email"
     placeholder="Enter your email here"
-    className="flex-1 px-6 placeholder-[#2B2B2B] min-w-0 h-full text-[#2B2B2B] text-base bg-white rounded-l-[20px] rounded-r-[20px] outline-none"
+    className="px-6 placeholder-[#2B2B2B] h-full w-full min-w-0 text-[20px] text-[#2B2B2B] bg-white rounded-[20px] outline-none lg:rounded-r-[20px]"
   />
 
-  {/* Subscribe Button */}
+  {/* SUBSCRIBE BUTTON */}
   <button
     type="submit"
-    className="z-10 flex items-center justify-center gap-2 w-[190px] h-full text-white text-base font-bold bg-[#A259FF] rounded-[20px] transition-colors -ml-[40px] shrink-0 hover:bg-[#9147E6]"
+    className="z-10 flex items-center justify-center gap-3 h-full w-[190px] text-[20px] font-bold text-white bg-[#A259FF] rounded-[20px] transition-all duration-300 cursor-pointer -ml-[40px] shrink-0 hover:bg-[#9147E6] hover:scale-[1.02]"
   >
-    <Mail className="w-5 h-5" />
+    <Mail className="h-7 w-7" />
     Subscribe
   </button>
 </form>
-            </div>
           </div>
         </div>
       </div>
@@ -898,6 +956,7 @@ const Hero = () => {
           HERO SECTION
       =================================================== */}
 
+      <Reveal>
       <section className="overflow-hidden w-full bg-[#000000]">
 
         <div className="px-4 py-16 mx-auto py-28 max-w-7xl sm:px-6 md:py-20 lg:px-10">
@@ -926,7 +985,7 @@ const Hero = () => {
               {/* Get Started */}
               <button
                 type="button"
-                className="inline-flex items-center gap-2 px-7 py-3.5 mt-8 text-base font-semibold text-white bg-[#6922c6] rounded-full transition-opacity hover:opacity-90"
+                className="inline-flex items-center gap-2 px-7 py-3.5 mt-8 text-base font-semibold text-white bg-[#6922c6] rounded-full transition-all duration-300 cursor-pointer hover:opacity-90 hover:-translate-y-1"
               >
                 <Rocket className="w-5 h-5" />
                 Get Started
@@ -942,7 +1001,7 @@ const Hero = () => {
                   >
 
                     <p
-  className="text-xl font-bold text-transparent bg-[linear-gradient(90deg,#00D9FF_10%,#087CFF_20%,#8B2CFF_70%,#F000FF_100%)] bg-clip-text sm:text-2xl"
+  className="text-[30px] font-bold text-transparent bg-[linear-gradient(90deg,#00D9FF_10%,#087CFF_20%,#8B2CFF_70%,#F000FF_100%)] bg-clip-text sm:text-[35px]"
 >
   {stat.value}
 </p>
@@ -959,14 +1018,14 @@ const Hero = () => {
             {/* RIGHT NFT CARD */}
             <div className="flex justify-center w-full w-1/2 hero-card-scene lg:justify-end">
 
-              <div className="overflow-hidden w-[280px] bg-[#3A3A3A] rounded-2xl shadow-2xl hero-float sm:w-[340px] md:w-[380px]">
+              <div className="overflow-hidden w-[280px] bg-[#242323] rounded-2xl shadow-2xl hero-float sm:w-[340px] md:w-[480px]">
 
                 <div className="overflow-hidden w-full rounded-t-2xl aspect-square">
 
                   <img
                     src={nftArtwork}
                     alt="Space Walking NFT artwork"
-                    className="object-cover h-full w-full"
+                    className="object-cover h-full w-full transition-transform duration-500 group-hover:scale-105"
                   />
 
                 </div>
@@ -974,7 +1033,7 @@ const Hero = () => {
                 <div className="flex items-center gap-3 px-5 py-4">
 
                   <img
-                    src={nftArtwork}
+                    src={animakidAvatar}
                     alt="animakid avatar"
                     className="object-cover w-9 h-9 rounded-full shrink-0"
                   />
@@ -1005,11 +1064,13 @@ const Hero = () => {
         </div>
 
       </section>
+      </Reveal>
 
       {/* ===================================================
           TRENDING COLLECTION
       =================================================== */}
 
+      <Reveal>
       <section className="w-full bg-[#000000]">
 
         <div className="px-4 py-14 mx-auto max-w-7xl sm:px-6 md:py-20 lg:px-10">
@@ -1036,11 +1097,13 @@ const Hero = () => {
         </div>
 
       </section>
+      </Reveal>
 
       {/* ===================================================
           TOP CREATORS
       =================================================== */}
 
+      <Reveal>
       <section className="w-full bg-[#000000]">
 
         <div className="px-4 py-14 mx-auto max-w-7xl sm:px-6 md:py-20 lg:px-10">
@@ -1061,7 +1124,7 @@ const Hero = () => {
 
             <button
               type="button"
-              className="inline-flex items-center justify-center self-start gap-2 px-6 w-[247px] h-[60px] text-base font-semibold text-white bg-transparent rounded-[20px] border-2 border-[#A259FF] transition-colors duration-200 shrink-0 hover:bg-[#A259FF]/10 md:self-center"
+              className="inline-flex items-center justify-center self-start gap-2 px-6 w-[247px] h-[60px] text-base font-semibold text-white bg-transparent rounded-[20px] border-2 border-[#A259FF] transition-all duration-300 cursor-pointer shrink-0 hover:bg-[#A259FF]/10 hover:-translate-y-1 md:self-center"
             >
 
               <Rocket className="w-5 h-5 text-[#A259FF]" />
@@ -1086,11 +1149,13 @@ const Hero = () => {
         </div>
 
       </section>
+      </Reveal>
 
       {/* ===================================================
           BROWSE CATEGORIES
       =================================================== */}
 
+      <Reveal>
       <section className="w-full bg-[#000000]">
 
         <div className="px-4 py-14 mx-auto max-w-7xl sm:px-6 md:py-20 lg:px-10">
@@ -1113,11 +1178,13 @@ const Hero = () => {
         </div>
 
       </section>
+      </Reveal>
 
       {/* ===================================================
           DISCOVER MORE NFTS
       =================================================== */}
 
+      <Reveal>
       <section className="w-full bg-[#000000]">
 
         <div className="px-4 py-14 mx-auto max-w-7xl sm:px-6 md:py-20 lg:px-10">
@@ -1140,7 +1207,7 @@ const Hero = () => {
             {/* See All */}
             <button
               type="button"
-              className="inline-flex items-center justify-center gap-2 px-6 w-full h-[60px] h-[70px] text-base font-semibold text-white bg-transparent rounded-full border-2 border-[#A259FF] transition-colors duration-200 hover:bg-[#A259FF]/10 shrink-0 md:w-[180px]"
+              className="inline-flex items-center justify-center gap-2 px-6 w-full h-[60px] h-[70px] text-base font-semibold text-white bg-transparent rounded-full border-2 border-[#A259FF] transition-all duration-300 cursor-pointer hover:bg-[#A259FF]/10 hover:-translate-y-1 shrink-0 md:w-[180px]"
             >
 
               <Eye className="w-5 h-5 text-[#A259FF]" />
@@ -1166,6 +1233,7 @@ const Hero = () => {
         </div>
 
       </section>
+      </Reveal>
 
       {/* ===================================================
           MAGIC MUSHROOMS AUCTION
@@ -1190,6 +1258,106 @@ const Hero = () => {
       =================================================== */}
 
       <style>{`
+        /* =====================================================
+           SCROLL REVEAL
+           Animation only — does not change section dimensions.
+        ===================================================== */
+
+        .reveal {
+          opacity: 0;
+          transform: translateY(35px);
+          transition:
+            opacity 0.8s ease,
+            transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+          transition-delay: var(--reveal-delay, 0ms);
+        }
+
+        .reveal-show {
+          opacity: 1;
+          transform: translateY(0);
+        }
+
+        /* =====================================================
+           GENERAL INTERACTIVE CURSOR / MICRO ANIMATION
+        ===================================================== */
+
+        button,
+        a,
+        [role="button"] {
+          cursor: pointer;
+          -webkit-tap-highlight-color: transparent;
+        }
+
+        /* =====================================================
+           CARD HOVER
+        ===================================================== */
+
+        .group {
+          transition:
+            transform 0.35s ease,
+            box-shadow 0.35s ease;
+        }
+
+        .group:hover {
+          transform: translateY(-4px);
+        }
+
+        /* =====================================================
+           HERO CARD
+        ===================================================== */
+
+        .hero-float:hover {
+          box-shadow:
+            0 25px 60px rgba(162, 89, 255, 0.18),
+            0 0 30px rgba(162, 89, 255, 0.08);
+        }
+
+        /* =====================================================
+           BUTTON PRESS
+        ===================================================== */
+
+        button {
+          transition:
+            transform 0.25s ease,
+            box-shadow 0.25s ease,
+            background-color 0.25s ease,
+            opacity 0.25s ease;
+        }
+
+        button:active {
+          transform: scale(0.97);
+        }
+
+        /* =====================================================
+           REDUCED MOTION
+        ===================================================== */
+
+        @media (prefers-reduced-motion: reduce) {
+          .reveal {
+            opacity: 1;
+            transform: none;
+            transition: none;
+          }
+
+          *,
+          *::before,
+          *::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+          }
+        }
+
+        /* =====================================================
+           MOBILE REVEAL
+        ===================================================== */
+
+        @media (max-width: 767px) {
+          .reveal {
+            transform: translateY(22px);
+          }
+        }
+
 
         .hero-card-scene {
           perspective: 1200px;
