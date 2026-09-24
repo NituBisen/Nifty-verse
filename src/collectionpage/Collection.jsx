@@ -290,7 +290,7 @@ function CollectionCard({ collection }) {
           COLLECTION INFO
       ================================================= */}
 
-      <div className="mt-[15px] h-[65px] w-[380px] shrink-0">
+      <div className="mt-[5px] h-[65px] w-[380px] shrink-0">
         {/* COLLECTION NAME */}
 
         <h2

@@ -708,7 +708,7 @@ const RELATED_NFTS = [
 
 function NFT() {
   return (
-    <div className="min-h-screen bg-[#2B2B2B] text-white">
+    <div className="min-h-screen bg-[#000] text-white">
       <Navbar />
 
       {/* ==================================================
@@ -727,215 +727,236 @@ function NFT() {
           NFT DETAILS
       ================================================== */}
 
-      <section className="w-full bg-[#2B2B2B]">
-        <div className="mx-auto grid max-w-[1050px] gap-10 px-5 py-10 md:grid-cols-[1fr_350px] md:gap-12 md:py-12 lg:px-0">
+      <section className="w-full min-w-0 overflow-x-hidden bg-[#000000]">
+          <div className="mx-auto grid w-full min-w-0 max-w-[1200px] gap-10 px-5 py-10 md:grid-cols-[minmax(0,1fr)_350px] md:gap-12 md:py-12 lg:px-0">
 
-          {/* LEFT */}
-          <div>
+            {/* LEFT */}
+            <div className="w-full min-w-0">
 
-            <h1 className="font-['Work_Sans'] text-4xl font-semibold leading-tight">
-              The Orbitian
-            </h1>
+              <h1 className="font-['Work_Sans'] text-5xl font-semibold leading-tight">
+                The Orbitian
+              </h1>
 
-            <p className="mt-3 font-['Work_Sans'] text-sm text-[#858584]">
-              Minted On Sep 30, 2022
-            </p>
-
-            {/* CREATED BY */}
-
-            <div className="mt-8">
-              <p className="font-['Space_Mono'] text-sm font-bold text-[#858584]">
-                Created By
+              <p className="mt-3 font-['Work_Sans'] text-[20px] text-[#858584]">
+                Minted On Sep 30, 2022
               </p>
 
-              <div className="mt-3 flex items-center gap-3">
-                <img
-                  src={orbitianavatar}
-                  alt="Orbitian"
-                  className="h-8 w-8 rounded-full object-cover"
-                />
-
-                <p className="font-['Work_Sans'] font-semibold">
-                  Orbitian
-                </p>
-              </div>
-            </div>
-
-            {/* DESCRIPTION */}
-
-            <div className="mt-8">
-              <h2 className="font-['Space_Mono'] text-sm font-bold text-[#858584]">
-                Description
-              </h2>
-
-              <div className="mt-4 max-w-[620px] space-y-5">
-                <p className="font-['Work_Sans'] text-base leading-7">
-                  The Orbitian is a collection of 10,000 unique NFTs on the
-                  Ethereum blockchain.
+              {/* CREATED BY */}
+              <div className="mt-8">
+                <p className="font-['Space_Mono'] text-[20px] font-bold text-[#858584]">
+                  Created By
                 </p>
 
-                <p className="font-['Work_Sans'] text-base leading-7">
-                  There are all sorts of beings in the NFT Universe. The most
-                  advanced and friendly of them are the Orbitians.
-                </p>
-
-                <p className="font-['Work_Sans'] text-base leading-7">
-                  They live in a metal space machines, high up in the sky and
-                  only have one foot on Earth.
-                </p>
-
-                <p className="font-['Work_Sans'] text-base leading-7">
-                  These Orbitians are a peaceful race, but they have been at
-                  war with a group of invaders for many generations.
-                </p>
-
-                <p className="font-['Work_Sans'] text-base leading-7">
-                  The invaders are called Upside-Downs, because of their
-                  inverted bodies that live on the ground, yet do not know any
-                  other way to be.
-                </p>
-
-                <p className="font-['Work_Sans'] text-base leading-7">
-                  Upside-Downs believe that they will be able to win this war
-                  if they could only get an eye into Orbitian territory, so
-                  they've taken to make human beings their target.
-                </p>
-              </div>
-            </div>
-
-            {/* DETAILS */}
-
-            <div className="mt-8">
-              <h2 className="font-['Space_Mono'] text-sm font-bold text-[#858584]">
-                Details
-              </h2>
-
-              <div className="mt-4 space-y-4">
-                <a
-                  href="https://etherscan.io/"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="flex items-center gap-4 font-['Work_Sans'] text-sm text-white hover:text-[#A259FF]"
-                >
-                  <Globe
-                    size={30}
-                    strokeWidth={1.7}
-                    className="shrink-0 text-[#858584]"
+                <div className="mt-3 flex items-center gap-3">
+                  <img
+                    src={orbitianavatar}
+                    alt="Orbitian"
+                    className="h-8 w-8 rounded-full object-cover"
                   />
 
-                  <span>View on Etherscan</span>
-                </a>
-
-                <a
-                  href="#original"
-                  className="flex items-center gap-4 font-['Work_Sans'] text-sm text-white hover:text-[#A259FF]"
-                >
-                  <Globe
-                    size={30}
-                    strokeWidth={1.7}
-                    className="shrink-0 text-[#858584]"
-                  />
-
-                  <span>View Original</span>
-                </a>
+                  <p className="font-['Work_Sans'] text-[22px] font-semibold">
+                    Orbitian
+                  </p>
+                </div>
               </div>
-            </div>
 
-            {/* TAGS */}
+              {/* DESCRIPTION */}
+              <div className="mt-8">
+                <h2 className="font-['Space_Mono'] text-[22px] font-bold text-[#858584]">
+                  Description
+                </h2>
 
-            <div className="mt-8">
-              <h2 className="font-['Space_Mono'] text-sm font-bold text-[#858584]">
-                Tags
-              </h2>
+                <div className="mt-4 max-w-[620px] space-y-5">
+                  <p className="font-['Work_Sans'] text-[20px] leading-7">
+                    The Orbitian is a collection of 10,000 unique NFTs on the Ethereum blockchain.
+                  </p>
 
-              <div className="mt-4 flex flex-wrap gap-3">
-                {["ANIMATION", "ILLUSTRATION", "MOON", "MOON"].map(
-                  (tag, index) => (
+                  <p className="font-['Work_Sans'] text-[20px] leading-7">
+                    There are all sorts of beings in the NFT Universe. The most advanced and friendly of them are the Orbitians.
+                  </p>
+                </div>
+              </div>
+
+              {/* DETAILS */}
+              <div className="mt-8">
+                <h2 className="font-['Space_Mono'] text-[22px] font-bold text-[#858584]">
+                  Details
+                </h2>
+
+                <div className="mt-4 space-y-4">
+                  <a
+                    href="https://etherscan.io/"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="flex items-center gap-4 font-['Work_Sans'] text-sm text-white hover:text-[#A259FF]"
+                  >
+                    <Globe
+                      size={30}
+                      strokeWidth={1.7}
+                      className="shrink-0 text-[#858584]"
+                    />
+
+                    <span className="text-[22px]">
+                      View on Etherscan
+                    </span>
+                  </a>
+
+                  <a
+                    href="#original"
+                    className="flex items-center gap-4 font-['Work_Sans'] text-sm text-white hover:text-[#A259FF]"
+                  >
+                    <Globe
+                      size={30}
+                      strokeWidth={1.7}
+                      className="shrink-0 text-[#858584]"
+                    />
+
+                    <span className="text-[22px]">
+                      View Original
+                    </span>
+                  </a>
+                </div>
+              </div>
+
+              {/* TAGS */}
+              <div className="mt-8">
+                <h2 className="font-['Work_Sans'] text-[22px] font-bold text-[#858584]">
+                  Tags
+                </h2>
+
+                <div className="mt-4 flex flex-wrap gap-3">
+                  {["ANIMATION", "ILLUSTRATION", "MOON", "MOON"].map((tag, index) => (
                     <button
                       key={index}
                       type="button"
                       disabled
-                      className="rounded-full bg-[#3B3B3B] px-5 py-3 font-['Work_Sans'] text-[10px] font-bold"
+                      className="inline-flex h-[46px] items-center justify-center gap-[12px] rounded-[20px] bg-[#212020] px-[30px] font-['Work_Sans'] text-[16px] font-semibold leading-[22px] text-white text-center"
                     >
-                      {tag}
+                      <span>{tag}</span>
                     </button>
-                  )
-                )}
+                  ))}
+                </div>
               </div>
+
             </div>
+
+            {/* RIGHT BID CARD */}
+            <aside className="h-fit w-full max-w-[295px] min-w-0 justify-self-start rounded-[20px] bg-[#212020] p-[30px] md:justify-self-end lg:justify-self-auto">
+
+              {/* Auction Timer */}
+              <div className="flex h-[87px] w-full max-w-[235px] flex-col gap-[10px] rounded-[20px] backdrop-blur-[10px]">
+                <p className="h-[13px] w-full max-w-[235px] font-['Space_Mono'] text-[12px] font-normal leading-[13.2px] text-white">
+                  Auction ends in:
+                </p>
+
+                <div className="flex h-[64px] w-full max-w-[235px] items-start justify-between">
+
+                  {/* Hours */}
+                  <div className="flex flex-col">
+                    <p className="font-['Space_Mono'] text-[32px] font-bold leading-[35.2px] text-white">
+                      59
+                    </p>
+
+                    <p className="mt-[4px] font-['Space_Mono'] text-[10px] font-normal leading-[11px] text-white">
+                      Hours
+                    </p>
+                  </div>
+
+                  {/* Colon */}
+                  <span className="relative -top-[3px] font-['Space_Mono'] text-[32px] font-bold leading-[35.2px] text-white">
+                    :
+                  </span>
+
+                  {/* Minutes */}
+                  <div className="flex flex-col">
+                    <p className="font-['Space_Mono'] text-[32px] font-bold leading-[35.2px] text-white">
+                      59
+                    </p>
+
+                    <p className="mt-[4px] font-['Space_Mono'] text-[10px] font-normal leading-[11px] text-white">
+                      Minutes
+                    </p>
+                  </div>
+
+                  {/* Colon */}
+                  <span className="relative -top-[3px] font-['Space_Mono'] text-[32px] font-bold leading-[35.2px] text-white">
+                    :
+                  </span>
+
+                  {/* Seconds */}
+                  <div className="flex flex-col">
+                    <p className="font-['Space_Mono'] text-[32px] font-bold leading-[35.2px] text-white">
+                      59
+                    </p>
+
+                    <p className="mt-[4px] font-['Space_Mono'] text-[10px] font-normal leading-[11px] text-white">
+                      Seconds
+                    </p>
+                  </div>
+
+                </div>
+              </div>
+
+              {/* Place Bid Button */}
+              <button
+                type="button"
+                className="mt-[30px] flex h-[60px] w-full max-w-[235px] items-center justify-center gap-[12px] rounded-[20px] bg-[#7629DB] px-[30px] font-['Work_Sans'] text-[16px] font-semibold transition hover:bg-[#8B3FF0] md:px-[50px]"
+              >
+                <span className="h-[22px] w-[74px] text-center font-['Work_Sans'] text-[16px] font-semibold leading-[22px] text-white">
+                  Place Bid
+                </span>
+              </button>
+
+            </aside>
+
           </div>
-
-          {/* RIGHT BID CARD */}
-
-          <aside className="h-fit rounded-2xl bg-[#3B3B3B] p-5">
-            <p className="font-['Space_Mono'] text-xs">
-              Auction ends in:
-            </p>
-
-            <div className="mt-3 grid grid-cols-3 gap-2">
-              <div>
-                <p className="font-['Space_Mono'] text-3xl font-bold">
-                  59
-                </p>
-                <p className="font-['Space_Mono'] text-[10px]">
-                  Hours
-                </p>
-              </div>
-
-              <div>
-                <p className="font-['Space_Mono'] text-3xl font-bold">
-                  59
-                </p>
-                <p className="font-['Space_Mono'] text-[10px]">
-                  Minutes
-                </p>
-              </div>
-
-              <div>
-                <p className="font-['Space_Mono'] text-3xl font-bold">
-                  59
-                </p>
-                <p className="font-['Space_Mono'] text-[10px]">
-                  Seconds
-                </p>
-              </div>
-            </div>
-
-            <button
-              type="button"
-              className="mt-6 w-full rounded-xl bg-[#7629db] px-5 py-4 font-['Work_Sans'] text-sm font-semibold hover:bg-[#8B3FF0]"
-            >
-              Place Bid
-            </button>
-          </aside>
-        </div>
-      </section>
+        </section>
 
       {/* ==================================================
           MORE FROM THIS ARTIST
       ================================================== */}
 
-      <section className="w-full bg-[#2B2B2B] pb-20 pt-8">
-        <div className="mx-auto max-w-[1050px] px-5 lg:px-0">
+      <section className="w-full bg-[#000000] pb-20 pt-8">
+  <div className="mx-auto max-w-[1200px] px-5 lg:px-0">
+    <div className="mb-15 flex flex-col justify-between gap-5 sm:flex-row sm:items-center">
+      <h4 className="font-['Work_Sans'] text-4xl font-semibold">
+        More From This Artist
+      </h4>
 
-          <div className="mb-10 flex flex-col justify-between gap-5 sm:flex-row sm:items-center">
-            <h2 className="font-['Work_Sans'] text-3xl font-semibold">
-              More From This Artist
-            </h2>
+      <Link
+        to="/artist"
+        className="inline-flex h-[60px] w-full max-w-[267px] items-center justify-center gap-[9px] rounded-[20px] border-[2px] border-[#7629DB] px-[20px] transition hover:bg-[#A259FF] sm:w-[267px] sm:px-[50px]"
+      >
+        {/* Arrow */}
+        <svg
+          width="20"
+          height="20"
+          viewBox="0 0 20 20"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          className="shrink-0"
+        >
+          <path
+            d="M10.625 3.75L17.5 10L10.625 16.25"
+            stroke="#A259FF"
+            strokeWidth="1.25"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          <path
+            d="M2.5 9.375H17.5"
+            stroke="#A259FF"
+            strokeWidth="1.25"
+            strokeLinecap="round"
+          />
+        </svg>
 
-            <Link
-              to="/artist"
-              className="inline-flex items-center gap-2 rounded-xl border-2 border-[#7629DB] px-6 py-3 font-['Work_Sans'] text-xs font-semibold text-white transition hover:bg-[#A259FF]"
-            >
-              <Rocket
-                size={20}
-                strokeWidth={2}
-                className="text-[#A259FF]"
-              />
-
-              <span>Go To Artist Page</span>
-            </Link>
-          </div>
+        {/* Text */}
+        <span className="h-[22px] w-[135px] text-center font-['Work_Sans'] text-[16px] font-semibold leading-[22px] text-white">
+          Go To Artist Page
+        </span>
+      </Link>
+    </div>
 
           {/* CARDS */}
 
@@ -943,9 +964,9 @@ function NFT() {
             {RELATED_NFTS.map((item, index) => (
               <div
                 key={index}
-                className="overflow-hidden rounded-2xl bg-[#3B3B3B] transition duration-300 hover:-translate-y-1"
+                className="overflow-hidden rounded-2xl bg-[#212020] transition duration-300 hover:-translate-y-1"
               >
-                <div className="h-[250px] w-full overflow-hidden">
+                <div className="h-[340px] w-full overflow-hidden">
                   <img
                     src={item.image}
                     alt={item.name}
@@ -954,7 +975,7 @@ function NFT() {
                 </div>
 
                 <div className="p-5">
-                  <h3 className="font-['Work_Sans'] text-lg font-semibold">
+                  <h3 className="font-['Work_Sans'] text-2xl font-semibold">
                     {item.name}
                   </h3>
 
@@ -965,28 +986,28 @@ function NFT() {
                       className="h-6 w-6 rounded-full object-cover"
                     />
 
-                    <p className="font-['Space_Mono'] text-xs">
+                    <p className="font-['Space_Mono'] text-lg">
                       Orbitian
                     </p>
                   </div>
 
                   <div className="mt-6 flex justify-between">
                     <div>
-                      <p className="font-['Space_Mono'] text-xs text-[#858584]">
+                      <p className="font-['Space_Mono'] text-[12px] text-[#858584]">
                         Price
                       </p>
 
-                      <p className="mt-2 font-['Space_Mono'] text-xs">
+                      <p className="mt-2 font-['Space_Mono'] text-[16px]">
                         1.63 ETH
                       </p>
                     </div>
 
                     <div className="text-right">
-                      <p className="font-['Space_Mono'] text-xs text-[#858584]">
+                      <p className="font-['Space_Mono'] text-[12px] text-[#858584]">
                         Highest Bid
                       </p>
 
-                      <p className="mt-2 font-['Space_Mono'] text-xs">
+                      <p className="mt-2 font-['Space_Mono'] text-[16px]">
                         0.33 wETH
                       </p>
                     </div>

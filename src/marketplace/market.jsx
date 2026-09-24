@@ -314,7 +314,7 @@ function NFTCard({ item, onClick }) {
         cursor-pointer
         overflow-hidden
         rounded-[20px]
-        bg-[#2B2B2B]
+        bg-[#212020]
         transition-transform
         duration-200
         hover:-translate-y-1
@@ -468,148 +468,181 @@ function CollectionCard({ collection }) {
   return (
     <article
       className="
+        group
+        relative
         mx-auto
-        h-[525px]
-        w-[380px]
+        flex
+        w-full
+        max-w-[380px]
+        flex-col
         overflow-hidden
         rounded-[20px]
-        bg-[#000]
+        bg-[#000000]
+        px-4
+        pb-6
+        pt-5
+
+        sm:max-w-[380px]
+        sm:px-5
+        sm:pb-6
+        sm:pt-5
+
+        md:px-6
+
+        lg:h-[525px]
+        lg:w-[380px]
+        lg:max-w-[380px]
+        lg:px-0
+        lg:pb-0
+        lg:pt-0
       "
     >
-      {/* =================================================
-          PHOTOS
-      ================================================= */}
+      {/* Main Image */}
+      <Link
+        to={`/nft/${collection.nftId}`}
+        className="
+          block
+          w-full
+          overflow-hidden
+          rounded-[20px]
 
-      <div className="h-[445px] w-[380px]">
-        {/* PRIMARY PHOTO */}
+          sm:w-full
 
+          lg:h-[330px]
+          lg:w-[380px]
+          lg:rounded-[20px]
+        "
+      >
+        <img
+          src={collection.primaryImage}
+          alt={collection.name}
+          className="
+            aspect-square
+            h-auto
+            w-full
+            object-cover
+            transition-transform
+            duration-500
+            group-hover:scale-105
+
+            sm:aspect-square
+
+            lg:h-[330px]
+            lg:w-[380px]
+            lg:aspect-auto
+          "
+        />
+      </Link>
+
+      {/* Small Images */}
+      <div
+        className="
+          mt-[15px]
+          grid
+          w-full
+          grid-cols-3
+          gap-[10px]
+
+          sm:gap-[15px]
+
+          lg:flex
+          lg:h-[100px]
+          lg:w-[380px]
+          lg:gap-[15px]
+        "
+      >
+        {collection.secondaryImages.map((image, index) => (
+          <Link
+            key={index}
+            to={`/nft/${collection.nftId}`}
+            className="
+              block
+              h-[100px]
+              w-full
+              overflow-hidden
+              rounded-[15px]
+
+              lg:h-[100px]
+              lg:w-[116px]
+            "
+          >
+            <img
+              src={image}
+              alt={`${collection.name}-${index}`}
+              className="
+                h-full
+                w-full
+                object-cover
+                transition-transform
+                duration-500
+                group-hover:scale-105
+              "
+            />
+          </Link>
+        ))}
+
+        {/* Additional NFTs */}
         <Link
           to={`/nft/${collection.nftId}`}
           className="
-            group
-            block
-            h-[330px]
-            w-[380px]
-            overflow-hidden
-            rounded-[20px]
+            flex
+            h-[100px]
+            w-full
+            items-center
+            justify-center
+            rounded-[15px]
+            bg-[#A259FF]
+            font-['Space_Mono']
+            text-[18px]
+            font-bold
+            text-white
+            transition-transform
+            duration-300
+            hover:scale-[1.02]
+
+            lg:h-[100px]
+            lg:w-[116px]
           "
         >
-          <img
-            src={collection.primaryImage}
-            alt={collection.name}
-            className="
-              h-[330px]
-              w-[380px]
-              object-cover
-              transition-transform
-              duration-300
-              ease-out
-              group-hover:scale-105
-            "
-          />
+          {collection.additionalNFTs}
         </Link>
-
-        {/* SECONDARY PHOTOS + COUNT */}
-
-        <div className="mt-[15px] flex h-[100px] w-[380px] justify-center gap-[15px]">
-          {/* SECONDARY IMAGE 1 */}
-
-          <Link
-            to={`/nft/${collection.nftId}`}
-            className="
-              block
-              h-[100px]
-              w-[116px]
-              shrink-0
-              overflow-hidden
-              rounded-[20px]
-            "
-          >
-            <img
-              src={collection.secondaryImages[0]}
-              alt={`${collection.name} artwork 1`}
-              className="h-full w-full object-cover"
-            />
-          </Link>
-
-          {/* SECONDARY IMAGE 2 */}
-
-          <Link
-            to={`/nft/${collection.nftId}`}
-            className="
-              block
-              h-[100px]
-              w-[116px]
-              shrink-0
-              overflow-hidden
-              rounded-[20px]
-            "
-          >
-            <img
-              src={collection.secondaryImages[1]}
-              alt={`${collection.name} artwork 2`}
-              className="h-full w-full object-cover"
-            />
-          </Link>
-
-          {/* ADDITIONAL NFT NUMBER */}
-
-          <Link
-            to={`/nft/${collection.nftId}`}
-            className="
-              flex
-              h-[100px]
-              w-[116px]
-              shrink-0
-              items-center
-              justify-center
-              rounded-[20px]
-              bg-[#A259FF]
-              transition-colors
-              duration-200
-              hover:bg-[#913FE8]
-            "
-          >
-            <span
-              className="
-                font-['Space_Mono']
-                text-[16px]
-                font-bold
-                text-white
-              "
-            >
-              {collection.additionalNFTs}
-            </span>
-          </Link>
-        </div>
       </div>
 
-      {/* =================================================
-          COLLECTION INFO
-      ================================================= */}
-
-      <div className=" mt-[10px] h-[65px] w-[330px]">
-        {/* COLLECTION NAME */}
-
+      {/* Collection Info */}
+      <div
+        className="
+          mt-[10px]
+          w-full
+          lg:h-[65px]
+          lg:w-[380px]
+        "
+      >
+        {/* Collection Name */}
         <h2
           className="
-            h-[31px]
-            w-[330px]
+            w-full
             truncate
             font-['Work_Sans']
             text-[22px]
             font-semibold
-            leading-[140%]
-            capitalize
+            leading-[31px]
             text-white
           "
         >
           {collection.name}
         </h2>
 
-        {/* ARTIST */}
-
-        <div className="mt-[10px] flex h-[24px] w-[330px] items-center gap-[10px]">
+        {/* Artist */}
+        <div
+          className="
+            mt-[5px]
+            flex
+            h-[24px]
+            w-full
+            items-center
+            gap-[10px]
+          "
+        >
           <img
             src={collection.artistAvatar}
             alt={collection.artist}
@@ -624,13 +657,10 @@ function CollectionCard({ collection }) {
 
           <span
             className="
-              h-[22px]
-              w-[294px]
               truncate
-              font-['Work_Sans']
+              font-['Space_Mono']
               text-[16px]
-              font-normal
-              leading-[140%]
+              leading-[22px]
               text-white
             "
           >
@@ -641,6 +671,216 @@ function CollectionCard({ collection }) {
     </article>
   );
 }
+
+
+
+
+// function CollectionCard({ collection }) {
+//   return (
+//     <article
+//       className="
+//         mx-auto
+//         flex
+//         w-full
+//         max-w-[380px]
+//         flex-col
+//         gap-[15px]
+//         overflow-hidden
+//         rounded-[20px]
+//         bg-[#2B2B2B]
+//         sm:h-[525px]
+//         sm:w-[330px]
+//         sm:max-w-[330px]
+//       "
+//     >
+//       {/* =================================================
+//           PHOTOS
+//       ================================================= */}
+
+//       <div className="w-full shrink-0 sm:h-[445px] sm:w-[330px]">
+//         {/* PRIMARY PHOTO */}
+
+//         <Link
+//           to={`/nft/${collection.nftId}`}
+//           className="
+//             group
+//             block
+//             aspect-square
+//             w-full
+//             overflow-hidden
+//             rounded-[20px]
+//             sm:h-[330px]
+//             sm:w-[330px]
+//           "
+//         >
+//           <img
+//             src={collection.primaryImage}
+//             alt={collection.name}
+//             className="
+//               h-full
+//               w-full
+//               object-cover
+//               transition-transform
+//               duration-300
+//               ease-out
+//               group-hover:scale-105
+//             "
+//           />
+//         </Link>
+
+//         {/* SECONDARY PHOTOS + COUNT */}
+
+//         <div className="mt-[15px] grid w-full grid-cols-3 gap-[15px] sm:h-[100px] sm:w-[330px]">
+          
+//           {/* SECONDARY IMAGE 1 */}
+
+//           <Link
+//             to={`/nft/${collection.nftId}`}
+//             className="
+//               group
+//               block
+//               aspect-square
+//               w-full
+//               overflow-hidden
+//               rounded-[20px]
+//               sm:h-[100px]
+//               sm:w-[100px]
+//             "
+//           >
+//             <img
+//               src={collection.secondaryImages[0]}
+//               alt={`${collection.name} artwork 1`}
+//               className="
+//                 h-full
+//                 w-full
+//                 object-cover
+//                 transition-transform
+//                 duration-300
+//                 group-hover:scale-105
+//               "
+//             />
+//           </Link>
+
+//           {/* SECONDARY IMAGE 2 */}
+
+//           <Link
+//             to={`/nft/${collection.nftId}`}
+//             className="
+//               group
+//               block
+//               aspect-square
+//               w-full
+//               overflow-hidden
+//               rounded-[20px]
+//               sm:h-[100px]
+//               sm:w-[100px]
+//             "
+//           >
+//             <img
+//               src={collection.secondaryImages[1]}
+//               alt={`${collection.name} artwork 2`}
+//               className="
+//                 h-full
+//                 w-full
+//                 object-cover
+//                 transition-transform
+//                 duration-300
+//                 group-hover:scale-105
+//               "
+//             />
+//           </Link>
+
+//           {/* ADDITIONAL NFT NUMBER */}
+
+//           <Link
+//             to={`/nft/${collection.nftId}`}
+//             className="
+//               flex
+//               aspect-square
+//               w-full
+//               items-center
+//               justify-center
+//               rounded-[20px]
+//               bg-[#A259FF]
+//               transition-colors
+//               duration-200
+//               hover:bg-[#913FE8]
+//               sm:h-[100px]
+//               sm:w-[100px]
+//             "
+//           >
+//             <span
+//               className="
+//                 font-['Space Mono']
+//                 text-[14px]
+//                 font-bold
+//                 text-white
+//                 sm:text-[16px]
+//               "
+//             >
+//               {collection.additionalNFTs}
+//             </span>
+//           </Link>
+//         </div>
+//       </div>
+
+//       {/* =================================================
+//           COLLECTION INFO
+//       ================================================= */}
+
+//       <div className="w-full shrink-0 sm:h-[65px] sm:w-[330px]">
+//         {/* COLLECTION NAME */}
+
+//         <h2
+//           className="
+//             h-[31px]
+//             w-full
+//             truncate
+//             font-['Work Sans']
+//             text-[22px]
+//             font-semibold
+//             leading-[140%]
+//             capitalize
+//             text-white
+//           "
+//         >
+//           {collection.name}
+//         </h2>
+
+//         {/* ARTIST */}
+
+//         <div className="mt-[10px] flex h-[24px] w-full items-center gap-[10px]">
+//           <img
+//             src={collection.artistAvatar}
+//             alt={collection.artist}
+//             className="
+//               h-[24px]
+//               w-[24px]
+//               shrink-0
+//               rounded-full
+//               object-cover
+//             "
+//           />
+
+//           <span
+//             className="
+//               min-w-0
+//               flex-1
+//               truncate
+//               font-['Work Sans']
+//               text-[16px]
+//               font-normal
+//               leading-[140%]
+//               text-white
+//             "
+//           >
+//             {collection.artist}
+//           </span>
+//         </div>
+//       </div>
+//     </article>
+//   );
+// }
 
 /* ==================================================
    MARKET COMPONENT
@@ -745,8 +985,8 @@ const Market = () => {
       ================================================= */}
 
       <section className="w-full bg-[#000000]">
-        <div className="mx-auto flex h-[70px] w-full max-w-[1200px] items-end">
-          <div className="flex h-[60px] w-full">
+        <div className="mx-auto flex h-[70px] w-full max-w-[1200px] items-end px-5 sm:px-6 lg:px-0">
+          <div className="flex h-[60px] w-full ">
 
             {/* ================= NFT TAB ================= */}
 
@@ -934,7 +1174,7 @@ const Market = () => {
               ))
             ) : (
               <div className="col-span-full flex min-h-[250px] items-center justify-center">
-                <p className="font-['Work Sans'] text-lg text-[#858584]">
+                <p className="font-['Work_Sans'] text-lg text-[#858584]">
                   No NFTs found.
                 </p>
               </div>
