@@ -3,9 +3,9 @@ import { Routes, Route, Navigate } from "react-router-dom";
 
 import Homepage from "./pages/Homepage";
 import Createaccount from "./pages/Createaccount";
+import Signin from "./signin/Signin";
 import Connectwallet from "./pages/Connectwallet";
 import Ranking from "./pages/Rankingpage"
-
 import Market from "./marketplace/market";
 import NFT from "./nftpage/NFT";
 import Artist from "./artistpage/Artist";
@@ -25,6 +25,9 @@ const App = () => {
 
       {/* Create Account */}
       <Route path="/create-account" element={<Createaccount />} />
+
+      {/* Signin Account */}
+      <Route path="/signin" element={<Signin />} />
 
       {/* Connect Wallet */}
       <Route path="/connect-wallet" element={<Connectwallet />} />
