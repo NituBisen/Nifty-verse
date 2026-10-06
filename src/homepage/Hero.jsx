@@ -920,20 +920,20 @@ const WeeklyDigest = () => {
                 SUBSCRIPTION FORM
             ================================================= */}
 
-           <form
-  className="flex flex-row gap-0 mt-7 w-full max-w-[560px] h-[76px]"
+          <form
+  className="flex flex-row gap-0 mt-7 w-full max-w-[560px] h-[76px] max-lg:flex-col max-lg:gap-3 max-lg:h-auto"
 >
   {/* EMAIL INPUT */}
   <input
     type="email"
     placeholder="Enter your email here"
-    className="px-6 placeholder-[#2B2B2B] h-full w-full min-w-0 text-[20px] text-[#2B2B2B] bg-white rounded-[20px] outline-none lg:rounded-r-[20px]"
+    className="px-6 placeholder-[#2B2B2B] h-full w-full min-w-0 max-lg:h-[60px] text-[20px] text-[#2B2B2B] bg-white rounded-[20px] outline-none lg:rounded-r-[20px]"
   />
 
   {/* SUBSCRIBE BUTTON */}
   <button
     type="submit"
-    className="z-10 flex items-center justify-center gap-3 h-full w-[190px] text-[20px] font-bold text-white bg-[#A259FF] rounded-[20px] transition-all duration-300 cursor-pointer -ml-[40px] shrink-0 hover:bg-[#9147E6] hover:scale-[1.02]"
+    className="z-10 flex items-center justify-center gap-3 h-full w-[190px] max-lg:ml-0 max-lg:h-[60px] max-lg:w-full text-[20px] font-bold text-white bg-[#A259FF] rounded-[20px] transition-all duration-300 cursor-pointer -ml-[40px] shrink-0 hover:bg-[#9147E6] hover:scale-[1.02]"
   >
     <Mail className="h-7 w-7" />
     Subscribe
@@ -961,7 +961,7 @@ const Hero = () => {
       <Reveal>
       <section className="overflow-hidden w-full bg-[#000000]">
 
-        <div className="px-4 py-16 mx-auto py-28 max-w-[1300px] sm:px-6 md:py-20 lg:px-10">
+        <div className="px-4 mx-auto px-10 max-w-[1300px] sm:px-6 md:py-5 lg:py-15">
 
           <div className="flex flex-col items-center justify-between gap-10 lg:flex-row">
 

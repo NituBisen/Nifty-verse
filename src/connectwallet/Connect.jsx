@@ -38,7 +38,7 @@ const Connect = () => {
     <section className="w-full bg-[#000000]">
 
       <div
-        className="mx-auto px-4 py-10 py-14 py-20 max-w-[1250px] sm:px-6 lg:px-8"
+        className="mx-auto px-4 max-w-[1250px] sm:px-6 lg:py-10 px-8"
       >
 
         {/* ==========================================
