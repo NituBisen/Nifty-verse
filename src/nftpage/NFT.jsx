@@ -193,7 +193,7 @@
 //       : NFT_ITEMS.filter((item) => item.id !== currentNFT.id).slice(0, 9);
 
 //   return (
-//     <div className="min-h-screen bg-[#2B2B2B] text-white">
+//     <div className="min-h-screen text-white bg-[#2B2B2B]">
 //       {/* NAVBAR */}
 //       <Navbar />
 
@@ -203,14 +203,7 @@
 //           <img
 //             src={astronautFloating}
 //             alt="The Orbitian"
-//             className="
-//               h-[320px]
-//               w-full
-//               object-cover
-//               sm:h-[450px]
-//               md:h-[550px]
-//               lg:h-[650px]
-//             "
+//             className="object-cover h-[320px] w-full // sm:h-[450px] md:h-[550px] lg:h-[650px]"
 //           />
 //         </div>
 //       </section>
@@ -218,26 +211,13 @@
 //       {/* NFT DETAILS */}
 //       <section className="w-full bg-[#2B2B2B]">
 //         <div
-//           className="
-//             mx-auto
-//             grid
-//             max-w-[1050px]
-//             gap-10
-//             px-5
-//             py-10
-//             sm:px-8
-//             md:grid-cols-[1fr_350px]
-//             md:gap-12
-//             md:py-12
-//             lg:px-0
-//           "
+//           className="grid gap-10 gap-12 mx-auto px-5 py-10 py-12 max-w-[1050px] // sm:px-8 md:grid-cols-[1fr_350px] lg:px-0"
 //         >
 //           {/* LEFT CONTENT */}
 //           <div className="min-w-0">
 //             {/* NFT TITLE */}
 //             <h1
-//               className="
-//                 font-['Work_Sans']
+//               className="font-[ //'Work_Sans']
 //                 text-3xl
 //                 font-semibold
 //                 leading-tight
@@ -255,8 +235,7 @@
 //             {/* CREATED BY */}
 //             <div className="mt-8">
 //               <p
-//                 className="
-//                   font-['Space_Mono']
+//                 className="font-[ //'Space_Mono']
 //                   text-sm
 //                   font-bold
 //                   text-[#858584]
@@ -265,11 +244,11 @@
 //                 Created By
 //               </p>
 
-//               <div className="mt-3 flex items-center gap-3">
+//               <div className="flex items-center gap-3 mt-3">
 //                 <img
 //                   src={currentNFT.avatar}
 //                   alt={currentNFT.creator}
-//                   className="h-8 w-8 rounded-full object-cover"
+//                   className="object-cover h-8 w-8 rounded-full"
 //                 />
 
 //                 <p className="font-['Work Sans'] text-base font-semibold">
@@ -281,8 +260,7 @@
 //             {/* DESCRIPTION */}
 //             <div className="mt-8">
 //               <h2
-//                 className="
-//                   font-['Space Mono']
+//                 className="font-[ //'Space Mono']
 //                   text-sm
 //                   font-bold
 //                   text-[#858584]
@@ -295,8 +273,7 @@
 //                 {currentNFT.description.map((paragraph, index) => (
 //                   <p
 //                     key={index}
-//                     className="
-//                       font-['Work Sans']
+//                     className="font-[ //'Work Sans']
 //                       text-base
 //                       leading-7
 //                       text-white
@@ -311,8 +288,7 @@
 //             {/* DETAILS */}
 //             <div className="mt-8">
 //               <h2
-//                 className="
-//                   font-['Space Mono']
+//                 className="font-[ //'Space Mono']
 //                   text-sm
 //                   font-bold
 //                   text-[#858584]
@@ -345,8 +321,7 @@
 //             {/* TAGS */}
 //             <div className="mt-8">
 //               <h2
-//                 className="
-//                   font-['Space Mono']
+//                 className="font-[ //'Space Mono']
 //                   text-sm
 //                   font-bold
 //                   text-[#858584]
@@ -355,17 +330,12 @@
 //                 Tags
 //               </h2>
 
-//               <div className="mt-4 flex flex-wrap gap-3">
+//               <div className="flex flex-wrap gap-3 mt-4">
 //                 {["ANIMATION", "ILLUSTRATION", "MOON", "MOON"].map(
 //                   (tag, index) => (
 //                     <span
 //                       key={`${tag}-${index}`}
-//                       className="
-//                         rounded-full
-//                         bg-[#3B3B3B]
-//                         px-5
-//                         py-3
-//                         font-['Work Sans']
+//                       className="px-5 py-3 font-[ bg-[#3B3B3B] rounded-full //'Work Sans']
 //                         text-[10px]
 //                         font-bold
 //                         text-white
@@ -380,10 +350,9 @@
 //           </div>
 
 //           {/* RIGHT BID CARD */}
-//           <aside className="h-fit rounded-2xl bg-[#3B3B3B] p-5 md:sticky md:top-6">
+//           <aside className="top-6 p-5 h-fit bg-[#3B3B3B] rounded-2xl md:sticky">
 //             <p
-//               className="
-//                 font-['Space Mono']
+//               className="font-[ //'Space Mono']
 //                 text-xs
 //                 text-white
 //               "
@@ -391,7 +360,7 @@
 //               Auction ends in:
 //             </p>
 
-//             <div className="mt-3 grid grid-cols-3 gap-2">
+//             <div className="grid grid-cols-3 gap-2 mt-3">
 //               <div>
 //                 <p className="font-['Space Mono'] text-3xl font-bold">
 //                   59
@@ -425,14 +394,7 @@
 
 //             <button
 //               type="button"
-//               className="
-//                 mt-6
-//                 w-full
-//                 rounded-xl
-//                 bg-[#A259FF]
-//                 px-5
-//                 py-4
-//                 font-['Work Sans']
+//               className="mt-6 px-5 py-4 w-full font-[ bg-[#A259FF] rounded-xl //'Work Sans']
 //                 text-sm
 //                 font-semibold
 //                 text-white
@@ -450,15 +412,14 @@
 //     MORE FROM THIS ARTIST
 // ================================================== */}
 
-// <section className="w-full bg-[#2B2B2B] pb-20 pt-8">
-//   <div className="mx-auto max-w-[1050px] px-5 sm:px-8 lg:px-0">
+// <section className="pb-20 pt-8 w-full bg-[#2B2B2B]">
+//   <div className="mx-auto px-5 max-w-[1050px] sm:px-8 lg:px-0">
 
 //     {/* SECTION HEADER */}
-//     <div className="mb-10 flex flex-col justify-between gap-5 sm:flex-row sm:items-center">
+//     <div className="flex flex-col justify-between items-center gap-5 mb-10 sm:flex-row">
 
 //       <h2
-//         className="
-//           font-['Work_Sans']
+//         className="font-[ //'Work_Sans']
 //           text-2xl
 //           font-semibold
 //           text-white
@@ -470,16 +431,7 @@
 
 //       <button
 //         type="button"
-//         className="
-//           inline-flex
-//           items-center
-//           justify-center
-//           rounded-xl
-//           border
-//           border-[#A259FF]
-//           px-6
-//           py-3
-//           font-['Work_Sans']
+//         className="inline-flex items-center justify-center px-6 py-3 font-[ rounded-xl border-[#A259FF] // border'Work_Sans']
 //           text-xs
 //           font-semibold
 //           text-white
@@ -494,41 +446,20 @@
 
 //     {/* NFT CARDS */}
 //     <div
-//       className="
-//         grid
-//         grid-cols-1
-//         gap-7
-//         sm:grid-cols-2
-//         lg:grid-cols-3
-//       "
+//       className="grid grid-cols-1 gap-7 // sm:grid-cols-2 lg:grid-cols-3"
 //     >
 //       {finalRelatedNFTs.map((item) => (
 //         <div
 //           key={item.id}
-//           className="
-//             group
-//             overflow-hidden
-//             rounded-2xl
-//             bg-[#3B3B3B]
-//             transition
-//             duration-300
-//             hover:-translate-y-1
-//           "
+//           className="overflow-hidden bg-[#3B3B3B] rounded-2xl duration-300 // group transition hover:-translate-y-1"
 //         >
 
 //           {/* IMAGE */}
-//           <div className="h-[250px] w-full overflow-hidden">
+//           <div className="overflow-hidden h-[250px] w-full">
 //             <img
 //               src={item.image}
 //               alt={item.name}
-//               className="
-//                 h-full
-//                 w-full
-//                 object-cover
-//                 transition
-//                 duration-500
-//                 group-hover:scale-105
-//               "
+//               className="object-cover h-full w-full duration-500 // transition group-hover:scale-105"
 //             />
 //           </div>
 
@@ -537,9 +468,7 @@
 
 //             {/* NAME */}
 //             <h3
-//               className="
-//                 truncate
-//                 font-['Work_Sans']
+//               className="font-[ // truncate'Work_Sans']
 //                 text-lg
 //                 font-semibold
 //                 text-white
@@ -549,18 +478,16 @@
 //             </h3>
 
 //             {/* CREATOR */}
-//             <div className="mt-3 flex items-center gap-2">
+//             <div className="flex items-center gap-2 mt-3">
 
 //               <img
 //                 src={item.avatar}
 //                 alt={item.creator}
-//                 className="h-6 w-6 rounded-full object-cover"
+//                 className="object-cover h-6 w-6 rounded-full"
 //               />
 
 //               <p
-//                 className="
-//                   truncate
-//                   font-['Space_Mono']
+//                 className="font-[ // truncate'Space_Mono']
 //                   text-xs
 //                   text-white
 //                 "
@@ -571,12 +498,11 @@
 //             </div>
 
 //             {/* PRICE + BID */}
-//             <div className="mt-6 flex justify-between gap-3">
+//             <div className="flex justify-between gap-3 mt-6">
 
 //               <div>
 //                 <p
-//                   className="
-//                     font-['Space_Mono']
+//                   className="font-[ //'Space_Mono']
 //                     text-xs
 //                     text-[#858584]
 //                   "
@@ -585,9 +511,7 @@
 //                 </p>
 
 //                 <p
-//                   className="
-//                     mt-2
-//                     font-['Space_Mono']
+//                   className="mt-2 font-[ //'Space_Mono']
 //                     text-xs
 //                     text-white
 //                   "
@@ -599,8 +523,7 @@
 //               <div className="text-right">
 
 //                 <p
-//                   className="
-//                     font-['Space_Mono']
+//                   className="font-[ //'Space_Mono']
 //                     text-xs
 //                     text-[#858584]
 //                   "
@@ -609,9 +532,7 @@
 //                 </p>
 
 //                 <p
-//                   className="
-//                     mt-2
-//                     font-['Space_Mono']
+//                   className="mt-2 font-[ //'Space_Mono']
 //                     text-xs
 //                     text-white
 //                   "
@@ -654,18 +575,20 @@ import { Globe } from "lucide-react";
 import Navbar from "../common/Navbar";
 import Footer from "../common/Footer";
 
-import astronautfloating from "../assets/images/orbitian/astronautfloating.png";
+// import astronautfloating from "../assets/images/Orbitian/astronautfloating.png";
 import orbitianavatar from "../assets/images/orbitian-avatar-img/orbitianavatar.png";
 
-import orbitian1 from "../assets/images/orbitian/orbitian1.png";
-import orbitian2 from "../assets/images/orbitian/orbitian2.png";
-import orbitian3 from "../assets/images/orbitian/orbitian3.png";
-import orbitian4 from "../assets/images/orbitian/orbitian4.png";
-import orbitian5 from "../assets/images/orbitian/orbitian5.png";
-import orbitian6 from "../assets/images/orbitian/orbitian6.png";
-import orbitian7 from "../assets/images/orbitian/orbitian7.png";
-import orbitian8 from "../assets/images/orbitian/orbitian8.png";
-import orbitian9 from "../assets/images/orbitian/orbitian9.png";
+import astronautfloating from "../assets/images/Orbitian/astronautfloating.png";
+
+import orbitian1 from "../assets/images/Orbitian/Orbitian1.png";
+import orbitian2 from "../assets/images/Orbitian/Orbitian2.png";
+import orbitian3 from "../assets/images/Orbitian/Orbitian3.png";
+import orbitian4 from "../assets/images/Orbitian/Orbitian4.png";
+import orbitian5 from "../assets/images/Orbitian/Orbitian5.png";
+import orbitian6 from "../assets/images/Orbitian/Orbitian6.png";
+import orbitian7 from "../assets/images/Orbitian/Orbitian7.png";
+import orbitian8 from "../assets/images/Orbitian/Orbitian8.png";
+import orbitian9 from "../assets/images/Orbitian/Orbitian9.png";
 
 const RELATED_NFTS = [
   {
@@ -708,7 +631,7 @@ const RELATED_NFTS = [
 
 function NFT() {
   return (
-    <div className="min-h-screen bg-[#000] text-white">
+    <div className="min-h-screen text-white bg-[#000]">
       <Navbar />
 
       {/* ==================================================
@@ -719,7 +642,7 @@ function NFT() {
         <img
           src={astronautfloating}
           alt="The Orbitian"
-          className="h-[350px] w-full object-cover sm:h-[450px] md:h-[550px]"
+          className="object-cover h-[350px] w-full sm:h-[450px] md:h-[550px]"
         />
       </section>
 
@@ -727,8 +650,8 @@ function NFT() {
           NFT DETAILS
       ================================================== */}
 
-      <section className="w-full min-w-0 overflow-x-hidden bg-[#000000]">
-          <div className="mx-auto grid w-full min-w-0 max-w-[1200px] gap-10 px-5 py-10 md:grid-cols-[minmax(0,1fr)_350px] md:gap-12 md:py-12 lg:px-0">
+      <section className="overflow-x-hidden w-full min-w-0 bg-[#000000]">
+          <div className="grid gap-10 gap-12 mx-auto px-5 py-10 py-12 w-full min-w-0 max-w-[1200px] md:grid-cols-[minmax(0,1fr)_350px] lg:px-0">
 
             {/* LEFT */}
             <div className="w-full min-w-0">
@@ -747,11 +670,11 @@ function NFT() {
                   Created By
                 </p>
 
-                <div className="mt-3 flex items-center gap-3">
+                <div className="flex items-center gap-3 mt-3">
                   <img
                     src={orbitianavatar}
                     alt="Orbitian"
-                    className="h-8 w-8 rounded-full object-cover"
+                    className="object-cover h-8 w-8 rounded-full"
                   />
 
                   <p className="font-['Work_Sans'] text-[22px] font-semibold">
@@ -793,7 +716,7 @@ function NFT() {
                     <Globe
                       size={30}
                       strokeWidth={1.7}
-                      className="shrink-0 text-[#858584]"
+                      className="text-[#858584] shrink-0"
                     />
 
                     <span className="text-[22px]">
@@ -808,7 +731,7 @@ function NFT() {
                     <Globe
                       size={30}
                       strokeWidth={1.7}
-                      className="shrink-0 text-[#858584]"
+                      className="text-[#858584] shrink-0"
                     />
 
                     <span className="text-[22px]">
@@ -824,13 +747,13 @@ function NFT() {
                   Tags
                 </h2>
 
-                <div className="mt-4 flex flex-wrap gap-3">
+                <div className="flex flex-wrap gap-3 mt-4">
                   {["ANIMATION", "ILLUSTRATION", "MOON", "MOON"].map((tag, index) => (
                     <button
                       key={index}
                       type="button"
                       disabled
-                      className="inline-flex h-[46px] items-center justify-center gap-[12px] rounded-[20px] bg-[#212020] px-[30px] font-['Work_Sans'] text-[16px] font-semibold leading-[22px] text-white text-center"
+                      className="inline-flex items-center justify-center gap-[12px] px-[30px] h-[46px] font-[ bg-[#212020] rounded-[20px]'Work_Sans'] text-[16px] font-semibold leading-[22px] text-white text-center"
                     >
                       <span>{tag}</span>
                     </button>
@@ -841,15 +764,15 @@ function NFT() {
             </div>
 
             {/* RIGHT BID CARD */}
-            <aside className="h-fit w-full max-w-[295px] min-w-0 justify-self-start rounded-[20px] bg-[#212020] p-[30px] md:justify-self-end lg:justify-self-auto">
+            <aside className="justify-self-start p-[30px] h-fit w-full max-w-[295px] min-w-0 bg-[#212020] rounded-[20px] md:justify-self-end lg:justify-self-auto">
 
               {/* Auction Timer */}
-              <div className="flex h-[87px] w-full max-w-[235px] flex-col gap-[10px] rounded-[20px] backdrop-blur-[10px]">
+              <div className="flex flex-col gap-[10px] h-[87px] w-full max-w-[235px] rounded-[20px] backdrop-blur-[10px]">
                 <p className="h-[13px] w-full max-w-[235px] font-['Space_Mono'] text-[12px] font-normal leading-[13.2px] text-white">
                   Auction ends in:
                 </p>
 
-                <div className="flex h-[64px] w-full max-w-[235px] items-start justify-between">
+                <div className="flex items-start justify-between h-[64px] w-full max-w-[235px]">
 
                   {/* Hours */}
                   <div className="flex flex-col">
@@ -863,7 +786,7 @@ function NFT() {
                   </div>
 
                   {/* Colon */}
-                  <span className="relative -top-[3px] font-['Space_Mono'] text-[32px] font-bold leading-[35.2px] text-white">
+                  <span className="relative font-[ -top-[3px]'Space_Mono'] text-[32px] font-bold leading-[35.2px] text-white">
                     :
                   </span>
 
@@ -879,7 +802,7 @@ function NFT() {
                   </div>
 
                   {/* Colon */}
-                  <span className="relative -top-[3px] font-['Space_Mono'] text-[32px] font-bold leading-[35.2px] text-white">
+                  <span className="relative font-[ -top-[3px]'Space_Mono'] text-[32px] font-bold leading-[35.2px] text-white">
                     :
                   </span>
 
@@ -900,7 +823,7 @@ function NFT() {
               {/* Place Bid Button */}
               <button
                 type="button"
-                className="mt-[30px] flex h-[60px] w-full max-w-[235px] items-center justify-center gap-[12px] rounded-[20px] bg-[#7629DB] px-[30px] font-['Work_Sans'] text-[16px] font-semibold transition hover:bg-[#8B3FF0] md:px-[50px]"
+                className="flex items-center justify-center gap-[12px] mt-[30px] px-[30px] h-[60px] w-full max-w-[235px] font-[ bg-[#7629DB] rounded-[20px]'Work_Sans'] text-[16px] font-semibold transition hover:bg-[#8B3FF0] md:px-[50px]"
               >
                 <span className="h-[22px] w-[74px] text-center font-['Work_Sans'] text-[16px] font-semibold leading-[22px] text-white">
                   Place Bid
@@ -916,16 +839,16 @@ function NFT() {
           MORE FROM THIS ARTIST
       ================================================== */}
 
-      <section className="w-full bg-[#000000] pb-20 pt-8">
-  <div className="mx-auto max-w-[1200px] px-5 lg:px-0">
-    <div className="mb-15 flex flex-col justify-between gap-5 sm:flex-row sm:items-center">
+      <section className="pb-20 pt-8 w-full bg-[#000000]">
+  <div className="mx-auto px-5 max-w-[1200px] lg:px-0">
+    <div className="flex flex-col justify-between items-center gap-5 mb-15 sm:flex-row">
       <h4 className="font-['Work_Sans'] text-4xl font-semibold">
         More From This Artist
       </h4>
 
       <Link
         to="/artist"
-        className="inline-flex h-[60px] w-full max-w-[267px] items-center justify-center gap-[9px] rounded-[20px] border-[2px] border-[#7629DB] px-[20px] transition hover:bg-[#A259FF] sm:w-[267px] sm:px-[50px]"
+        className="inline-flex items-center justify-center gap-[9px] px-[20px] h-[60px] w-full max-w-[267px] w-[267px] rounded-[20px] border-[2px] border-[#7629DB] transition hover:bg-[#A259FF] sm:px-[50px]"
       >
         {/* Arrow */}
         <svg
@@ -964,13 +887,13 @@ function NFT() {
             {RELATED_NFTS.map((item, index) => (
               <div
                 key={index}
-                className="overflow-hidden rounded-2xl bg-[#212020] transition duration-300 hover:-translate-y-1"
+                className="overflow-hidden bg-[#212020] rounded-2xl duration-300 transition hover:-translate-y-1"
               >
-                <div className="h-[340px] w-full overflow-hidden">
+                <div className="overflow-hidden h-[340px] w-full">
                   <img
                     src={item.image}
                     alt={item.name}
-                    className="h-full w-full object-cover transition duration-500 hover:scale-105"
+                    className="object-cover h-full w-full duration-500 transition hover:scale-105"
                   />
                 </div>
 
@@ -979,11 +902,11 @@ function NFT() {
                     {item.name}
                   </h3>
 
-                  <div className="mt-3 flex items-center gap-2">
+                  <div className="flex items-center gap-2 mt-3">
                     <img
                       src={orbitianavatar}
                       alt="Orbitian"
-                      className="h-6 w-6 rounded-full object-cover"
+                      className="object-cover h-6 w-6 rounded-full"
                     />
 
                     <p className="font-['Space_Mono'] text-lg">
@@ -991,7 +914,7 @@ function NFT() {
                     </p>
                   </div>
 
-                  <div className="mt-6 flex justify-between">
+                  <div className="flex justify-between mt-6">
                     <div>
                       <p className="font-['Space_Mono'] text-[12px] text-[#858584]">
                         Price

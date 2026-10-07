@@ -7,9 +7,8 @@ import React from "react";
 import astronautImage from "../assets/logo/connect-wallet.png";
 
 import metamaskIcon from "../assets/icons/metamask.png";
-import walletConnectIcon from "../assets/icons/walletconnect.png";
-import coinbaseIcon from "../assets/icons/coinbase.png";
-
+import walletConnectIcon from "../assets/icons/WalletConnect.png";
+import coinbaseIcon from "../assets/icons/Coinbase.png";
 /* ==================================================
    WALLET DATA
 ================================================== */
@@ -38,7 +37,7 @@ const Connect = () => {
     <section className="w-full bg-[#000000]">
 
       <div
-        className="mx-auto px-4 max-w-[1250px] sm:px-6 lg:py-10 px-8"
+        className="mx-auto px-4 px-8 max-w-[1250px] sm:px-6 lg:py-10"
       >
 
         {/* ==========================================
