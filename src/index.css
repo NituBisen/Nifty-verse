@@ -1,14 +1,14 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap");
+
 @import "tailwindcss";
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 body {
-  font-family: "Work Sans", sans-serif;
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+}
 
-  .space-mono-regular {
+/* Space Mono */
+.space-mono-regular {
   font-family: "Space Mono", monospace;
   font-weight: 400;
   font-style: normal;
@@ -31,6 +31,3 @@ body {
   font-weight: 700;
   font-style: italic;
 }
-
-}
-

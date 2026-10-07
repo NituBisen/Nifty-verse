@@ -4,15 +4,15 @@ import { Link } from "react-router-dom";
 import Navbar from "../common/Navbar";
 import Footer from "../common/Footer";
 
-import orbitian1 from "../assets/images/orbitian/orbitian1.png";
-import orbitian2 from "../assets/images/orbitian/orbitian2.png";
-import orbitian3 from "../assets/images/orbitian/orbitian3.png";
-import orbitian4 from "../assets/images/orbitian/orbitian4.png";
-import orbitian5 from "../assets/images/orbitian/orbitian5.png";
-import orbitian6 from "../assets/images/orbitian/orbitian6.png";
-import orbitian7 from "../assets/images/orbitian/orbitian7.png";
-import orbitian8 from "../assets/images/orbitian/orbitian8.png";
-import orbitian9 from "../assets/images/orbitian/orbitian9.png";
+import orbitian1 from "../assets/images/Orbitian/Orbitian1.png";
+import orbitian2 from "../assets/images/Orbitian/Orbitian2.png";
+import orbitian3 from "../assets/images/Orbitian/Orbitian3.png";
+import orbitian4 from "../assets/images/Orbitian/Orbitian4.png";
+import orbitian5 from "../assets/images/Orbitian/Orbitian5.png";
+import orbitian6 from "../assets/images/Orbitian/Orbitian6.png";
+import orbitian7 from "../assets/images/Orbitian/Orbitian7.png";
+import orbitian8 from "../assets/images/Orbitian/Orbitian8.png";
+import orbitian9 from "../assets/images/Orbitian/Orbitian9.png";
 
 import orbitianavatar from "../assets/images/orbitian-avatar-img/orbitianavatar.png";
 
@@ -149,17 +149,7 @@ const COLLECTIONS = [
 function CollectionCard({ collection }) {
   return (
     <article
-      className="
-        mx-auto
-        flex
-        h-[525px]
-        w-[380px]
-        flex-col
-        gap-[15px]
-        overflow-hidden
-        rounded-[20px]
-        bg-[#2B2B2B]
-      "
+      className="overflow-hidden flex flex-col gap-[15px] mx-auto h-[525px] w-[380px] bg-[#2B2B2B] rounded-[20px]"
     >
       {/* =================================================
           PHOTOS
@@ -170,58 +160,28 @@ function CollectionCard({ collection }) {
 
         <Link
           to={`/nft/${collection.nftId}`}
-          className="
-            group
-            block
-            h-[330px]
-            w-[380px]
-            overflow-hidden
-            rounded-[20px]
-          "
+          className="overflow-hidden block h-[330px] w-[380px] rounded-[20px] group"
         >
           <img
             src={collection.primaryImage}
             alt={collection.name}
-            className="
-              h-[330px]
-              w-[380px]
-              object-cover
-              transition-transform
-              duration-300
-              ease-out
-              group-hover:scale-105
-            "
+            className="object-cover h-[330px] w-[380px] transition-transform duration-300 ease-out group-hover:scale-105"
           />
         </Link>
 
         {/* SECONDARY PHOTOS + COUNT */}
 
-        <div className="mt-[15px] flex h-[100px] w-[380px] gap-[15px]">
+        <div className="flex gap-[15px] mt-[15px] h-[100px] w-[380px]">
           {/* SECONDARY IMAGE 1 */}
 
           <Link
             to={`/nft/${collection.nftId}`}
-            className="
-              group
-              block
-              h-[100px]
-              w-[116px]
-              shrink-0
-              overflow-hidden
-              rounded-[20px]
-            "
+            className="overflow-hidden block h-[100px] w-[116px] rounded-[20px] group shrink-0"
           >
             <img
               src={collection.secondaryImages[0]}
               alt={`${collection.name} artwork 1`}
-              className="
-                h-full
-                w-full
-                object-cover
-                transition-transform
-                duration-300
-                group-hover:scale-105
-              "
+              className="object-cover h-full w-full transition-transform duration-300 group-hover:scale-105"
             />
           </Link>
 
@@ -229,27 +189,12 @@ function CollectionCard({ collection }) {
 
           <Link
             to={`/nft/${collection.nftId}`}
-            className="
-              group
-              block
-              h-[100px]
-              w-[116px]
-              shrink-0
-              overflow-hidden
-              rounded-[20px]
-            "
+            className="overflow-hidden block h-[100px] w-[116px] rounded-[20px] group shrink-0"
           >
             <img
               src={collection.secondaryImages[1]}
               alt={`${collection.name} artwork 2`}
-              className="
-                h-full
-                w-full
-                object-cover
-                transition-transform
-                duration-300
-                group-hover:scale-105
-              "
+              className="object-cover h-full w-full transition-transform duration-300 group-hover:scale-105"
             />
           </Link>
 
@@ -257,23 +202,10 @@ function CollectionCard({ collection }) {
 
           <Link
             to={`/nft/${collection.nftId}`}
-            className="
-              flex
-              h-[100px]
-              w-[116px]
-              shrink-0
-              items-center
-              justify-center
-              rounded-[20px]
-              bg-[#A259FF]
-              transition-colors
-              duration-200
-              hover:bg-[#913FE8]
-            "
+            className="flex items-center justify-center h-[100px] w-[116px] bg-[#A259FF] rounded-[20px] transition-colors duration-200 shrink-0 hover:bg-[#913FE8]"
           >
             <span
-              className="
-                font-['Work Sans']
+              className="font-['Work Sans']
                 text-[16px]
                 font-bold
                 leading-[140%]
@@ -294,11 +226,7 @@ function CollectionCard({ collection }) {
         {/* COLLECTION NAME */}
 
         <h2
-          className="
-            h-[31px]
-            w-[380px]
-            truncate
-            font-['Work Sans']
+          className="h-[31px] w-[380px] font-[ truncate'Work Sans']
             text-[22px]
             font-semibold
             leading-[140%]
@@ -311,25 +239,15 @@ function CollectionCard({ collection }) {
 
         {/* ARTIST */}
 
-        <div className="mt-[10px] flex h-[24px] w-[380px] items-center gap-[12px]">
+        <div className="flex items-center gap-[12px] mt-[10px] h-[24px] w-[380px]">
           <img
             src={collection.artistAvatar}
             alt={collection.artist}
-            className="
-              h-[24px]
-              w-[24px]
-              shrink-0
-              rounded-full
-              object-cover
-            "
+            className="object-cover h-[24px] w-[24px] rounded-full shrink-0"
           />
 
           <span
-            className="
-              h-[22px]
-              w-[306px]
-              truncate
-              font-['Work Sans']
+            className="h-[22px] w-[306px] font-[ truncate'Work Sans']
               text-[16px]
               font-normal
               leading-[140%]
@@ -350,12 +268,12 @@ function CollectionCard({ collection }) {
 
 function Collection() {
   return (
-    <div className="min-h-screen bg-[#0A0A0A] text-white">
+    <div className="min-h-screen text-white bg-[#0A0A0A]">
       
       <Navbar />
 
       <main>
-        <section className="mx-auto w-full max-w-[1150px] px-5 py-16 md:px-0 lg:py-20">
+        <section className="mx-auto px-5 py-16 w-full max-w-[1150px] md:px-0 lg:py-20">
           
           {/* PAGE HEADER */}
 
