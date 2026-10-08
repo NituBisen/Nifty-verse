@@ -55,7 +55,6 @@ const App = () => {
 
       {/* Any invalid URL → Home */}
       <Route path="*" element={<Navigate to="/" replace />} />
-<<<<<<< HEAD
       <Route path="/signin" element={<Signin />} />
 
 <Route
@@ -64,7 +63,6 @@ const App = () => {
 />
 <Route path="/profile" element={<UserProfile />} />
 <Route path="/edit-profile" element={<EditProfile />} />
-=======
 
       {/* Admin Section */}
 
@@ -85,7 +83,6 @@ const App = () => {
         <Route path="settings" element={<AdminPlaceholder />} />
       </Route>
 
->>>>>>> 00f48fb (admin ui section)
     </Routes>
     
   );
