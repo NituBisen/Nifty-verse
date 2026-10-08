@@ -4,6 +4,10 @@ import { useNavigate } from "react-router-dom";
 
 import logo from "../assets/logo/logo.png";
 
+// =========================================================
+// NAVIGATION LINKS
+// =========================================================
+
 const NAV_LINKS = [
   {
     label: "Marketplace",
@@ -18,6 +22,10 @@ const NAV_LINKS = [
     path: "/connect-wallet",
   },
 ];
+
+// =========================================================
+// NAVBAR
+// =========================================================
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -46,30 +54,41 @@ const Navbar = () => {
   };
 
   // =========================================================
-  // SIGN UP
+  // PROFILE
   // =========================================================
 
-  const handleSignUp = () => {
+  const handleProfile = () => {
     closeMenu();
-    navigate("/create-account");
+    navigate("/profile");
+  };
+
+  // =========================================================
+  // LOGO
+  // =========================================================
+
+  const handleLogoClick = () => {
+    closeMenu();
+    navigate("/");
   };
 
   return (
     <nav className="z-50 overflow-visible relative w-full bg-black">
+
       {/* =====================================================
           MAIN NAVBAR
       ===================================================== */}
 
       <div className="mx-auto px-4 w-full max-w-[1400px] sm:px-6 md:px-7 lg:px-10">
         <div className="flex items-center justify-between gap-4 h-[72px] sm:h-[76px] md:h-[82px] lg:h-20">
+
           {/* =================================================
               LOGO
           ================================================= */}
 
           <button
             type="button"
-            onClick={() => navigate("/")}
-            aria-label="Go to marketplace"
+            onClick={handleLogoClick}
+            aria-label="Go to homepage"
             className="flex items-center transition-transform duration-300 cursor-pointer shrink-0 hover:scale-[1.03] active:scale-95"
           >
             <img
@@ -85,9 +104,13 @@ const Navbar = () => {
           ================================================= */}
 
           <div className="hidden flex-1 items-center justify-end gap-5 min-w-0 md:flex lg:gap-8 xl:gap-10">
-            {/* NAV LINKS */}
+
+            {/* =================================================
+                NAV LINKS
+            ================================================= */}
 
             <div className="flex items-center gap-5 min-w-0 lg:gap-8 xl:gap-10">
+
               {NAV_LINKS.map((link) => (
                 <button
                   key={link.path}
@@ -101,19 +124,23 @@ const Navbar = () => {
                   <span className="absolute left-0 h-[2px] w-0 bg-[#A259FF] rounded-full transition-all duration-300 -bottom-1 group-hover:w-full" />
                 </button>
               ))}
+
             </div>
 
-            {/* DESKTOP / TABLET SIGN UP */}
+            {/* =================================================
+                PROFILE BUTTON
+            ================================================= */}
 
             <button
               type="button"
-              onClick={handleSignUp}
+              onClick={handleProfile}
               className="inline-flex items-center justify-center gap-2 px-7 py-4 text-base font-semibold text-white bg-[linear-gradient(90deg,#F7C6E7_0%,#A259FF_20%,#4DA6FF_100%)] rounded-[20px] shadow-[0_0_20px_rgba(162,89,255,0.12)] transition-all duration-300 cursor-pointer shrink-0 hover:-translate-y-1 hover:shadow-[0_8px_25px_rgba(162,89,255,0.25)] active:scale-95"
             >
               <User className="h-5 w-5" />
 
-              <span>Sign Up</span>
+              <span>Profile</span>
             </button>
+
           </div>
 
           {/* =================================================
@@ -130,7 +157,7 @@ const Navbar = () => {
                 : "Open navigation menu"
             }
             aria-expanded={isMenuOpen}
-            className="flex items-center justify-center p-2 text-white rounded-xl transition-all duration-300 cursor-pointer shrink-0 hover:bg-white/10 hover:text-[#A259FF] active:scale-90 md:hidden"
+            className="flex items-center justify-center p-2 text-white rounded-xl transition-all duration-300 cursor-pointer hover:bg-white/10 hover:text-[#A259FF] active:scale-90 md:hidden"
           >
             {isMenuOpen ? (
               <X className="h-7 w-7" />
@@ -138,6 +165,7 @@ const Navbar = () => {
               <Menu className="h-7 w-7" />
             )}
           </button>
+
         </div>
       </div>
 
@@ -148,16 +176,21 @@ const Navbar = () => {
       <div
         className={`absolute left-0 right-0 top-full overflow-hidden border-t border-white/10 bg-black/95 shadow-2xl backdrop-blur-xl transition-all duration-300 ease-in-out md:hidden ${
           isMenuOpen
-            ? "pointer-events-auto max-h-[420px] opacity-100"
+            ? "pointer-events-auto max-h-[500px] opacity-100"
             : "pointer-events-none max-h-0 opacity-0"
         }`}
       >
         <div
           className={`mx-auto flex w-full max-w-[1400px] flex-col gap-2 px-4 pb-6 pt-4 transition-all duration-300 sm:px-6 ${
-            isMenuOpen ? "translate-y-0" : "-translate-y-3"
+            isMenuOpen
+              ? "translate-y-0"
+              : "-translate-y-3"
           }`}
         >
-          {/* MOBILE NAV LINKS */}
+
+          {/* =================================================
+              MOBILE NAV LINKS
+          ================================================= */}
 
           {NAV_LINKS.map((link, index) => (
             <button
@@ -177,15 +210,19 @@ const Navbar = () => {
             >
               <span>{link.label}</span>
 
-              <span className="text-[#A259FF]">→</span>
+              <span className="text-[#A259FF]">
+                →
+              </span>
             </button>
           ))}
 
-          {/* MOBILE SIGN UP */}
+          {/* =================================================
+              MOBILE PROFILE BUTTON
+          ================================================= */}
 
           <button
             type="button"
-            onClick={handleSignUp}
+            onClick={handleProfile}
             className={`mt-2 inline-flex w-full cursor-pointer items-center justify-center gap-2 rounded-[20px] bg-[linear-gradient(90deg,#00E5FF_0%,#008CFF_30%,#5B2CFF_55%,#9B2CFF_75%,#FF00D4_100%)] px-5 py-3.5 text-sm font-semibold text-white shadow-[0_0_25px_rgba(162,89,255,0.15)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(162,89,255,0.25)] active:scale-[0.98] ${
               isMenuOpen
                 ? "translate-y-0 opacity-100"
@@ -194,10 +231,12 @@ const Navbar = () => {
           >
             <User className="h-5 w-5" />
 
-            <span>Sign Up</span>
+            <span>Profile</span>
           </button>
+
         </div>
       </div>
+
     </nav>
   );
 };

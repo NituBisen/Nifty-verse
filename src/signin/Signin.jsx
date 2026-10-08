@@ -72,23 +72,23 @@
 //     <section className="w-full">
 //     <Navbar />
 
-//       <div className="mx-auto max-w-[1400px] px-4 py-14 sm:px-6 md:py-20 lg:px-10">
-//         <div className="flex flex-col items-stretch overflow-hidden rounded-2xl lg:flex-row">
+//       <div className="mx-auto px-4 py-14 max-w-[1400px] sm:px-6 md:py-20 lg:px-10">
+//         <div className="overflow-hidden flex flex-col items-stretch rounded-2xl lg:flex-row">
 
 //           {/* Left Image */}
 //           <div className="w-full shrink-0 lg:w-1/2">
 //             <img
 //               src={astronautImage}
 //               alt="Astronauts approaching a spacecraft"
-//               className="h-[520px] w-full object-cover sm:h-[360px] lg:h-full"
+//               className="object-cover h-[520px] w-full sm:h-[360px] lg:h-full"
 //             />
 //           </div>
 
 //           {/* Right Form */}
-//           <div className="flex w-full items-center bg-[#1e1c1c] px-1 py-10 sm:px-4 lg:w-1/2 lg:px-12 lg:py-0">
+//           <div className="flex items-center px-1 py-10 py-0 w-full w-1/2 bg-[#1e1c1c] sm:px-4 lg:px-12">
 //             <div className="mx-auto w-full max-w-md lg:mx-0">
 
-//               <h2 className="bg-[linear-gradient(90deg,#F7C6E7_0%,#A259FF_5%,#4DA6FF_80%)] bg-clip-text text-3xl font-bold text-transparent sm:text-4xl">
+//               <h2 className="text-3xl font-bold text-transparent bg-[linear-gradient(90deg,#F7C6E7_0%,#A259FF_5%,#4DA6FF_80%)] bg-clip-text sm:text-4xl">
 //                 Sign In
 //               </h2>
 
@@ -98,12 +98,12 @@
 
 //               <form
 //                 onSubmit={handleSubmit}
-//                 className="mt-8 flex flex-col gap-4"
+//                 className="flex flex-col gap-4 mt-8"
 //               >
 
 //                 {/* Email */}
 //                 <div className="relative">
-//                   <Mail className="absolute left-5 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-400" />
+//                   <Mail className="absolute left-5 top-1/2 h-5 w-5 text-gray-400 -translate-y-1/2" />
 
 //                   <input
 //                     type="email"
@@ -112,13 +112,13 @@
 //                     onChange={handleChange}
 //                     placeholder="Email Address"
 //                     required
-//                     className="h-[52px] w-full rounded-full bg-white pl-12 pr-5 text-base text-gray-900 outline-none placeholder-gray-500 sm:h-[55px]"
+//                     className="pl-12 pr-5 placeholder-gray-500 h-[52px] w-full text-base text-gray-900 bg-white rounded-full outline-none sm:h-[55px]"
 //                   />
 //                 </div>
 
 //                 {/* Password */}
 //                 <div className="relative">
-//                   <LockKeyhole className="absolute left-5 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-400" />
+//                   <LockKeyhole className="absolute left-5 top-1/2 h-5 w-5 text-gray-400 -translate-y-1/2" />
 
 //                   <input
 //                     type="password"
@@ -127,7 +127,7 @@
 //                     onChange={handleChange}
 //                     placeholder="Password"
 //                     required
-//                     className="h-[52px] w-full rounded-full bg-white pl-12 pr-5 text-base text-gray-900 outline-none placeholder-gray-500 sm:h-[55px]"
+//                     className="pl-12 pr-5 placeholder-gray-500 h-[52px] w-full text-base text-gray-900 bg-white rounded-full outline-none sm:h-[55px]"
 //                   />
 //                 </div>
 
@@ -149,14 +149,14 @@
 //                 <button
 //                   type="submit"
 //                   disabled={loading}
-//                   className="mt-2 h-[52px] w-full rounded-full bg-[#7a39d0] text-base font-bold text-white transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60 sm:h-[55px]"
+//                   className="mt-2 h-[52px] w-full text-base font-bold text-white bg-[#7a39d0] rounded-full transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60 sm:h-[55px]"
 //                 >
 //                   {loading ? "Signing In..." : "Sign In"}
 //                 </button>
 //               </form>
 
 //               {/* Create Account Link */}
-//               <div className="mt-4 flex flex-col items-center gap-2 sm:flex-row sm:justify-center">
+//               <div className="flex flex-col items-center justify-center gap-2 mt-4 sm:flex-row">
 //                 <span className="text-sm text-gray-400">
 //                   Don't have an account?
 //                 </span>
@@ -275,23 +275,23 @@ const Signin = () => {
       <section className="w-full">
         <Navbar />
 
-        <div className="mx-auto max-w-[1400px] px-4 py-14 sm:px-6 md:py-20 lg:px-10">
-          <div className="flex flex-col items-stretch overflow-hidden rounded-2xl lg:flex-row">
+        <div className="mx-auto px-4 py-14 max-w-[1400px] sm:px-6 md:py-20 lg:px-10">
+          <div className="overflow-hidden flex flex-col items-stretch rounded-2xl lg:flex-row">
 
             {/* Left Image */}
             <div className="w-full shrink-0 lg:w-1/2">
               <img
                 src={astronautImage}
                 alt="Astronauts approaching a spacecraft"
-                className="h-[520px] w-full object-cover sm:h-[360px] lg:h-full"
+                className="object-cover h-[520px] w-full sm:h-[360px] lg:h-full"
               />
             </div>
 
             {/* Right Form */}
-            <div className="flex w-full items-center bg-[#1e1c1c] px-1 py-10 sm:px-4 lg:w-1/2 lg:px-12 lg:py-0">
+            <div className="flex items-center px-1 py-10 py-0 w-full w-1/2 bg-[#1e1c1c] sm:px-4 lg:px-12">
               <div className="mx-auto w-full max-w-md lg:mx-0">
 
-                <h2 className="bg-[linear-gradient(90deg,#F7C6E7_0%,#A259FF_5%,#4DA6FF_80%)] bg-clip-text text-3xl font-bold text-transparent sm:text-4xl">
+                <h2 className="text-3xl font-bold text-transparent bg-[linear-gradient(90deg,#F7C6E7_0%,#A259FF_5%,#4DA6FF_80%)] bg-clip-text sm:text-4xl">
                   Sign In
                 </h2>
 
@@ -301,12 +301,12 @@ const Signin = () => {
 
                 <form
                   onSubmit={handleSubmit}
-                  className="mt-8 flex flex-col gap-4"
+                  className="flex flex-col gap-4 mt-8"
                 >
 
                   {/* Email */}
                   <div className="relative">
-                    <Mail className="absolute left-5 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-400" />
+                    <Mail className="absolute left-5 top-1/2 h-5 w-5 text-gray-400 -translate-y-1/2" />
 
                     <input
                       type="email"
@@ -315,13 +315,13 @@ const Signin = () => {
                       onChange={handleChange}
                       placeholder="Email Address"
                       required
-                      className="h-[52px] w-full rounded-full bg-white pl-12 pr-5 text-base text-gray-900 outline-none placeholder-gray-500 sm:h-[55px]"
+                      className="pl-12 pr-5 placeholder-gray-500 h-[52px] w-full text-base text-gray-900 bg-white rounded-full outline-none sm:h-[55px]"
                     />
                   </div>
 
                   {/* Password */}
                   <div className="relative">
-                    <LockKeyhole className="absolute left-5 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-400" />
+                    <LockKeyhole className="absolute left-5 top-1/2 h-5 w-5 text-gray-400 -translate-y-1/2" />
 
                     <input
                       type="password"
@@ -330,9 +330,18 @@ const Signin = () => {
                       onChange={handleChange}
                       placeholder="Password"
                       required
-                      className="h-[52px] w-full rounded-full bg-white pl-12 pr-5 text-base text-gray-900 outline-none placeholder-gray-500 sm:h-[55px]"
+                      className="pl-12 pr-5 placeholder-gray-500 h-[52px] w-full text-base text-gray-900 bg-white rounded-full outline-none sm:h-[55px]"
                     />
                   </div>
+                  {/* Forgot Password */}
+<div className="flex justify-end -mt-2">
+  <Link
+    to="/forgot-password"
+    className="text-sm font-semibold text-[#A259FF] transition hover:text-[#C084FC]"
+  >
+    Forgot Password?
+  </Link>
+</div>
 
                   {/* Error */}
                   {error && (
@@ -352,14 +361,14 @@ const Signin = () => {
                   <button
                     type="submit"
                     disabled={loading}
-                    className="mt-2 h-[52px] w-full rounded-full bg-[#7a39d0] text-base font-bold text-white transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60 sm:h-[55px]"
+                    className="mt-2 h-[52px] w-full text-base font-bold text-white bg-[#7a39d0] rounded-full transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60 sm:h-[55px]"
                   >
                     {loading ? "Signing In..." : "Sign In"}
                   </button>
                 </form>
 
                 {/* Create Account Link */}
-                <div className="mt-4 flex flex-col items-center gap-2 sm:flex-row sm:justify-center">
+                <div className="flex flex-col items-center justify-center gap-2 mt-4 sm:flex-row">
                   <span className="text-sm text-gray-400">
                     Don't have an account?
                   </span>
