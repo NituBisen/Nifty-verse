@@ -10,9 +10,12 @@ import Market from "./marketplace/market";
 import NFT from "./nftpage/NFT";
 import Artist from "./artistpage/Artist";
 import Collection from "./collectionpage/Collection";
-import ForgotPassword from "./forgotpass/Forgotpassword";
-import UserProfile from "./userprofile/UserProfile";
-import EditProfile from "./editprofile/EditProfile";
+
+//admin section
+import AdminLayout from "./admin/layout/AdminLayout";
+import AdminDashboard from "./admin/pages/AdminDashboard";
+import AdminPlaceholder from "./admin/pages/AdminPlaceholder";
+import AdminUsers from "./admin/pages/AdminUsers";
 
 const App = () => {
   return (
@@ -38,8 +41,6 @@ const App = () => {
       {/* Ranking */}
       <Route path="/Ranking-page" element={<Ranking />} />
        
-       
-
       {/* Artist Page */}
       <Route path="/artist" element={<Artist />} />
 
@@ -51,14 +52,6 @@ const App = () => {
 
       {/* Any invalid URL → Home */}
       <Route path="*" element={<Navigate to="/" replace />} />
-      <Route path="/signin" element={<Signin />} />
-
-<Route
-  path="/forgot-password"
-  element={<ForgotPassword />}
-/>
-<Route path="/profile" element={<UserProfile />} />
-<Route path="/edit-profile" element={<EditProfile />} />
     </Routes>
     
   );
