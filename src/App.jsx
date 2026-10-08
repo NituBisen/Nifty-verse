@@ -10,6 +10,9 @@ import Market from "./marketplace/market";
 import NFT from "./nftpage/NFT";
 import Artist from "./artistpage/Artist";
 import Collection from "./collectionpage/Collection";
+import ForgotPassword from "./forgotpass/Forgotpassword";
+import UserProfile from "./userprofile/UserProfile";
+import EditProfile from "./editprofile/EditProfile";
 
 //admin section
 import AdminLayout from "./admin/layout/AdminLayout";
@@ -52,6 +55,37 @@ const App = () => {
 
       {/* Any invalid URL → Home */}
       <Route path="*" element={<Navigate to="/" replace />} />
+<<<<<<< HEAD
+      <Route path="/signin" element={<Signin />} />
+
+<Route
+  path="/forgot-password"
+  element={<ForgotPassword />}
+/>
+<Route path="/profile" element={<UserProfile />} />
+<Route path="/edit-profile" element={<EditProfile />} />
+=======
+
+      {/* Admin Section */}
+
+      <Route path="/admin" element={<AdminLayout />}>
+        <Route index element={<Navigate to="dashboard" replace />} />
+        <Route path="dashboard" element={<AdminDashboard />} />
+        <Route path="users" element={<AdminUsers />} />
+        <Route path="nfts" element={<AdminPlaceholder />} />
+        <Route path="collections" element={<AdminPlaceholder />} />
+        <Route path="creators" element={<AdminPlaceholder />} />
+        <Route path="listings" element={<AdminPlaceholder />} />
+        <Route path="auctions" element={<AdminPlaceholder />} />
+        <Route path="bids" element={<AdminPlaceholder />} />
+        <Route path="transactions" element={<AdminPlaceholder />} />
+        <Route path="reports" element={<AdminPlaceholder />} />
+        <Route path="categories" element={<AdminPlaceholder />} />
+        <Route path="featured" element={<AdminPlaceholder />} />
+        <Route path="settings" element={<AdminPlaceholder />} />
+      </Route>
+
+>>>>>>> 00f48fb (admin ui section)
     </Routes>
     
   );
