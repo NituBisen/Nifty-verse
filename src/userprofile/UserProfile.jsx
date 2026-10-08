@@ -293,7 +293,7 @@ const UserProfile = () => {
   };
 
   return (
-    <div className="min-h-screen text-white bg-black">
+    <div className="overflow-x-hidden min-h-screen w-full text-white bg-black">
 
       {/* =====================================================
           NAVBAR
@@ -312,9 +312,11 @@ const UserProfile = () => {
 
         {/* Purple Glow */}
         <div className="absolute inset-0 opacity-30">
+
           <div className="absolute left-[10%] top-[20%] h-40 w-40 bg-[#A259FF] rounded-full blur-[100px]" />
 
           <div className="absolute right-[15%] top-[10%] h-52 w-52 bg-purple-700 rounded-full blur-[120px]" />
+
         </div>
 
         {/* Grid */}
@@ -326,26 +328,26 @@ const UserProfile = () => {
           PROFILE CONTENT
       ===================================================== */}
 
-      <main className="mx-auto px-5 w-full max-w-[1200px] sm:px-8 lg:px-10">
+      <main className="mx-auto px-4 w-full max-w-[1200px] sm:px-8 lg:px-10">
 
         {/* ===================================================
             PROFILE HEADER
         =================================================== */}
 
-        <section className="relative -mt-16 sm:-mt-20 lg:-mt-24">
+        <section className="relative w-full -mt-16 sm:-mt-20 lg:-mt-24">
 
-          <div className="flex flex-col items-center justify-between lg:flex-row items-end">
+          <div className="flex flex-col items-center items-end justify-between w-full lg:flex-row">
 
             {/* =================================================
                 AVATAR + USER INFORMATION
             ================================================= */}
 
-            <div className="flex flex-col items-center gap-6 lg:flex-row items-end">
+            <div className="flex flex-col items-center justify-center items-end gap-6 w-full w-auto lg:flex-row">
 
               {/* AVATAR */}
-              <div className="relative">
+              <div className="relative mx-auto shrink-0 lg:mx-0">
 
-                <div className="overflow-hidden flex items-center justify-center h-32 w-32 bg-gradient-to-br from-[#A259FF] to-[#5D2BA8] rounded-full border-4 border-black sm:h-40 w-40">
+                <div className="overflow-hidden flex items-center justify-center h-32 w-32 bg-gradient-to-br from-[#A259FF] to-[#5D2BA8] rounded-full border-4 border-black">
 
                   <div className="flex items-center justify-center h-full w-full text-5xl font-bold text-[#A259FF] bg-[#222]">
                     NB
@@ -355,18 +357,20 @@ const UserProfile = () => {
 
                 {/* VERIFIED */}
                 <div className="absolute bottom-2 right-2 flex items-center justify-center h-7 w-7 bg-green-500 rounded-full border-2 border-black">
+
                   <CheckCircle2
                     size={15}
                     className="text-white"
                   />
+
                 </div>
 
               </div>
 
               {/* USER DETAILS */}
-              <div className="mt-4 text-center lg:mb-2 mt-0 text-left">
+              <div className="flex flex-col items-center mb-2 mt-0 w-full w-auto text-center text-left lg:items-start">
 
-                <div className="flex items-center justify-center gap-2 lg:justify-start">
+                <div className="flex items-center justify-center gap-2 w-full w-auto lg:justify-start">
 
                   <h1 className="text-2xl font-bold sm:text-3xl">
                     Nitu Bisen
@@ -374,7 +378,7 @@ const UserProfile = () => {
 
                   <CheckCircle2
                     size={20}
-                    className="text-[#A259FF]"
+                    className="text-[#A259FF] shrink-0"
                   />
 
                 </div>
@@ -402,7 +406,7 @@ const UserProfile = () => {
                 ACTION BUTTONS
             ================================================= */}
 
-            <div className="flex gap-3 mt-6 lg:mb-2 mt-0">
+            <div className="flex justify-center gap-3 mt-6 mb-2 mt-0 w-full w-auto lg:justify-start">
 
               {/* EDIT PROFILE */}
               <button
@@ -435,24 +439,25 @@ const UserProfile = () => {
             BIO
         ===================================================== */}
 
-        <section className="mt-8">
-
-          <p className="max-w-2xl text-center text-sm leading-6 text-gray-400 lg:text-left">
-            Digital artist and NFT collector creating unique
-            digital experiences. Exploring the future of art,
-            blockchain and Web3.
-          </p>
-
-        </section>
+       <section className="justify-start mt-8 w-full lg:flex">
+  <p
+    className="mx-auto w-[calc(100vw-32px)] max-w-[450px] w-full text-center text-sm leading-6 text-gray-400 text-left lg:mx-0"
+  >
+    Digital artist and NFT collector creating unique
+    digital experiences. Exploring the future of art,
+    blockchain and Web3.
+  </p>
+</section>
 
         {/* =====================================================
             STATS
         ===================================================== */}
 
-        <section className="grid grid-cols-2 gap-3 mt-8 sm:grid-cols-4 gap-5">
+        <section className="grid grid-cols-2 gap-3 gap-5 mt-8 w-full sm:grid-cols-4">
 
           {/* OWNED */}
           <div className="p-5 text-center bg-[#151515] rounded-2xl border-[#292929] border">
+
             <p className="text-2xl font-bold text-white">
               12
             </p>
@@ -460,10 +465,12 @@ const UserProfile = () => {
             <p className="mt-1 text-sm text-gray-500">
               Owned NFTs
             </p>
+
           </div>
 
           {/* CREATED */}
           <div className="p-5 text-center bg-[#151515] rounded-2xl border-[#292929] border">
+
             <p className="text-2xl font-bold text-white">
               8
             </p>
@@ -471,10 +478,12 @@ const UserProfile = () => {
             <p className="mt-1 text-sm text-gray-500">
               Created
             </p>
+
           </div>
 
           {/* FAVORITES */}
           <div className="p-5 text-center bg-[#151515] rounded-2xl border-[#292929] border">
+
             <p className="text-2xl font-bold text-white">
               24
             </p>
@@ -482,10 +491,12 @@ const UserProfile = () => {
             <p className="mt-1 text-sm text-gray-500">
               Favorites
             </p>
+
           </div>
 
           {/* FOLLOWERS */}
           <div className="p-5 text-center bg-[#151515] rounded-2xl border-[#292929] border">
+
             <p className="text-2xl font-bold text-white">
               156
             </p>
@@ -493,6 +504,7 @@ const UserProfile = () => {
             <p className="mt-1 text-sm text-gray-500">
               Followers
             </p>
+
           </div>
 
         </section>
@@ -501,9 +513,9 @@ const UserProfile = () => {
             TABS
         ===================================================== */}
 
-        <section className="mt-12 border-b border-[#292929]">
+        <section className="mt-12 w-full border-b border-[#292929]">
 
-          <div className="overflow-x-auto flex">
+          <div className="overflow-x-auto flex justify-center w-full lg:justify-start">
 
             {tabs.map((tab) => (
               <button
@@ -516,11 +528,13 @@ const UserProfile = () => {
                     : "text-gray-500 hover:text-white"
                 }`}
               >
+
                 {tab}
 
                 {activeTab === tab && (
                   <span className="absolute bottom-0 left-0 h-[2px] w-full bg-[#A259FF]" />
                 )}
+
               </button>
             ))}
 
@@ -532,7 +546,7 @@ const UserProfile = () => {
             TAB CONTENT
         ===================================================== */}
 
-        <section className="py-10">
+        <section className="py-10 w-full">
 
           {/* ===================================================
               OWNED NFTS
@@ -540,9 +554,9 @@ const UserProfile = () => {
 
           {activeTab === "Owned" && (
             <>
-              <div className="flex items-center justify-between mb-6">
+              <div className="flex flex-col items-center justify-between gap-2 mb-6 sm:flex-row">
 
-                <h2 className="text-2xl font-bold">
+                <h2 className="text-center text-2xl font-bold sm:text-left">
                   Owned NFTs
                 </h2>
 
@@ -552,7 +566,7 @@ const UserProfile = () => {
 
               </div>
 
-              <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              <div className="grid grid-cols-1 gap-5 w-full sm:grid-cols-2 lg:grid-cols-3">
 
                 {OWNED_NFTS.map((nft) => (
                   <NFTCard
@@ -571,13 +585,15 @@ const UserProfile = () => {
 
           {activeTab === "Created" && (
             <>
-              <div className="mb-6">
-                <h2 className="text-2xl font-bold">
+              <div className="flex justify-center mb-6 sm:justify-start">
+
+                <h2 className="text-center text-2xl font-bold">
                   Created NFTs
                 </h2>
+
               </div>
 
-              <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              <div className="grid grid-cols-1 gap-5 w-full sm:grid-cols-2 lg:grid-cols-3">
 
                 {CREATED_NFTS.map((nft) => (
                   <NFTCard
@@ -596,13 +612,15 @@ const UserProfile = () => {
 
           {activeTab === "Favorites" && (
             <>
-              <div className="mb-6">
-                <h2 className="text-2xl font-bold">
+              <div className="flex justify-center mb-6 sm:justify-start">
+
+                <h2 className="text-center text-2xl font-bold">
                   Favorite NFTs
                 </h2>
+
               </div>
 
-              <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              <div className="grid grid-cols-1 gap-5 w-full sm:grid-cols-2 lg:grid-cols-3">
 
                 {FAVORITE_NFTS.map((nft) => (
                   <NFTCard
@@ -621,9 +639,9 @@ const UserProfile = () => {
 
           {activeTab === "Activity" && (
             <>
-              <div className="flex items-center justify-between mb-6">
+              <div className="flex flex-col items-center justify-between gap-3 mb-6 sm:flex-row">
 
-                <h2 className="text-2xl font-bold">
+                <h2 className="text-center text-2xl font-bold sm:text-left">
                   Activity
                 </h2>
 
@@ -636,7 +654,7 @@ const UserProfile = () => {
 
               </div>
 
-              <div className="overflow-hidden bg-[#151515] rounded-2xl border-[#292929] border">
+              <div className="overflow-hidden w-full bg-[#151515] rounded-2xl border-[#292929] border">
 
                 {ACTIVITIES.map((activity, index) => {
                   const Icon = activity.icon;
@@ -644,7 +662,7 @@ const UserProfile = () => {
                   return (
                     <div
                       key={activity.id}
-                      className={`flex items-center gap-4 p-5 ${
+                      className={`flex w-full items-center gap-3 p-4 sm:gap-4 sm:p-5 ${
                         index !== ACTIVITIES.length - 1
                           ? "border-b border-[#292929]"
                           : ""
@@ -652,11 +670,13 @@ const UserProfile = () => {
                     >
 
                       {/* ICON */}
-                      <div className="flex items-center justify-center h-12 w-12 bg-[#A259FF]/10 rounded-full shrink-0">
+                      <div className="flex items-center justify-center h-11 w-11 w-12 bg-[#A259FF]/10 rounded-full shrink-0 sm:h-12">
+
                         <Icon
                           size={20}
                           className="text-[#A259FF]"
                         />
+
                       </div>
 
                       {/* ACTIVITY INFO */}
@@ -673,7 +693,7 @@ const UserProfile = () => {
                       </div>
 
                       {/* PRICE */}
-                      <div className="text-right">
+                      <div className="text-right shrink-0">
 
                         <p className="text-sm font-semibold text-white">
                           {activity.price}
@@ -689,7 +709,7 @@ const UserProfile = () => {
                       <button
                         type="button"
                         aria-label="More activity options"
-                        className="hidden text-gray-500 transition hover:text-white sm:block"
+                        className="hidden text-gray-500 shrink-0 transition hover:text-white sm:block"
                       >
                         <MoreHorizontal size={20} />
                       </button>
