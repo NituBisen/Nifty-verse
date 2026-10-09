@@ -54,12 +54,12 @@ const Navbar = () => {
   };
 
   // =========================================================
-  // PROFILE
+  // SIGN IN
   // =========================================================
 
-  const handleProfile = () => {
+  const handleSignIn = () => {
     closeMenu();
-    navigate("/profile");
+    navigate("/create-account");
   };
 
   // =========================================================
@@ -128,17 +128,17 @@ const Navbar = () => {
             </div>
 
             {/* =================================================
-                PROFILE BUTTON
+                SIGN IN BUTTON
             ================================================= */}
 
             <button
               type="button"
-              onClick={handleProfile}
+              onClick={handleSignIn}
               className="inline-flex items-center justify-center gap-2 px-7 py-4 text-base font-semibold text-white bg-[linear-gradient(90deg,#F7C6E7_0%,#A259FF_20%,#4DA6FF_100%)] rounded-[20px] shadow-[0_0_20px_rgba(162,89,255,0.12)] transition-all duration-300 cursor-pointer shrink-0 hover:-translate-y-1 hover:shadow-[0_8px_25px_rgba(162,89,255,0.25)] active:scale-95"
             >
               <User className="h-5 w-5" />
 
-              <span>Profile</span>
+              <span>Sign up</span>
             </button>
 
           </div>
@@ -180,6 +180,7 @@ const Navbar = () => {
             : "pointer-events-none max-h-0 opacity-0"
         }`}
       >
+
         <div
           className={`mx-auto flex w-full max-w-[1400px] flex-col gap-2 px-4 pb-6 pt-4 transition-all duration-300 sm:px-6 ${
             isMenuOpen
@@ -217,12 +218,12 @@ const Navbar = () => {
           ))}
 
           {/* =================================================
-              MOBILE PROFILE BUTTON
+              MOBILE SIGN IN BUTTON
           ================================================= */}
 
           <button
             type="button"
-            onClick={handleProfile}
+            onClick={handleSignIn}
             className={`mt-2 inline-flex w-full cursor-pointer items-center justify-center gap-2 rounded-[20px] bg-[linear-gradient(90deg,#00E5FF_0%,#008CFF_30%,#5B2CFF_55%,#9B2CFF_75%,#FF00D4_100%)] px-5 py-3.5 text-sm font-semibold text-white shadow-[0_0_25px_rgba(162,89,255,0.15)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(162,89,255,0.25)] active:scale-[0.98] ${
               isMenuOpen
                 ? "translate-y-0 opacity-100"
@@ -231,7 +232,7 @@ const Navbar = () => {
           >
             <User className="h-5 w-5" />
 
-            <span>Profile</span>
+            <span>Sign up </span>
           </button>
 
         </div>
