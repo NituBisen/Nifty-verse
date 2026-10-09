@@ -59,7 +59,7 @@ const Navbar = () => {
 
   const handleSignIn = () => {
     closeMenu();
-    navigate("/create-account");
+    navigate("/signin");
   };
 
   // =========================================================
@@ -138,7 +138,7 @@ const Navbar = () => {
             >
               <User className="h-5 w-5" />
 
-              <span>Sign up</span>
+              <span>Sign in</span>
             </button>
 
           </div>
@@ -232,7 +232,7 @@ const Navbar = () => {
           >
             <User className="h-5 w-5" />
 
-            <span>Sign up </span>
+            <span>Sign in </span>
           </button>
 
         </div>
