@@ -27,7 +27,6 @@ const StatCard = ({
   <div className="p-5 bg-[#111114] rounded-2xl border-white/[0.07] duration-300 group border transition hover:border-[#A259FF]/40 hover:bg-[#15131A] sm:p-6">
     <div className="flex items-center justify-between gap-3">
       <p className="text-sm font-medium text-gray-400">{title}</p>
-
       <div className={`rounded-xl bg-white/[0.04] p-3 ${iconColor}`}>
         <Icon size={21} />
       </div>
@@ -68,7 +67,7 @@ export default function Dashboard({
 }) {
   const navigate = useNavigate();
 
-  // Use actual values from the application.
+  // Use actual application data; do not add dummy records.
   const owned = Array.isArray(ownedNFTs) ? ownedNFTs : [];
   const created = Array.isArray(createdNFTs) ? createdNFTs : [];
   const collectionList = Array.isArray(collections) ? collections : [];
@@ -148,7 +147,7 @@ export default function Dashboard({
   const getNFTName = (nft) => nft?.name || "Untitled NFT";
 
   return (
-    <main className="px-4 py-6 py-8 min-h-full text-white bg-[#08080A] sm:px-6 xl:px-8">
+    <main className="overflow-x-hidden px-4 py-8 min-h-full text-white bg-[#08080A] sm:px-6 xl:px-8">
       <div className="mx-auto max-w-[1600px] space-y-8">
 
         {/* Welcome banner */}
@@ -172,7 +171,8 @@ export default function Dashboard({
 
             <div className="flex flex-wrap gap-3 mt-7">
               <button
-                onClick={() => navigate("/create-nft")}
+                type="button"
+                onClick={() => navigate("/user/nfts")}
                 className="inline-flex items-center gap-2 px-5 py-3 text-sm font-semibold text-white bg-[#A259FF] rounded-xl transition hover:bg-[#9147E8]"
               >
                 <Plus size={18} />
@@ -180,7 +180,8 @@ export default function Dashboard({
               </button>
 
               <button
-                onClick={() => navigate("/collections")}
+                type="button"
+                onClick={() => navigate("/user/collections")}
                 className="inline-flex items-center gap-2 px-5 py-3 text-sm font-semibold text-gray-200 bg-white/[0.04] rounded-xl border-white/10 border transition hover:border-[#A259FF]/50 hover:bg-white/[0.07]"
               >
                 <Layers size={17} />
@@ -188,6 +189,7 @@ export default function Dashboard({
               </button>
 
               <button
+                type="button"
                 onClick={() => navigate("/marketplace")}
                 className="inline-flex items-center gap-2 px-5 py-3 text-sm font-semibold text-gray-300 rounded-xl border-white/10 border transition hover:border-[#A259FF]/50 hover:text-white"
               >
@@ -226,7 +228,7 @@ export default function Dashboard({
                 <h2 className="mt-3 text-3xl font-bold">
                   {walletBalance === null || walletBalance === undefined
                     ? "Not connected"
-                    : `${formatPrice(walletBalance)}`}
+                    : formatPrice(walletBalance)}
                 </h2>
 
                 <p className="mt-2 text-xs text-gray-500">
@@ -242,6 +244,7 @@ export default function Dashboard({
             </div>
 
             <button
+              type="button"
               onClick={() => navigate("/connect-wallet")}
               className="inline-flex items-center gap-2 mt-6 px-4 py-3 text-sm font-semibold text-[#C49AFF] rounded-xl border-[#A259FF]/30 border transition hover:bg-[#A259FF]/10"
             >
@@ -264,35 +267,40 @@ export default function Dashboard({
                 {
                   label: "Create a new NFT",
                   icon: Plus,
-                  action: () => navigate("/create-nft"),
+                  action: () => navigate("/user/nfts"),
                 },
                 {
                   label: "Create a collection",
                   icon: Layers,
-                  action: () => navigate("/collections"),
+                  action: () => navigate("/user/collections"),
                 },
                 {
                   label: "Explore marketplace",
                   icon: Compass,
                   action: () => navigate("/marketplace"),
                 },
-              ].map((item) => (
-                <button
-                  key={item.label}
-                  onClick={item.action}
-                  className="flex items-center gap-3 p-3 w-full text-left bg-white/[0.02] rounded-xl border-white/[0.06] border transition hover:border-[#A259FF]/30 hover:bg-[#A259FF]/[0.06]"
-                >
-                  <span className="p-2 text-[#B57AFF] bg-[#A259FF]/10 rounded-lg">
-                    <item.icon size={18} />
-                  </span>
+              ].map((item) => {
+                const ActionIcon = item.icon;
 
-                  <span className="flex-1 text-sm font-medium text-gray-300">
-                    {item.label}
-                  </span>
+                return (
+                  <button
+                    type="button"
+                    key={item.label}
+                    onClick={item.action}
+                    className="flex items-center gap-3 p-3 w-full text-left bg-white/[0.02] rounded-xl border-white/[0.06] border transition hover:border-[#A259FF]/30 hover:bg-[#A259FF]/[0.06]"
+                  >
+                    <span className="p-2 text-[#B57AFF] bg-[#A259FF]/10 rounded-lg">
+                      <ActionIcon size={18} />
+                    </span>
 
-                  <ArrowRight size={16} className="text-gray-500" />
-                </button>
-              ))}
+                    <span className="flex-1 text-sm font-medium text-gray-300">
+                      {item.label}
+                    </span>
+
+                    <ArrowRight size={16} className="text-gray-500" />
+                  </button>
+                );
+              })}
             </div>
           </div>
         </section>
@@ -308,7 +316,8 @@ export default function Dashboard({
             </div>
 
             <button
-              onClick={() => navigate("/profile")}
+              type="button"
+              onClick={() => navigate("/user/nfts")}
               className="inline-flex items-center gap-2 text-sm font-semibold text-[#B57AFF] hover:text-white"
             >
               View Portfolio
@@ -323,6 +332,7 @@ export default function Dashboard({
               description="NFTs you own will appear here when they are added to your account."
               action={
                 <button
+                  type="button"
                   onClick={() => navigate("/marketplace")}
                   className="inline-flex items-center gap-2 mt-4 px-4 py-3 text-sm font-semibold bg-[#A259FF] rounded-xl hover:bg-[#9147E8]"
                 >
@@ -332,7 +342,7 @@ export default function Dashboard({
               }
             />
           ) : (
-            <div className="grid grid-cols-1 gap-4 p-5 p-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            <div className="grid grid-cols-1 gap-4 p-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
               {owned.slice(0, 4).map((nft, index) => {
                 const image = getNFTImage(nft);
 
@@ -390,7 +400,8 @@ export default function Dashboard({
               </div>
 
               <button
-                onClick={() => navigate("/collections")}
+                type="button"
+                onClick={() => navigate("/user/collections")}
                 aria-label="View collections"
                 className="p-2 text-gray-400 rounded-lg transition hover:bg-white/[0.05] hover:text-white"
               >
@@ -405,7 +416,8 @@ export default function Dashboard({
                 description="Create your first collection to organize your NFTs."
                 action={
                   <button
-                    onClick={() => navigate("/collections")}
+                    type="button"
+                    onClick={() => navigate("/user/collections")}
                     className="mt-3 text-sm font-semibold text-[#B57AFF] hover:text-white"
                   >
                     Create Collection →
@@ -415,9 +427,11 @@ export default function Dashboard({
             ) : (
               <div className="p-5 space-y-3">
                 {collectionList.slice(0, 4).map((collection, index) => (
-                  <div
+                  <button
+                    type="button"
                     key={collection.id || collection._id || index}
-                    className="flex items-center gap-3 p-3 rounded-xl border-white/[0.06] border"
+                    onClick={() => navigate("/user/collections")}
+                    className="flex items-center gap-3 p-3 w-full text-left rounded-xl border-white/[0.06] border transition hover:border-[#A259FF]/30"
                   >
                     <div className="overflow-hidden flex items-center justify-center h-12 w-12 text-[#B57AFF] bg-[#A259FF]/10 rounded-xl shrink-0">
                       {collection.image || collection.banner ? (
@@ -444,7 +458,7 @@ export default function Dashboard({
                     </div>
 
                     <ArrowRight size={16} className="text-gray-500" />
-                  </div>
+                  </button>
                 ))}
               </div>
             )}
@@ -490,9 +504,7 @@ export default function Dashboard({
 
                         <p className="mt-1 text-xs text-gray-500">
                           {activity.createdAt
-                            ? new Date(
-                                activity.createdAt
-                              ).toLocaleString()
+                            ? new Date(activity.createdAt).toLocaleString()
                             : activity.date
                               ? String(activity.date)
                               : "Date unavailable"}
