@@ -123,7 +123,7 @@ export default function Collections() {
               NIFTY VERSE
             </p>
 
-            <div className="flex flex-col justify-between gap-5 sm:flex-row items-center">
+            <div className="flex flex-col justify-between items-center gap-5 sm:flex-row">
               <div>
                 <h1 className="text-3xl font-bold md:text-4xl">
                   Collections
@@ -358,7 +358,7 @@ export default function Collections() {
                 </p>
               )}
 
-              <div className="flex flex-col-reverse gap-3 pt-6 border-t border-white/10 sm:flex-row justify-end">
+              <div className="flex flex-col-reverse justify-end gap-3 pt-6 border-t border-white/10 sm:flex-row">
                 <button
                   type="button"
                   onClick={() => {

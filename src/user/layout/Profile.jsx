@@ -6,13 +6,12 @@ import {
   Mail,
   Share2,
   WalletCards,
-  LogOut,
   Save,
   X,
   Camera,
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import profileBg from "../assets/images/profile-bg.png";
+import profileBg from "../../assets/images/profile-bg.png";
 
 const getCurrentUser = () => {
   try {
@@ -218,11 +217,7 @@ export default function Profile() {
     }
   };
 
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("user");
-    navigate("/signin", { replace: true });
-  };
+  
 
   if (!user) {
     return (
@@ -260,10 +255,10 @@ export default function Profile() {
       <main className="mx-auto px-3 w-full min-w-0 max-w-[1400px] sm:px-5 lg:px-8">
         {/* Profile header */}
         <section className="relative pb-8 -mt-14 sm:-mt-16">
-          <div className="flex flex-col gap-6 min-w-0 xl:flex-row items-end justify-between">
-            <div className="flex flex-col items-center gap-4 min-w-0 sm:flex-row items-end">
+          <div className="flex flex-col items-end justify-between gap-6 min-w-0 xl:flex-row">
+            <div className="flex flex-col items-center items-end gap-4 min-w-0 sm:flex-row">
               {/* Avatar and change picture control */}
-              <div className="overflow-hidden relative flex items-center justify-center h-28 w-28 text-3xl font-bold text-white bg-[#A259FF] rounded-full border-4 border-black shrink-0 sm:h-36 w-36">
+              <div className="overflow-hidden relative flex items-center justify-center h-28 w-28 w-36 text-3xl font-bold text-white bg-[#A259FF] rounded-full border-4 border-black shrink-0 sm:h-36">
                 {form.profileImage ? (
                   <img
                     src={form.profileImage}
@@ -358,14 +353,7 @@ export default function Profile() {
                 Share
               </button>
 
-              <button
-                type="button"
-                onClick={handleLogout}
-                className="inline-flex items-center gap-2 px-4 py-3 text-sm font-semibold text-red-300 bg-red-500/10 rounded-xl border-red-500/20 border transition hover:bg-red-500/20"
-              >
-                <LogOut size={17} />
-                Logout
-              </button>
+             
             </div>
           </div>
 
@@ -398,7 +386,7 @@ export default function Profile() {
         </section>
 
         {/* Profile information and edit form */}
-        <section className="mb-8 p-4 bg-[#111114] rounded-2xl border-white/10 border sm:mb-12 p-8">
+        <section className="mb-8 p-4 p-8 bg-[#111114] rounded-2xl border-white/10 border sm:mb-12">
           <div className="mb-6">
             <p className="text-xs font-bold tracking-[0.2em] text-[#A259FF] uppercase">
               Account Settings

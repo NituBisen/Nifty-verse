@@ -15,10 +15,14 @@ import Collection from "./collectionpage/Collection";
 import ForgotPassword from "./forgotpass/Forgotpassword";
 
 // User Dashboard
-import DashboardC from "./dashboard1/DashboardC";
-import Profile from "./dashboard1/Profile";
-import NFT from "./dashboard1/NFT";
-import Collections from "./dashboard1/Collections";
+import DashboardC from "./user/layout/DashboardC";
+import Profile from "./user/layout/Profile";
+import NFT from "./user/layout/NFT";
+import Collections from "./user/layout/Collections";
+import Favorites from "./user/layout/Favorites";
+import Activity from "./user/layout/Activity";
+import Notifications from "./user/layout/Notifications";
+import Wallet from "./user/layout/Wallet";
 import UserLayout from "./user/layout/UserLayout";
 
 // Admin Pages
@@ -244,47 +248,30 @@ const App = () => {
         />
 
         {/* Favorites */}
-        <Route
-          path="favorites"
-          element={
-            <UserSectionPlaceholder
-              title="Favorites"
-              description="View the NFTs you have saved as favorites."
-            />
-          }
-        />
+<Route
+  path="favorites"
+  element={<Favorites />}
+/>
 
         {/* Activity */}
         <Route
           path="activity"
-          element={
-            <UserSectionPlaceholder
-              title="Activity"
-              description="Review your recent account and NFT activity."
-            />
-          }
+          element={<Activity />}
         />
+      
 
         {/* Notifications */}
         <Route
           path="notifications"
-          element={
-            <UserSectionPlaceholder
-              title="Notifications"
-              description="View and manage your account notifications."
-            />
-          }
+          element={<Notifications />}
+          
         />
 
         {/* Wallet */}
         <Route
           path="wallet"
-          element={
-            <UserSectionPlaceholder
-              title="Wallet"
-              description="View your wallet connection and account details."
-            />
-          }
+          element={<Wallet />}
+            
         />
       </Route>
 

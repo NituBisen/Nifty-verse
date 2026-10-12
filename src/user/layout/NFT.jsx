@@ -515,7 +515,7 @@ export default function NFT() {
             </form>
 
             {/* Live preview */}
-            <aside className="p-5 h-fit min-w-0 bg-[#151515] rounded-2xl border-white/10 border lg:sticky top-6">
+            <aside className="top-6 p-5 h-fit min-w-0 bg-[#151515] rounded-2xl border-white/10 border lg:sticky">
               <p className="text-sm font-semibold text-gray-400">
                 NFT Preview
               </p>
@@ -603,7 +603,7 @@ export default function NFT() {
       <section className="overflow-hidden relative p-5 bg-gradient-to-br from-[#1A1325] via-[#111114] to-[#101521] rounded-[26px] border-white/10 border sm:p-8 lg:p-10">
         <div className="absolute h-64 w-64 bg-[#A259FF]/15 rounded-full blur-[90px] pointer-events-none -right-16 -top-20" />
 
-        <div className="relative flex flex-col justify-between gap-6 sm:flex-row items-center">
+        <div className="relative flex flex-col justify-between items-center gap-6 sm:flex-row">
           <div>
             <p className="text-xs font-bold tracking-[0.22em] text-[#A259FF] uppercase">
               Nifty Verse
@@ -677,7 +677,7 @@ export default function NFT() {
       </section>
 
       <section className="p-4 bg-[#111114] rounded-2xl border-white/10 border sm:p-6">
-        <div className="flex flex-col justify-between gap-4 sm:flex-row items-center">
+        <div className="flex flex-col justify-between items-center gap-4 sm:flex-row">
           <div>
             <h2 className="text-xl font-bold">Your Collection</h2>
             <p className="mt-1 text-sm text-gray-500">
