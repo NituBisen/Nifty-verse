@@ -1,5 +1,4 @@
-
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import {
   Activity as ActivityIcon,
@@ -14,7 +13,10 @@ import {
   Trash2,
 } from "lucide-react";
 
-const ACTIVITY_KEY = "niftyverse_activity";
+const API_URL = (
+  import.meta.env.VITE_API_URL ||
+  "https://nifty-verse-backend-production.up.railway.app"
+).replace(/\/+$/, "");
 
 const activityTypes = [
   "All Activity",
@@ -31,7 +33,11 @@ const getActivityIcon = (type) => {
     return ShoppingBag;
   }
 
-  if (value.includes("list") || value.includes("sale")) {
+  if (
+    value.includes("list") ||
+    value.includes("sale") ||
+    value.includes("nft")
+  ) {
     return ImageIcon;
   }
 
@@ -53,7 +59,11 @@ const getActivityColor = (type) => {
     return "text-[#55B7FF] bg-[#55B7FF]/10 border-[#55B7FF]/20";
   }
 
-  if (value.includes("list") || value.includes("sale")) {
+  if (
+    value.includes("list") ||
+    value.includes("sale") ||
+    value.includes("nft")
+  ) {
     return "text-[#B872FF] bg-[#A259FF]/10 border-[#A259FF]/20";
   }
 
@@ -88,41 +98,106 @@ const formatDate = (date) => {
 
 const Activity = () => {
   const [activities, setActivities] = useState([]);
+  const [totalCount, setTotalCount] = useState(0);
   const [activeFilter, setActiveFilter] = useState("All Activity");
   const [search, setSearch] = useState("");
+  const [loading, setLoading] = useState(true);
+  const [refreshing, setRefreshing] = useState(false);
+  const [clearing, setClearing] = useState(false);
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
 
-  const loadActivities = () => {
-    try {
-      const saved = JSON.parse(
-        localStorage.getItem(ACTIVITY_KEY) || "[]"
-      );
+  // ======================================================
+  // LOAD ACTIVITIES FROM DATABASE
+  // ======================================================
 
-      setActivities(Array.isArray(saved) ? saved : []);
-    } catch {
+  const loadActivities = useCallback(async (isRefresh = false) => {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
       setActivities([]);
+      setTotalCount(0);
+      setError("Please sign in to view your activity history.");
+      setLoading(false);
+      setRefreshing(false);
+      return;
     }
-  };
+
+    if (isRefresh) {
+      setRefreshing(true);
+    } else {
+      setLoading(true);
+    }
+
+    setError("");
+    setSuccess("");
+
+    try {
+      const response = await fetch(`${API_URL}/api/activity/mine`, {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        cache: "no-store",
+      });
+
+      const data = await response.json().catch(() => ({}));
+
+      if (response.status === 401) {
+        throw new Error("Session expired. Please sign in again.");
+      }
+
+      if (!response.ok || !data.success) {
+        throw new Error(data.message || "Unable to load activity history.");
+      }
+
+      const result = Array.isArray(data.activities) ? data.activities : [];
+
+      setActivities(result);
+      setTotalCount(
+        Number.isFinite(Number(data.total))
+          ? Number(data.total)
+          : result.length
+      );
+    } catch (loadError) {
+      console.error("[ACTIVITY] Load error:", loadError);
+      setError(loadError.message || "Unable to load activity history.");
+    } finally {
+      setLoading(false);
+      setRefreshing(false);
+    }
+  }, []);
 
   useEffect(() => {
-    loadActivities();
-  }, []);
+    void loadActivities();
+  }, [loadActivities]);
+
+  // ======================================================
+  // FILTER ACTIVITIES
+  // ======================================================
 
   const filteredActivities = useMemo(() => {
     return activities.filter((item) => {
       const type = String(item.type || item.action || "").toLowerCase();
+
       const title = String(
         item.title || item.nftName || item.name || ""
       ).toLowerCase();
 
-      const creator = String(
-        item.creatorName || item.creator || ""
-      ).toLowerCase();
+      const message = String(item.message || "").toLowerCase();
 
-      const query = search.toLowerCase();
+      const creatorValue = item.creatorName || item.creator || "";
+      const creator =
+        typeof creatorValue === "string"
+          ? creatorValue.toLowerCase()
+          : String(creatorValue?.username || "").toLowerCase();
+
+      const query = search.trim().toLowerCase();
 
       const matchesSearch =
         title.includes(query) ||
         type.includes(query) ||
+        message.includes(query) ||
         creator.includes(query);
 
       let matchesFilter = true;
@@ -145,47 +220,128 @@ const Activity = () => {
     });
   }, [activities, activeFilter, search]);
 
-  const clearActivities = () => {
+  // ======================================================
+  // CLEAR ACTIVITY HISTORY FROM DATABASE
+  // ======================================================
+
+  const clearActivities = async () => {
+    if (activities.length === 0 || clearing) return;
+
     const confirmed = window.confirm(
       "Are you sure you want to clear your activity history?"
     );
 
     if (!confirmed) return;
 
-    localStorage.removeItem(ACTIVITY_KEY);
-    setActivities([]);
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      setError("Please sign in to clear your activity history.");
+      return;
+    }
+
+    setClearing(true);
+    setError("");
+    setSuccess("");
+
+    try {
+      const response = await fetch(`${API_URL}/api/activity/all`, {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      const data = await response.json().catch(() => ({}));
+
+      if (response.status === 401) {
+        throw new Error("Session expired. Please sign in again.");
+      }
+
+      if (!response.ok || !data.success) {
+        throw new Error(data.message || "Unable to clear activity history.");
+      }
+
+      setActivities([]);
+      setTotalCount(0);
+      setSuccess("Activity history cleared successfully.");
+    } catch (clearError) {
+      console.error("[ACTIVITY] Clear error:", clearError);
+      setError(clearError.message || "Unable to clear activity history.");
+    } finally {
+      setClearing(false);
+    }
   };
 
-  return (
-    <main className="p-4 min-h-full w-full text-white bg-[#08080A] sm:p-6 lg:p-8">
-      {/* Header */}
-      <section className="overflow-hidden relative p-6 bg-gradient-to-r from-[#111114] via-[#111114] to-[#19131F] rounded-[28px] border-white/[0.07] border sm:p-9">
-        <div className="absolute h-52 w-52 bg-[#A259FF]/10 rounded-full blur-[80px] pointer-events-none -right-12 -top-16" />
+  // ======================================================
+  // PAGE UI
+  // ======================================================
 
-        <div className="z-10 relative">
-          <p className="text-xs font-bold tracking-[0.22em] text-[#A259FF] uppercase">
+  return (
+    <main className="min-h-full w-full bg-[#08080A] p-4 text-white sm:p-6 lg:p-8">
+      {/* HEADER */}
+
+      <section className="relative overflow-hidden rounded-[28px] border border-white/[0.07] bg-gradient-to-r from-[#111114] via-[#111114] to-[#19131F] p-6 sm:p-9">
+        <div className="pointer-events-none absolute -right-12 -top-16 h-52 w-52 rounded-full bg-[#A259FF]/10 blur-[80px]" />
+
+        <div className="relative z-10">
+          <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#A259FF]">
             Nifty Verse
           </p>
 
-          <h1 className="mt-3 text-3xl font-bold text-transparent bg-gradient-to-r from-[#C084FC] to-[#55B7FF] bg-clip-text sm:text-4xl">
+          <h1 className="mt-3 bg-gradient-to-r from-[#C084FC] to-[#55B7FF] bg-clip-text text-3xl font-bold text-transparent sm:text-4xl">
             Activity
           </h1>
 
           <p className="mt-3 max-w-2xl text-sm leading-6 text-[#92909D] sm:text-base">
-            Track your NFT marketplace actions, purchases,
-            listings, favorites and wallet activity in one place.
+            Track your NFT marketplace actions, purchases, listings,
+            favorites and wallet activity in one place.
           </p>
 
-          <div className="inline-flex items-center gap-2 mt-6 px-4 py-2 text-sm text-[#C084FC] bg-[#A259FF]/10 rounded-full border-[#A259FF]/20 border">
+          <div className="mt-6 inline-flex items-center gap-2 rounded-full border border-[#A259FF]/20 bg-[#A259FF]/10 px-4 py-2 text-sm text-[#C084FC]">
             <ActivityIcon size={16} />
-            {activities.length} Total Activities
+            {totalCount} Total Activities
           </div>
         </div>
       </section>
 
-      {/* Activity history */}
+      {/* FEEDBACK */}
+
+      {error && (
+        <div
+          role="alert"
+          className="mt-5 flex flex-col gap-3 rounded-xl border border-red-500/20 bg-red-500/[0.06] px-4 py-3 text-sm text-red-300 sm:flex-row sm:items-center sm:justify-between"
+        >
+          <span>{error}</span>
+
+          <button
+            type="button"
+            onClick={() => void loadActivities(true)}
+            disabled={loading || refreshing}
+            className="inline-flex shrink-0 items-center gap-2 self-start rounded-lg border border-red-500/20 px-3 py-2 transition hover:bg-red-500/10 disabled:opacity-40 sm:self-auto"
+          >
+            <RefreshCw
+              size={14}
+              className={refreshing ? "animate-spin" : ""}
+            />
+            Try again
+          </button>
+        </div>
+      )}
+
+      {success && (
+        <div
+          role="status"
+          className="mt-5 rounded-xl border border-emerald-500/20 bg-emerald-500/[0.06] px-4 py-3 text-sm text-emerald-300"
+        >
+          {success}
+        </div>
+      )}
+
+      {/* ACTIVITY HISTORY */}
+
       <section className="mt-8">
-        <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
+        <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
           <div>
             <h2 className="text-xl font-semibold">Activity History</h2>
             <p className="mt-1 text-sm text-[#777782]">
@@ -196,10 +352,14 @@ const Activity = () => {
           <div className="flex flex-wrap gap-3">
             <button
               type="button"
-              onClick={loadActivities}
-              className="inline-flex items-center justify-center gap-2 px-4 py-3 text-sm text-[#C8C6D0] bg-[#111114] rounded-xl border-white/[0.08] border transition hover:border-[#A259FF]/40 hover:text-white"
+              onClick={() => void loadActivities(true)}
+              disabled={loading || refreshing}
+              className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/[0.08] bg-[#111114] px-4 py-3 text-sm text-[#C8C6D0] transition hover:border-[#A259FF]/40 hover:text-white disabled:opacity-40"
             >
-              <RefreshCw size={16} />
+              <RefreshCw
+                size={16}
+                className={refreshing ? "animate-spin" : ""}
+              />
               Refresh
             </button>
 
@@ -207,30 +367,37 @@ const Activity = () => {
               <button
                 type="button"
                 onClick={clearActivities}
-                className="inline-flex items-center justify-center gap-2 px-4 py-3 text-sm text-red-400 bg-red-500/[0.06] rounded-xl border-red-500/20 border transition hover:bg-red-500/10"
+                disabled={clearing}
+                className="inline-flex items-center justify-center gap-2 rounded-xl border border-red-500/20 bg-red-500/[0.06] px-4 py-3 text-sm text-red-400 transition hover:bg-red-500/10 disabled:opacity-40"
               >
-                <Trash2 size={16} />
-                Clear History
+                {clearing ? (
+                  <RefreshCw size={16} className="animate-spin" />
+                ) : (
+                  <Trash2 size={16} />
+                )}
+                {clearing ? "Clearing..." : "Clear History"}
               </button>
             )}
           </div>
         </div>
 
-        {/* Search */}
-        <div className="flex items-center gap-3 mt-6 px-4 py-3 bg-[#111114] rounded-xl border-white/[0.08] border">
-          <Search size={18} className="text-[#777782] shrink-0" />
+        {/* SEARCH */}
+
+        <div className="mt-6 flex items-center gap-3 rounded-xl border border-white/[0.08] bg-[#111114] px-4 py-3">
+          <Search size={18} className="shrink-0 text-[#777782]" />
 
           <input
             type="text"
             value={search}
-            onChange={(e) => setSearch(e.target.value)}
+            onChange={(event) => setSearch(event.target.value)}
             placeholder="Search by NFT, creator or activity..."
-            className="placeholder:text-[#666672] w-full text-sm text-white bg-transparent outline-none"
+            className="w-full bg-transparent text-sm text-white outline-none placeholder:text-[#666672]"
           />
         </div>
 
-        {/* Filters */}
-        <div className="overflow-x-auto flex gap-2 mt-5 pb-2">
+        {/* FILTERS */}
+
+        <div className="mt-5 flex gap-2 overflow-x-auto pb-2">
           {activityTypes.map((type) => (
             <button
               key={type}
@@ -247,27 +414,40 @@ const Activity = () => {
           ))}
         </div>
 
-        {/* Activity list */}
-        {filteredActivities.length > 0 ? (
-          <div className="overflow-hidden mt-5 bg-[#111114] rounded-2xl border-white/[0.07] border">
+        {/* ACTIVITY LIST */}
+
+        {loading ? (
+          <div className="mt-5 flex min-h-[280px] items-center justify-center rounded-2xl border border-white/[0.07] bg-[#101012] text-sm text-[#92909D]">
+            <span className="flex items-center gap-3">
+              <RefreshCw size={18} className="animate-spin text-[#B872FF]" />
+              Loading activity...
+            </span>
+          </div>
+        ) : filteredActivities.length > 0 ? (
+          <div className="mt-5 overflow-hidden rounded-2xl border border-white/[0.07] bg-[#111114]">
             {filteredActivities.map((item, index) => {
               const type = item.type || item.action || "Activity";
               const Icon = getActivityIcon(type);
               const color = getActivityColor(type);
+
               const title =
-                item.title ||
-                item.nftName ||
-                item.name ||
-                type;
+                item.title || item.nftName || item.name || type;
 
               const id = item._id || item.id || index;
+
+              const creatorValue = item.creatorName || item.creator || "";
+
+              const creatorName =
+                typeof creatorValue === "string"
+                  ? creatorValue
+                  : creatorValue?.username || "";
 
               return (
                 <article
                   key={id}
-                  className="flex flex-col items-center justify-between gap-4 p-4 p-5 border-b border-white/[0.06] transition last:border-b-0 hover:bg-white/[0.02] sm:flex-row"
+                  className="flex flex-col justify-between gap-4 border-b border-white/[0.06] p-4 transition last:border-b-0 hover:bg-white/[0.02] sm:flex-row sm:items-center sm:p-5"
                 >
-                  <div className="flex items-start gap-4 min-w-0">
+                  <div className="flex min-w-0 items-start gap-4">
                     <div
                       className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border ${color}`}
                     >
@@ -275,35 +455,31 @@ const Activity = () => {
                     </div>
 
                     <div className="min-w-0">
-                      <h3 className="text-sm font-semibold text-white truncate sm:text-base">
+                      <h3 className="truncate text-sm font-semibold text-white sm:text-base">
                         {title}
                       </h3>
 
-                      <p className="mt-1 text-sm text-[#92909D] capitalize">
+                      <p className="mt-1 text-sm capitalize text-[#92909D]">
                         {String(type).replace(/[_-]/g, " ")}
-                        {item.creatorName || item.creator
-                          ? ` · By ${
-                              typeof item.creator === "string"
-                                ? item.creator
-                                : item.creatorName ||
-                                  item.creator?.username ||
-                                  ""
-                            }`
-                          : ""}
+                        {creatorName ? ` · By ${creatorName}` : ""}
                       </p>
 
-                      <div className="flex flex-wrap items-center gap-2 mt-2 text-xs text-[#777782]">
+                      {item.message && (
+                        <p className="mt-1 break-words text-xs leading-5 text-[#777782]">
+                          {item.message}
+                        </p>
+                      )}
+
+                      <div className="mt-2 flex flex-wrap items-center gap-2 text-xs text-[#777782]">
                         <Clock size={13} />
                         {formatDate(
-                          item.createdAt ||
-                            item.timestamp ||
-                            item.date
+                          item.createdAt || item.timestamp || item.date
                         )}
                       </div>
                     </div>
                   </div>
 
-                  <div className="flex items-center justify-between gap-4 sm:justify-end">
+                  <div className="flex shrink-0 items-center justify-between gap-4 sm:justify-end">
                     {item.price !== undefined &&
                       item.price !== null &&
                       item.price !== "" && (
@@ -313,18 +489,17 @@ const Activity = () => {
                       )}
 
                     {item.status && (
-                      <span className="px-3 py-1 text-xs text-emerald-400 bg-emerald-500/10 rounded-full border-emerald-500/20 border capitalize">
+                      <span className="rounded-full border border-emerald-500/20 bg-emerald-500/10 px-3 py-1 text-xs capitalize text-emerald-400">
                         {item.status}
                       </span>
                     )}
 
-                    {(item.nftId || item._id || item.id) && (
+                    {item.nftId && (
                       <Link
-                        to={`/nft/${
-                          item.nftId || item._id || item.id
-                        }`}
+                        to={`/nft/${item.nftId}`}
                         title="View NFT"
-                        className="flex items-center justify-center h-9 w-9 text-[#B872FF] rounded-lg border-white/[0.08] shrink-0 border transition hover:bg-[#A259FF]/10"
+                        aria-label={`View ${title}`}
+                        className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-white/[0.08] text-[#B872FF] transition hover:bg-[#A259FF]/10"
                       >
                         <ArrowUpRight size={17} />
                       </Link>
@@ -335,8 +510,8 @@ const Activity = () => {
             })}
           </div>
         ) : (
-          <div className="flex flex-col items-center justify-center mt-5 px-5 py-12 min-h-[280px] text-center bg-[#101012] rounded-2xl border-dashed border-white/[0.10] border">
-            <div className="flex items-center justify-center h-16 w-16 bg-[#A259FF]/10 rounded-2xl border-[#A259FF]/20 border">
+          <div className="mt-5 flex min-h-[280px] flex-col items-center justify-center rounded-2xl border border-dashed border-white/[0.10] bg-[#101012] px-5 py-12 text-center">
+            <div className="flex h-16 w-16 items-center justify-center rounded-2xl border border-[#A259FF]/20 bg-[#A259FF]/10">
               <ActivityIcon
                 size={30}
                 className="text-[#B872FF]"
@@ -353,7 +528,7 @@ const Activity = () => {
             <p className="mt-2 max-w-md text-sm leading-6 text-[#85818F]">
               {search || activeFilter !== "All Activity"
                 ? "Try changing your search or selecting another activity filter."
-                : "Your purchases, listings, favorites and other recorded actions will appear here."}
+                : "Your recorded favorites and other marketplace actions will appear here."}
             </p>
 
             {(search || activeFilter !== "All Activity") && (
@@ -363,7 +538,7 @@ const Activity = () => {
                   setSearch("");
                   setActiveFilter("All Activity");
                 }}
-                className="mt-5 px-5 py-3 text-sm text-white rounded-xl border-white/10 border transition hover:bg-white/5"
+                className="mt-5 rounded-xl border border-white/10 px-5 py-3 text-sm text-white transition hover:bg-white/5"
               >
                 Clear Filters
               </button>
@@ -372,7 +547,7 @@ const Activity = () => {
             {!search && activeFilter === "All Activity" && (
               <Link
                 to="/marketplace"
-                className="inline-flex items-center gap-2 mt-6 px-5 py-3 text-sm font-semibold text-white bg-gradient-to-r from-[#A259FF] to-[#7555FF] rounded-xl transition hover:opacity-90"
+                className="mt-6 inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-[#A259FF] to-[#7555FF] px-5 py-3 text-sm font-semibold text-white transition hover:opacity-90"
               >
                 Explore Marketplace
                 <ArrowUpRight size={16} />

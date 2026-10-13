@@ -13,6 +13,7 @@ import NFTDetails from "./nftpage/NFT";
 import Artist from "./artistpage/Artist";
 import Collection from "./collectionpage/Collection";
 import ForgotPassword from "./forgotpass/Forgotpassword";
+import CollectionDetails from "./collectionpage/CollectionDetails";
 
 // User Dashboard
 import DashboardC from "./user/layout/DashboardC";
@@ -122,6 +123,7 @@ const App = () => {
 
       {/* Landing Page Collections — unchanged */}
       <Route path="/collections" element={<Collection />} />
+      <Route path="/collection/:id" element={<CollectionDetails />} />
 
       <Route
         path="/forgot-password"
