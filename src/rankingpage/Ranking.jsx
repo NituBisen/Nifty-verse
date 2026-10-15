@@ -1,64 +1,12 @@
-import { useState } from "react";
-
-/* ------------------------------------------------------------------
-   Creator images — update the file names/extensions to match your assets.
-   The reference reuses three avatars for ranks 18–20, so only 17 unique
-   imports are needed (18 → creator1, 19 → creator10, 20 → creator3).
-------------------------------------------------------------------- */
-import creator1 from "../assets/ranking/creator1.png";
-import creator2 from "../assets/ranking/creator2.png";
-import creator3 from "../assets/ranking/creator3.png";
-import creator4 from "../assets/ranking/creator4.png";
-import creator5 from "../assets/ranking/creator5.png";
-import creator6 from "../assets/ranking/creator6.png";
-import creator7 from "../assets/ranking/creator7.png";
-import creator8 from "../assets/ranking/creator8.png";
-import creator9 from "../assets/ranking/creator9.png";
-import creator10 from "../assets/ranking/creator10.png";
-import creator11 from "../assets/ranking/creator11.png";
-import creator12 from "../assets/ranking/creator12.png";
-import creator13 from "../assets/ranking/creator13.png";
-import creator14 from "../assets/ranking/creator14.png";
-import creator15 from "../assets/ranking/creator15.png";
-import creator16 from "../assets/ranking/creator16.png";
-import creator17 from "../assets/ranking/creator17.png";
+import { useEffect, useState } from "react";
 
 /* ------------------------------ Data ------------------------------ */
 
 const TABS = ["Today", "This Week", "This Month", "All Time"];
-
-const CHANGE = "+1.41%";
-const SOLD = "602";
-const VOLUME = "12.4 ETH";
-
-// Same data is shown for every tab for now. Swap in per-tab data when available.
-const creators = [
-  { rank: 1, name: "Jaydon Ekstrom Bothman", image: creator1 },
-  { rank: 2, name: "Ruben Carder", image: creator2 },
-  { rank: 3, name: "Alfredo Septimus", image: creator3 },
-  { rank: 4, name: "Davis Franci", image: creator4 },
-  { rank: 5, name: "Livia Rosser", image: creator5 },
-  { rank: 6, name: "Kianna Donin", image: creator6 },
-  { rank: 7, name: "Phillip Lipshutz", image: creator7 },
-  { rank: 8, name: "Maria Rosser", image: creator8 },
-  { rank: 9, name: "Kianna Stanton", image: creator9 },
-  { rank: 10, name: "Angel Lubin", image: creator10 },
-  { rank: 11, name: "Allison Torff", image: creator11 },
-  { rank: 12, name: "Davis Workman", image: creator12 },
-  { rank: 13, name: "Lindsey Lipshutz", image: creator13 },
-  { rank: 14, name: "Randy Carder", image: creator14 },
-  { rank: 15, name: "Lydia Culhane", image: creator15 },
-  { rank: 16, name: "Rayna Bator", image: creator16 },
-  { rank: 17, name: "Jocelyn Westervelt", image: creator17 },
-  { rank: 18, name: "Marilyn Torff", image: creator1 },
-  { rank: 19, name: "Skylar Levin", image: creator10 },
-  { rank: 20, name: "Terry Dorwart", image: creator3 },
-].map((creator) => ({
-  ...creator,
-  change: CHANGE,
-  sold: SOLD,
-  volume: VOLUME,
-}));
+const API_URL = (
+  import.meta.env.VITE_API_URL ||
+  "https://nifty-verse-backend-production.up.railway.app"
+).replace(/\/+$/, "");
 
 /* ------------------------ Shared class strings ---------------------
    Breakpoints (exclusive ranges so nothing overlaps):
@@ -125,8 +73,8 @@ function RankingHeader() {
         <span>Artist</span>
       </div>
       <span>Change</span>
-      <span>NFTs Sold</span>
-      <span>Volume</span>
+      <span>NFTs Listed</span>
+      <span>Listed Value</span>
     </div>
   );
 }
@@ -157,12 +105,18 @@ function CreatorRow({ creator }) {
         >
           {creator.rank}
         </span>
-        <img
-          src={creator.image}
-          alt={creator.name}
-          loading="lazy"
-          className="object-cover h-14 w-14 min-[601px]:max-[1024px]:h-10 min-[601px]:max-[1024px]:w-10 max-[600px]:h-11 max-[600px]:w-11 rounded-full shrink-0"
-        />
+        {creator.image ? (
+          <img
+            src={creator.image}
+            alt={creator.name}
+            loading="lazy"
+            className="object-cover h-14 w-14 min-[601px]:max-[1024px]:h-10 min-[601px]:max-[1024px]:w-10 max-[600px]:h-11 max-[600px]:w-11 rounded-full shrink-0"
+          />
+        ) : (
+          <div className="flex h-14 w-14 min-[601px]:max-[1024px]:h-10 min-[601px]:max-[1024px]:w-10 max-[600px]:h-11 max-[600px]:w-11 items-center justify-center rounded-full bg-[#292929] text-sm font-semibold text-white shrink-0">
+            {creator.name.charAt(0).toUpperCase()}
+          </div>
+        )}
         <span
           className={`${FONT_SANS} truncate text-[20px] font-semibold text-white min-[601px]:max-[1024px]:text-[15px] max-[600px]:text-base`}
         >
@@ -170,14 +124,14 @@ function CreatorRow({ creator }) {
         </span>
       </div>
 
-      <Stat label="Change" align="max-[600px]:text-left" valueClass="text-[#00AC6A]">
-        {creator.change}
+      <Stat label="Change" align="max-[600px]:text-left">
+        —
       </Stat>
-      <Stat label="NFTs Sold" align="max-[600px]:text-center">
-        {creator.sold}
+      <Stat label="NFTs Listed" align="max-[600px]:text-center">
+        {creator.nftCount.toLocaleString("en-IN")}
       </Stat>
-      <Stat label="Volume" align="max-[600px]:text-right">
-        {creator.volume}
+      <Stat label="Listed Value" align="max-[600px]:text-right">
+        {`${Number(creator.listedValue || 0).toLocaleString("en-IN", { maximumFractionDigits: 4 })} ETH`}
       </Stat>
     </li>
   );
@@ -187,9 +141,63 @@ function CreatorRow({ creator }) {
 
 export default function Rankings() {
   const [activeTab, setActiveTab] = useState("Today");
+  const [creators, setCreators] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
 
-  // Swap this for per-tab data when you have it, e.g. dataByTab[activeTab].
-  const visibleCreators = creators;
+  useEffect(() => {
+    const controller = new AbortController();
+    const period = {
+      Today: "today",
+      "This Week": "week",
+      "This Month": "month",
+      "All Time": "all",
+    }[activeTab];
+
+    const loadCreators = async () => {
+      setLoading(true);
+      setError("");
+
+      try {
+        const query = new URLSearchParams({
+          limit: "1",
+          includeNfts: "false",
+          includeCreators: "true",
+          creatorLimit: "all",
+          period,
+        });
+        const response = await fetch(`${API_URL}/api/nfts?${query}`, {
+          signal: controller.signal,
+        });
+        const data = await response.json().catch(() => ({}));
+
+        if (!response.ok || !data.success || !Array.isArray(data.creators)) {
+          throw new Error(data.message || "Unable to load creator rankings.");
+        }
+
+        setCreators(
+          data.creators.map((creator, index) => ({
+            rank: index + 1,
+            name: creator.username || "Creator",
+            image: creator.profileImage || "",
+            nftCount: Number(creator.nftCount || 0),
+            listedValue: Number(creator.listedValue || 0),
+          }))
+        );
+      } catch (loadError) {
+        if (loadError.name === "AbortError") return;
+        if (import.meta.env.DEV) {
+          console.error("Creator rankings request failed:", loadError);
+        }
+        setError(loadError.message || "Unable to load creator rankings.");
+      } finally {
+        if (!controller.signal.aborted) setLoading(false);
+      }
+    };
+
+    void loadCreators();
+    return () => controller.abort();
+  }, [activeTab]);
 
   return (
     <section className="py-20 w-full min-[601px]:max-[1024px]:py-14 max-[600px]:py-10 bg-[#000000]">
@@ -217,9 +225,23 @@ export default function Rankings() {
           aria-label={`${activeTab} top creators`}
           className="flex flex-col gap-[19px] mt-5 min-[601px]:max-[1024px]:mt-4 min-[601px]:max-[1024px]:gap-3 max-[600px]:mt-5 max-[600px]:gap-2.5"
         >
-          {visibleCreators.map((creator) => (
-            <CreatorRow key={creator.rank} creator={creator} />
-          ))}
+          {loading ? (
+            <li className={`${FONT_SANS} py-8 text-center text-[#858585]`}>
+              Loading creator rankings...
+            </li>
+          ) : error ? (
+            <li role="alert" className={`${FONT_SANS} py-8 text-center text-red-300`}>
+              {error}
+            </li>
+          ) : creators.length > 0 ? (
+            creators.map((creator) => (
+              <CreatorRow key={creator.name} creator={creator} />
+            ))
+          ) : (
+            <li className={`${FONT_SANS} py-8 text-center text-[#858585]`}>
+              No creators available for this period.
+            </li>
+          )}
         </ul>
       </div>
     </section>

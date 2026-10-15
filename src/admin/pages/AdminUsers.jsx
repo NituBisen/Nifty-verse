@@ -673,7 +673,7 @@ const AdminUsers = () => {
                 ) : (
                     /* USERS TABLE */
 
-                    <div className="admin-content-scroll w-full min-w-0 overflow-x-auto">
+                    <div className="admin-scrollbar w-full min-w-0 overflow-x-auto">
 
                         <table className="w-full min-w-[760px] border-collapse">
 

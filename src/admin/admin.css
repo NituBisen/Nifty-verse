@@ -91,6 +91,13 @@
   overflow-x: clip;
 }
 
+.admin-shell .overflow-x-auto {
+  max-width: 100%;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
 .admin-header-brand {
   flex: 1 1 auto;
   min-width: 0;

@@ -755,6 +755,8 @@ export default function Profile() {
         );
       }
 
+      window.dispatchEvent(new Event("marketplace-data-changed"));
+
       const updatedUser = {
         ...user,
         name: form.name.trim(),
